@@ -10,7 +10,7 @@
 
 
 % Clean workspae and command window
-clean;
+clear;
 clc;
 
 % Load bidspm for secondary subfunctions 
@@ -29,24 +29,8 @@ opt = clean_option();
 % - import log file and extract timings
 % - save relevant files in /outputs/extracted_data/subID 
 
-% !!! manually make folders for each day and script, plus discarded one
+[opt, csvStruct, logStruct] = clean_import(opt);
 
-% GO CHECK DATA OF PILOTS
-
-% Load folders 
-
-% go through folders
-
-% Check if participant exists - function
-
-% Load one file (two separate lists for csv and logs, ideally with the same
-% indexes)
-
-% Import csv - function, calls trim csv function that trims it
-
-% Import log - function, calls trim log function that trims it
-
-% save files in corresponding 'preproc' folder
 
 %% Make summary for JASP / R (separate function)
 

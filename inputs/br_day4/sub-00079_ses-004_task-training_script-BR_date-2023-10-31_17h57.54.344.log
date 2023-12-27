@@ -1,0 +1,3834 @@
+0.8296999998092651	DATA	Mouse: out, pos=(534,277)
+3.9095	DATA	Keydown: undefined
+8.766699999809266	EXP	Created welcome_text = TextStim( name=welcome_text, win=Window( name=Window, fullscr=true, color=#000000, ~), autoDraw=null, autoLog=true, units=height, pos=[0,0], anchor=center, size=undefined, ori=null, opacity=1, depth=null, clipMask=null, boundingBox={"x":-0.4798152608082707,"y":-0.13748657357679914,~, text=Goeiedag en welkom!
+
+Vandaag gaan we ons opnieuw c~, alignHoriz=center, alignVert=center, flipHoriz=null, flipVert=null, font=Arial, height=0.03, wrapWidth=1, bold=null, italic=null, color=#FFFFFF, contrast=1 )
+8.771	EXP	Created trainInstr_text = TextStim( name=trainInstr_text, win=Window( name=Window, fullscr=true, color=#000000, ~), autoDraw=null, autoLog=true, units=height, pos=[0,0], anchor=center, size=undefined, ori=null, opacity=1, depth=null, clipMask=null, boundingBox={"x":-0.4948455122180451,"y":-0.2749731471535983,"~, text=Ter herinnering: u krijgt een woord in het nieuwe ~, alignHoriz=center, alignVert=center, flipHoriz=null, flipVert=null, font=Arial, height=0.03, wrapWidth=1, bold=null, italic=null, color=#FFFFFF, contrast=1 )
+8.772699999809266	EXP	Created braille_word = ImageStim( name=braille_word, win=Window( name=Window, fullscr=true, color=#000000, ~), autoDraw=null, autoLog=true, units=height, pos=[0,0], anchor=center, size=[0.7,0.1], ori=null, opacity=1, depth=null, clipMask=null, boundingBox={"x":-0.35,"y":-0.05,"width":0.7,"height":0.1,"typ~, image=undefined, mask=undefined, color=#ffffff, contrast=1, texRes=128, interpolate=true, flipHoriz=null, flipVert=null )
+8.77989999961853	EXP	Created dutch_word = TextStim( name=dutch_word, win=Window( name=Window, fullscr=true, color=#000000, ~), autoDraw=null, autoLog=true, units=height, pos=[0,-0.2], anchor=center, size=undefined, ori=null, opacity=1, depth=-1, clipMask=null, boundingBox={"x":0,"y":-0.22792696025778733,"width":0,"height"~, text=null, alignHoriz=center, alignVert=center, flipHoriz=null, flipVert=null, font=Arial, height=0.05, wrapWidth=1, bold=null, italic=null, color=#FFFFFF, contrast=1 )
+8.781	EXP	Created word_rsp = TextBox( name=word_rsp, win=Window( name=Window, fullscr=true, color=#000000, ~), autoDraw=null, autoLog=true, units=height, pos=[0,-0.3], anchor=center, size=[0.5,0.05], ori=null, opacity=1, depth=-4, clipMask=null, boundingBox={"x":-0.25,"y":-0.3260741138560687,"width":0.5,"he~, text=null, placeholder=null, flipHoriz=null, flipVert=null, font=Arial, letterHeight=0.05, bold=null, italic=null, alignment=center, languageStyle=LTR, color=black, fillColor=white, borderColor=undefined, contrast=1, borderWidth=0.0010741138560687433, padding=null, multiline=true, editable=true, autofocus=true, fitToContent=null )
+8.782699999809266	EXP	Created endTrain_text = TextStim( name=endTrain_text, win=Window( name=Window, fullscr=true, color=#000000, ~), autoDraw=null, autoLog=true, units=height, pos=[0,0], anchor=center, size=undefined, ori=null, opacity=1, depth=null, clipMask=null, boundingBox={"x":-0.4865263745300752,"y":-0.13748657357679914,~, text=De training is voorbij.
+
+Neem een pauze van 5-10 m~, alignHoriz=center, alignVert=center, flipHoriz=null, flipVert=null, font=Arial, height=0.03, wrapWidth=1, bold=null, italic=null, color=#FFFFFF, contrast=1 )
+8.7855	EXP	Created testInstr_text = TextStim( name=testInstr_text, win=Window( name=Window, fullscr=true, color=#000000, ~), autoDraw=null, autoLog=true, units=height, pos=[0,0], anchor=center, size=undefined, ori=null, opacity=1, depth=null, clipMask=null, boundingBox={"x":-0.4981790413533835,"y":-0.30934479054779807,~, text=We gaan nu een korte test doen om te zien hoe goed~, alignHoriz=center, alignVert=center, flipHoriz=null, flipVert=null, font=Arial, height=0.03, wrapWidth=1, bold=null, italic=null, color=#FFFFFF, contrast=1 )
+8.78689999961853	EXP	Created test_word = ImageStim( name=test_word, win=Window( name=Window, fullscr=true, color=#000000, ~), autoDraw=null, autoLog=true, units=height, pos=[0,0], anchor=center, size=[0.7,0.1], ori=null, opacity=1, depth=null, clipMask=null, boundingBox={"x":-0.35,"y":-0.05,"width":0.7,"height":0.1,"typ~, image=undefined, mask=undefined, color=#ffffff, contrast=1, texRes=128, interpolate=true, flipHoriz=null, flipVert=null )
+8.787199999809266	EXP	Created test_response = TextBox( name=test_response, win=Window( name=Window, fullscr=true, color=#000000, ~), autoDraw=null, autoLog=true, units=height, pos=[0,-0.2], anchor=center, size=[0.5,0.05], ori=null, opacity=1, depth=-2, clipMask=null, boundingBox={"x":-0.25,"y":-0.21607411385606876,"width":0.5,"h~, text=null, placeholder=null, flipHoriz=null, flipVert=null, font=Arial, letterHeight=0.03, bold=null, italic=null, alignment=center, languageStyle=LTR, color=black, fillColor=white, borderColor=undefined, contrast=1, borderWidth=0.0010741138560687433, padding=null, multiline=true, editable=true, autofocus=true, fitToContent=null )
+8.78839999961853	EXP	Created end_text = TextStim( name=end_text, win=Window( name=Window, fullscr=true, color=#000000, ~), autoDraw=null, autoLog=true, units=height, pos=[0,0], anchor=center, size=undefined, ori=null, opacity=1, depth=null, clipMask=null, boundingBox={"x":-0.4564144736842105,"y":-0.20622986036519872,~, text=De test is nu voorbij.
+
+Dit was onze laatste train~, alignHoriz=center, alignVert=center, flipHoriz=null, flipVert=null, font=Arial, height=0.03, wrapWidth=1, bold=null, italic=null, color=#FFFFFF, contrast=1 )
+8.796699999809265	EXP	welcome_text: units = height
+8.796699999809265	EXP	welcome_text: pos = [0,0]
+8.796699999809265	EXP	welcome_text: anchor = center
+8.796699999809265	EXP	welcome_text: size = undefined
+8.796699999809265	EXP	welcome_text: ori = null
+8.796699999809265	EXP	welcome_text: opacity = 1
+8.796699999809265	EXP	welcome_text: depth = null
+8.796699999809265	EXP	welcome_text: clipMask = null
+8.796699999809265	EXP	welcome_text: boundingBox = {"x":0,"y":0,"width":0,"height":0,"type":1}
+8.796699999809265	EXP	welcome_text: text = Goeiedag en welkom!
+
+Vandaag gaan we ons opnieuw concentreren op het leren van woorden. Net als in de vorige sessies zal er een gedeelte zijn waarin we bepaalde woorden oefenen, en daarna een test om te zien hoe goed u het doet. 
+
+Klik met de muis om verder te gaan met de instructies.
+
+8.796699999809265	EXP	welcome_text: alignHoriz = center
+8.796699999809265	EXP	welcome_text: alignVert = center
+8.796699999809265	EXP	welcome_text: flipHoriz = null
+8.796699999809265	EXP	welcome_text: flipVert = null
+8.796699999809265	EXP	welcome_text: font = Arial
+8.796699999809265	EXP	welcome_text: height = 0.03
+8.796699999809265	EXP	welcome_text: wrapWidth = 1
+8.796699999809265	EXP	welcome_text: bold = null
+8.796699999809265	EXP	welcome_text: italic = null
+8.796699999809265	EXP	welcome_text: color = #FFFFFF
+8.796699999809265	EXP	welcome_text: contrast = 1
+8.796699999809265	EXP	trainInstr_text: units = height
+8.796699999809265	EXP	trainInstr_text: pos = [0,0]
+8.796699999809265	EXP	trainInstr_text: anchor = center
+8.796699999809265	EXP	trainInstr_text: size = undefined
+8.796699999809265	EXP	trainInstr_text: ori = null
+8.796699999809265	EXP	trainInstr_text: opacity = 1
+8.796699999809265	EXP	trainInstr_text: depth = null
+8.796699999809265	EXP	trainInstr_text: clipMask = null
+8.796699999809265	EXP	trainInstr_text: boundingBox = {"x":0,"y":0,"width":0,"height":0,"type":1}
+8.796699999809265	EXP	trainInstr_text: text = Ter herinnering: u krijgt een woord in het nieuwe alfabet voorgeschoteld. We vragen u om het in stilte te lezen en het te proberen decoderen in Nederlandse letters. Wanneer u dit heeft gedaan, drukt u op de “pijl omlaag” op uw toetsenbord om de oplossing te zien. Daarna klikt u met de muis om verder te gaan naar het volgende woord. 
+
+Soms ziet u een witte balk en wordt u gevraagd het antwoord te typen in plaats van het te decoderen in uw hoofd. De opdracht is dezelfde: druk op de onderste pijl op uw toetsenbord om de oplossing te controleren. Klik daarna met de muis om verder te gaan. 
+
+Na de training volgt nog een korte test, dus let goed op de woorden. 
+
+Klik met de muis om te starten met het leren van de woorden, en om door te gaan naar het volgende woord.
+
+8.796699999809265	EXP	trainInstr_text: alignHoriz = center
+8.796699999809265	EXP	trainInstr_text: alignVert = center
+8.796699999809265	EXP	trainInstr_text: flipHoriz = null
+8.796699999809265	EXP	trainInstr_text: flipVert = null
+8.796699999809265	EXP	trainInstr_text: font = Arial
+8.796699999809265	EXP	trainInstr_text: height = 0.03
+8.796699999809265	EXP	trainInstr_text: wrapWidth = 1
+8.796699999809265	EXP	trainInstr_text: bold = null
+8.796699999809265	EXP	trainInstr_text: italic = null
+8.796699999809265	EXP	trainInstr_text: color = #FFFFFF
+8.796699999809265	EXP	trainInstr_text: contrast = 1
+8.796699999809265	EXP	braille_word: units = height
+8.796699999809265	EXP	braille_word: pos = [0,0]
+8.796699999809265	EXP	braille_word: anchor = center
+8.796699999809265	EXP	braille_word: size = [0.7,0.1]
+8.796699999809265	EXP	braille_word: ori = null
+8.796699999809265	EXP	braille_word: opacity = 1
+8.796699999809265	EXP	braille_word: depth = null
+8.796699999809265	EXP	braille_word: clipMask = null
+8.796699999809265	EXP	braille_word: boundingBox = {"x":0,"y":0,"width":0,"height":0,"type":1}
+8.796699999809265	EXP	braille_word: image = undefined
+8.796699999809265	EXP	braille_word: mask = undefined
+8.796699999809265	EXP	braille_word: color = #ffffff
+8.796699999809265	EXP	braille_word: contrast = 1
+8.796699999809265	EXP	braille_word: texRes = 128
+8.796699999809265	EXP	braille_word: interpolate = true
+8.796699999809265	EXP	braille_word: flipHoriz = null
+8.796699999809265	EXP	braille_word: flipVert = null
+8.796699999809265	EXP	dutch_word: units = height
+8.796699999809265	EXP	dutch_word: pos = [0,-0.2]
+8.796699999809265	EXP	dutch_word: anchor = center
+8.796699999809265	EXP	dutch_word: size = undefined
+8.796699999809265	EXP	dutch_word: ori = null
+8.796699999809265	EXP	dutch_word: opacity = 1
+8.796699999809265	EXP	dutch_word: depth = -1
+8.796699999809265	EXP	dutch_word: clipMask = null
+8.796699999809265	EXP	dutch_word: boundingBox = {"x":0,"y":0,"width":0,"height":0,"type":1}
+8.796699999809265	EXP	dutch_word: text = null
+8.796699999809265	EXP	dutch_word: alignHoriz = center
+8.796699999809265	EXP	dutch_word: alignVert = center
+8.796699999809265	EXP	dutch_word: flipHoriz = null
+8.796699999809265	EXP	dutch_word: flipVert = null
+8.796699999809265	EXP	dutch_word: font = Arial
+8.796699999809265	EXP	dutch_word: height = 0.05
+8.796699999809265	EXP	dutch_word: wrapWidth = 1
+8.796699999809265	EXP	dutch_word: bold = null
+8.796699999809265	EXP	dutch_word: italic = null
+8.796699999809265	EXP	dutch_word: color = #FFFFFF
+8.796699999809265	EXP	dutch_word: contrast = 1
+8.796699999809265	EXP	word_rsp: units = height
+8.796699999809265	EXP	word_rsp: pos = [0,-0.3]
+8.796699999809265	EXP	word_rsp: anchor = center
+8.796699999809265	EXP	word_rsp: size = [0.5,0.05]
+8.796699999809265	EXP	word_rsp: ori = null
+8.796699999809265	EXP	word_rsp: opacity = 1
+8.796699999809265	EXP	word_rsp: depth = -4
+8.796699999809265	EXP	word_rsp: clipMask = null
+8.796699999809265	EXP	word_rsp: boundingBox = {"x":0,"y":0,"width":0,"height":0,"type":1}
+8.796699999809265	EXP	word_rsp: placeholder = null
+8.796699999809265	EXP	word_rsp: flipHoriz = null
+8.796699999809265	EXP	word_rsp: flipVert = null
+8.796699999809265	EXP	word_rsp: font = Arial
+8.796699999809265	EXP	word_rsp: letterHeight = 0.05
+8.796699999809265	EXP	word_rsp: bold = null
+8.796699999809265	EXP	word_rsp: italic = null
+8.796699999809265	EXP	word_rsp: alignment = center
+8.796699999809265	EXP	word_rsp: languageStyle = LTR
+8.796699999809265	EXP	word_rsp: color = black
+8.796699999809265	EXP	word_rsp: fillColor = white
+8.796699999809265	EXP	word_rsp: borderColor = undefined
+8.796699999809265	EXP	word_rsp: contrast = 1
+8.796699999809265	EXP	word_rsp: borderWidth = 0.0010741138560687433
+8.796699999809265	EXP	word_rsp: padding = null
+8.796699999809265	EXP	word_rsp: multiline = true
+8.796699999809265	EXP	word_rsp: editable = true
+8.796699999809265	EXP	word_rsp: autofocus = true
+8.796699999809265	EXP	word_rsp: fitToContent = null
+8.796699999809265	EXP	word_rsp: fitToContent = null
+8.796699999809265	EXP	word_rsp: size = [0.5,0.05]
+8.796699999809265	EXP	endTrain_text: units = height
+8.796699999809265	EXP	endTrain_text: pos = [0,0]
+8.796699999809265	EXP	endTrain_text: anchor = center
+8.796699999809265	EXP	endTrain_text: size = undefined
+8.796699999809265	EXP	endTrain_text: ori = null
+8.796699999809265	EXP	endTrain_text: opacity = 1
+8.796699999809265	EXP	endTrain_text: depth = null
+8.796699999809265	EXP	endTrain_text: clipMask = null
+8.796699999809265	EXP	endTrain_text: boundingBox = {"x":0,"y":0,"width":0,"height":0,"type":1}
+8.796699999809265	EXP	endTrain_text: text = De training is voorbij.
+
+Neem een pauze van 5-10 minuten en laat ondertussen het beeldscherm staan op deze pagina. Kom terug voor de test wanneer u klaar bent.
+
+Als u dat gedaan heeft, klikt u met de muis om verder te gaan met de testinstructies.
+
+8.796699999809265	EXP	endTrain_text: alignHoriz = center
+8.796699999809265	EXP	endTrain_text: alignVert = center
+8.796699999809265	EXP	endTrain_text: flipHoriz = null
+8.796699999809265	EXP	endTrain_text: flipVert = null
+8.796699999809265	EXP	endTrain_text: font = Arial
+8.796699999809265	EXP	endTrain_text: height = 0.03
+8.796699999809265	EXP	endTrain_text: wrapWidth = 1
+8.796699999809265	EXP	endTrain_text: bold = null
+8.796699999809265	EXP	endTrain_text: italic = null
+8.796699999809265	EXP	endTrain_text: color = #FFFFFF
+8.796699999809265	EXP	endTrain_text: contrast = 1
+8.796699999809265	EXP	testInstr_text: units = height
+8.796699999809265	EXP	testInstr_text: pos = [0,0]
+8.796699999809265	EXP	testInstr_text: anchor = center
+8.796699999809265	EXP	testInstr_text: size = undefined
+8.796699999809265	EXP	testInstr_text: ori = null
+8.796699999809265	EXP	testInstr_text: opacity = 1
+8.796699999809265	EXP	testInstr_text: depth = null
+8.796699999809265	EXP	testInstr_text: clipMask = null
+8.796699999809265	EXP	testInstr_text: boundingBox = {"x":0,"y":0,"width":0,"height":0,"type":1}
+8.796699999809265	EXP	testInstr_text: text = We gaan nu een korte test doen om te zien hoe goed u de eerder geleerde woorden kunt decoderen. 
+
+U krijgt 60 items voorgelegd. Sommige zijn woorden die u net hebt gezien, sommige zijn nieuw en sommige hebben geen betekenis (niet-woorden). 
+Na 6 seconden verdwijnen de woorden en wordt u gevraagd om de overeenkomstige letterreeks (de vertaling) in te typen in het antwoordveld dat verschijnt. 
+Als er een letter is die je niet meer weet, kun je die overslaan door de letter simpelweg te vervangen door een punt '.'
+
+Probeer zoals altijd zo snel en nauwkeurig mogelijk te zijn.
+
+Zodra uw antwoord is ingevoerd, klikt u met de muis om naar het volgende woord te gaan. 
+
+Als u klaar bent voor de test, klik dan met de muis om te beginnen.
+
+8.796699999809265	EXP	testInstr_text: alignHoriz = center
+8.796699999809265	EXP	testInstr_text: alignVert = center
+8.796699999809265	EXP	testInstr_text: flipHoriz = null
+8.796699999809265	EXP	testInstr_text: flipVert = null
+8.796699999809265	EXP	testInstr_text: font = Arial
+8.796699999809265	EXP	testInstr_text: height = 0.03
+8.796699999809265	EXP	testInstr_text: wrapWidth = 1
+8.796699999809265	EXP	testInstr_text: bold = null
+8.796699999809265	EXP	testInstr_text: italic = null
+8.796699999809265	EXP	testInstr_text: color = #FFFFFF
+8.796699999809265	EXP	testInstr_text: contrast = 1
+8.796699999809265	EXP	test_word: units = height
+8.796699999809265	EXP	test_word: pos = [0,0]
+8.796699999809265	EXP	test_word: anchor = center
+8.796699999809265	EXP	test_word: size = [0.7,0.1]
+8.796699999809265	EXP	test_word: ori = null
+8.796699999809265	EXP	test_word: opacity = 1
+8.796699999809265	EXP	test_word: depth = null
+8.796699999809265	EXP	test_word: clipMask = null
+8.796699999809265	EXP	test_word: boundingBox = {"x":0,"y":0,"width":0,"height":0,"type":1}
+8.796699999809265	EXP	test_word: image = undefined
+8.796699999809265	EXP	test_word: mask = undefined
+8.796699999809265	EXP	test_word: color = #ffffff
+8.796699999809265	EXP	test_word: contrast = 1
+8.796699999809265	EXP	test_word: texRes = 128
+8.796699999809265	EXP	test_word: interpolate = true
+8.796699999809265	EXP	test_word: flipHoriz = null
+8.796699999809265	EXP	test_word: flipVert = null
+8.796699999809265	EXP	test_response: units = height
+8.796699999809265	EXP	test_response: pos = [0,-0.2]
+8.796699999809265	EXP	test_response: anchor = center
+8.796699999809265	EXP	test_response: size = [0.5,0.05]
+8.796699999809265	EXP	test_response: ori = null
+8.796699999809265	EXP	test_response: opacity = 1
+8.796699999809265	EXP	test_response: depth = -2
+8.796699999809265	EXP	test_response: clipMask = null
+8.796699999809265	EXP	test_response: boundingBox = {"x":0,"y":0,"width":0,"height":0,"type":1}
+8.796699999809265	EXP	test_response: placeholder = null
+8.796699999809265	EXP	test_response: flipHoriz = null
+8.796699999809265	EXP	test_response: flipVert = null
+8.796699999809265	EXP	test_response: font = Arial
+8.796699999809265	EXP	test_response: letterHeight = 0.03
+8.796699999809265	EXP	test_response: bold = null
+8.796699999809265	EXP	test_response: italic = null
+8.796699999809265	EXP	test_response: alignment = center
+8.796699999809265	EXP	test_response: languageStyle = LTR
+8.796699999809265	EXP	test_response: color = black
+8.796699999809265	EXP	test_response: fillColor = white
+8.796699999809265	EXP	test_response: borderColor = undefined
+8.796699999809265	EXP	test_response: contrast = 1
+8.796699999809265	EXP	test_response: borderWidth = 0.0010741138560687433
+8.796699999809265	EXP	test_response: padding = null
+8.796699999809265	EXP	test_response: multiline = true
+8.796699999809265	EXP	test_response: editable = true
+8.796699999809265	EXP	test_response: autofocus = true
+8.796699999809265	EXP	test_response: fitToContent = null
+8.796699999809265	EXP	test_response: fitToContent = null
+8.796699999809265	EXP	test_response: size = [0.5,0.05]
+8.796699999809265	EXP	end_text: units = height
+8.796699999809265	EXP	end_text: pos = [0,0]
+8.796699999809265	EXP	end_text: anchor = center
+8.796699999809265	EXP	end_text: size = undefined
+8.796699999809265	EXP	end_text: ori = null
+8.796699999809265	EXP	end_text: opacity = 1
+8.796699999809265	EXP	end_text: depth = null
+8.796699999809265	EXP	end_text: clipMask = null
+8.796699999809265	EXP	end_text: boundingBox = {"x":0,"y":0,"width":0,"height":0,"type":1}
+8.796699999809265	EXP	end_text: text = De test is nu voorbij.
+
+Dit was onze laatste training.
+
+Hartelijk dank voor uw deelname en interesse in dit onderzoek.
+
+U kunt de onderzoekers laten weten dat u klaar bent met de training.
+
+Wacht tot het pop-up venster sluit voordat u de webpagina verlaat.
+
+Verder nog een fijne dag gewenst :)
+
+8.796699999809265	EXP	end_text: alignHoriz = center
+8.796699999809265	EXP	end_text: alignVert = center
+8.796699999809265	EXP	end_text: flipHoriz = null
+8.796699999809265	EXP	end_text: flipVert = null
+8.796699999809265	EXP	end_text: font = Arial
+8.796699999809265	EXP	end_text: height = 0.03
+8.796699999809265	EXP	end_text: wrapWidth = 1
+8.796699999809265	EXP	end_text: bold = null
+8.796699999809265	EXP	end_text: italic = null
+8.796699999809265	EXP	end_text: color = #FFFFFF
+8.796699999809265	EXP	end_text: contrast = 1
+8.796699999809265	EXP	welcome_text: autoDraw = true
+10.392199999809266	DATA	Mouse: 0 button down, pos=(818,785)
+10.42539999961853	EXP	welcome_text: autoDraw = null
+10.42539999961853	EXP	trainInstr_text: autoDraw = true
+10.621500000000001	DATA	Mouse: 0 button up, pos=(818,785)
+17.042699999809265	DATA	Mouse: 0 button down, pos=(818,785)
+17.0715	EXP	trainInstr_text: autoDraw = null
+17.0715	EXP	braille_word: image = {}
+17.0715	EXP	dutch_word: text = uitlaat
+17.2595	DATA	Mouse: 0 button up, pos=(818,785)
+17.588199999809262	EXP	braille_word: autoDraw = true
+17.588199999809262	EXP	braille_word: anchor = center
+34.133399999618526	DATA	Keydown: ArrowDown
+34.186300000190734	EXP	dutch_word: autoDraw = true
+34.766600000381466	DATA	Mouse: 0 button down, pos=(818,785)
+34.79989999961853	EXP	braille_word: autoDraw = null
+34.79989999961853	EXP	dutch_word: autoDraw = null
+34.79989999961853	EXP	word_rsp: autoDraw = null
+34.79989999961853	EXP	braille_word: image = {}
+34.79989999961853	EXP	dutch_word: text = opkijken
+34.79989999961853	EXP	word_rsp: editable = true
+34.79989999961853	EXP	word_rsp: autoDraw = true
+34.79989999961853	EXP	word_rsp: anchor = center
+34.79989999961853	EXP	word_rsp: autoDraw = true
+34.79989999961853	EXP	word_rsp: anchor = center
+34.983199999809266	DATA	Mouse: 0 button up, pos=(818,785)
+35.31589999961853	EXP	braille_word: autoDraw = true
+35.31589999961853	EXP	braille_word: anchor = center
+36.966300000190735	DATA	Keydown: o
+37.33610000038147	DATA	Keydown: p
+38.3545	DATA	Keydown: k
+40.085499999999996	DATA	Keydown: i
+41.03989999961853	DATA	Keydown: j
+42.2145	DATA	Keydown: k
+42.91419999980926	DATA	Keydown: e
+42.997800000190736	DATA	Keydown: n
+45.896300000190735	DATA	Keydown: ArrowDown
+45.94560000038147	EXP	dutch_word: autoDraw = true
+46.518100000381466	DATA	Mouse: 0 button down, pos=(818,785)
+46.545300000190736	EXP	braille_word: autoDraw = null
+46.545300000190736	EXP	dutch_word: autoDraw = null
+46.545300000190736	EXP	word_rsp: autoDraw = null
+46.545300000190736	EXP	braille_word: image = {}
+46.545300000190736	EXP	dutch_word: text = maling
+46.545300000190736	EXP	word_rsp: editable = true
+46.545300000190736	EXP	word_rsp: autoDraw = true
+46.545300000190736	EXP	word_rsp: anchor = center
+46.545300000190736	EXP	word_rsp: autoDraw = true
+46.545300000190736	EXP	word_rsp: anchor = center
+46.733	DATA	Mouse: 0 button up, pos=(818,785)
+47.061699999809264	EXP	braille_word: autoDraw = true
+47.061699999809264	EXP	braille_word: anchor = center
+49.51189999961853	DATA	Keydown: m
+51.0345	DATA	Keydown: a
+51.500499999999995	DATA	Keydown: l
+52.84439999961853	DATA	Keydown: i
+53.798300000190736	DATA	Keydown: n
+53.92689999961853	DATA	Keydown: g
+55.11010000038147	DATA	Keydown: ArrowDown
+55.15910000038147	EXP	dutch_word: autoDraw = true
+55.726800000190735	DATA	Mouse: 0 button down, pos=(818,785)
+55.75869999980927	EXP	braille_word: autoDraw = null
+55.75869999980927	EXP	dutch_word: autoDraw = null
+55.75869999980927	EXP	word_rsp: autoDraw = null
+55.75869999980927	EXP	braille_word: image = {}
+55.75869999980927	EXP	dutch_word: text = oceaan
+55.94330000019073	DATA	Mouse: 0 button up, pos=(818,785)
+56.2755	EXP	braille_word: autoDraw = true
+56.2755	EXP	braille_word: anchor = center
+63.40980000019073	DATA	Keydown: ArrowDown
+63.45689999961853	EXP	dutch_word: autoDraw = true
+63.94119999980926	DATA	Mouse: 0 button down, pos=(818,785)
+63.97260000038146	EXP	braille_word: autoDraw = null
+63.97260000038146	EXP	dutch_word: autoDraw = null
+63.97260000038146	EXP	word_rsp: autoDraw = null
+63.97260000038146	EXP	braille_word: image = {}
+63.97260000038146	EXP	dutch_word: text = uitdelen
+64.15630000019074	DATA	Mouse: 0 button up, pos=(818,785)
+64.48930000019074	EXP	braille_word: autoDraw = true
+64.48930000019074	EXP	braille_word: anchor = center
+73.49189999961852	DATA	Keydown: ArrowDown
+73.53639999961852	EXP	dutch_word: autoDraw = true
+74.03330000019074	DATA	Mouse: 0 button down, pos=(818,785)
+74.05260000038147	EXP	braille_word: autoDraw = null
+74.05260000038147	EXP	dutch_word: autoDraw = null
+74.05260000038147	EXP	word_rsp: autoDraw = null
+74.05260000038147	EXP	braille_word: image = {}
+74.05260000038147	EXP	dutch_word: text = redding
+74.25019999980927	DATA	Mouse: 0 button up, pos=(818,785)
+74.56919999980926	EXP	braille_word: autoDraw = true
+74.56919999980926	EXP	braille_word: anchor = center
+81.96860000038147	DATA	Keydown: ArrowDown
+82.00169999980926	EXP	dutch_word: autoDraw = true
+82.385	DATA	Mouse: 0 button down, pos=(818,785)
+82.40919999980926	EXP	braille_word: autoDraw = null
+82.40919999980926	EXP	dutch_word: autoDraw = null
+82.40919999980926	EXP	word_rsp: autoDraw = null
+82.40919999980926	EXP	braille_word: image = {}
+82.40919999980926	EXP	dutch_word: text = aandelen
+82.40919999980926	EXP	word_rsp: editable = true
+82.40919999980926	EXP	word_rsp: autoDraw = true
+82.40919999980926	EXP	word_rsp: anchor = center
+82.40919999980926	EXP	word_rsp: autoDraw = true
+82.40919999980926	EXP	word_rsp: anchor = center
+82.5985	DATA	Mouse: 0 button up, pos=(818,785)
+82.92069999980926	EXP	braille_word: autoDraw = true
+82.92069999980926	EXP	braille_word: anchor = center
+84.83389999961852	DATA	Keydown: a
+85.25160000038147	DATA	Keydown: a
+85.85	DATA	Keydown: n
+87.88739999961852	DATA	Keydown: d
+88.49039999961853	DATA	Keydown: e
+88.69919999980927	DATA	Keydown: l
+88.84639999961853	DATA	Keydown: e
+88.98719999980926	DATA	Keydown: n
+90.3225	DATA	Mouse: 0 button down, pos=(818,785)
+90.53760000038147	DATA	Mouse: 0 button up, pos=(818,785)
+90.79910000038147	DATA	Keydown: ArrowDown
+90.83239999961853	EXP	dutch_word: autoDraw = true
+91.24010000038147	DATA	Mouse: 0 button down, pos=(818,785)
+91.254	EXP	braille_word: autoDraw = null
+91.254	EXP	dutch_word: autoDraw = null
+91.254	EXP	word_rsp: autoDraw = null
+91.254	EXP	braille_word: image = {}
+91.254	EXP	dutch_word: text = kring
+91.45580000019073	DATA	Mouse: 0 button up, pos=(818,785)
+91.76689999961853	EXP	braille_word: autoDraw = true
+91.76689999961853	EXP	braille_word: anchor = center
+96.54769999980927	DATA	Keydown: ArrowDown
+96.58069999980927	EXP	dutch_word: autoDraw = true
+97.03819999980927	DATA	Mouse: 0 button down, pos=(818,785)
+97.0515	EXP	braille_word: autoDraw = null
+97.0515	EXP	dutch_word: autoDraw = null
+97.0515	EXP	word_rsp: autoDraw = null
+97.0515	EXP	braille_word: image = {}
+97.0515	EXP	dutch_word: text = stiekem
+97.25289999961853	DATA	Mouse: 0 button up, pos=(818,785)
+97.5655	EXP	braille_word: autoDraw = true
+97.5655	EXP	braille_word: anchor = center
+103.02980000019073	DATA	Keydown: ArrowDown
+103.06169999980926	EXP	dutch_word: autoDraw = true
+103.94939999961854	DATA	Mouse: 0 button down, pos=(818,785)
+103.96660000038146	EXP	braille_word: autoDraw = null
+103.96660000038146	EXP	dutch_word: autoDraw = null
+103.96660000038146	EXP	word_rsp: autoDraw = null
+103.96660000038146	EXP	braille_word: image = {}
+103.96660000038146	EXP	dutch_word: text = aanzien
+104.16489999961853	DATA	Mouse: 0 button up, pos=(818,785)
+104.48060000038147	EXP	braille_word: autoDraw = true
+104.48060000038147	EXP	braille_word: anchor = center
+109.54819999980927	DATA	Keydown: ArrowDown
+109.57639999961853	EXP	dutch_word: autoDraw = true
+110.05630000019073	DATA	Mouse: 0 button down, pos=(818,785)
+110.08380000019073	EXP	braille_word: autoDraw = null
+110.08380000019073	EXP	dutch_word: autoDraw = null
+110.08380000019073	EXP	word_rsp: autoDraw = null
+110.08380000019073	EXP	braille_word: image = {}
+110.08380000019073	EXP	dutch_word: text = zingen
+110.08380000019073	EXP	word_rsp: editable = true
+110.08380000019073	EXP	word_rsp: autoDraw = true
+110.08380000019073	EXP	word_rsp: anchor = center
+110.08380000019073	EXP	word_rsp: autoDraw = true
+110.08380000019073	EXP	word_rsp: anchor = center
+110.27269999980926	DATA	Mouse: 0 button up, pos=(818,785)
+110.59430000019073	EXP	braille_word: autoDraw = true
+110.59430000019073	EXP	braille_word: anchor = center
+112.49510000038147	DATA	Keydown: z
+113.19719999980926	DATA	Keydown: i
+115.45910000038147	DATA	Keydown: n
+115.60419999980927	DATA	Keydown: g
+115.83730000019074	DATA	Keydown: e
+116.00739999961853	DATA	Keydown: n
+117.13689999961854	DATA	Keydown: ArrowDown
+117.17289999961852	EXP	dutch_word: autoDraw = true
+117.62889999961853	DATA	Mouse: 0 button down, pos=(818,785)
+117.645	EXP	braille_word: autoDraw = null
+117.645	EXP	dutch_word: autoDraw = null
+117.645	EXP	word_rsp: autoDraw = null
+117.645	EXP	braille_word: image = {}
+117.645	EXP	dutch_word: text = knielen
+117.84369999980926	DATA	Mouse: 0 button up, pos=(818,785)
+118.15819999980927	EXP	braille_word: autoDraw = true
+118.15819999980927	EXP	braille_word: anchor = center
+123.19430000019074	DATA	Keydown: ArrowDown
+123.22139999961853	EXP	dutch_word: autoDraw = true
+123.68739999961853	DATA	Mouse: 0 button down, pos=(818,785)
+123.70889999961852	EXP	braille_word: autoDraw = null
+123.70889999961852	EXP	dutch_word: autoDraw = null
+123.70889999961852	EXP	word_rsp: autoDraw = null
+123.70889999961852	EXP	braille_word: image = {}
+123.70889999961852	EXP	dutch_word: text = legaal
+123.901	DATA	Mouse: 0 button up, pos=(818,785)
+124.22369999980927	EXP	braille_word: autoDraw = true
+124.22369999980927	EXP	braille_word: anchor = center
+127.98889999961852	DATA	Keydown: ArrowDown
+128.01919999980927	EXP	dutch_word: autoDraw = true
+128.50360000038148	DATA	Mouse: 0 button down, pos=(818,785)
+128.52439999961854	EXP	braille_word: autoDraw = null
+128.52439999961854	EXP	dutch_word: autoDraw = null
+128.52439999961854	EXP	word_rsp: autoDraw = null
+128.52439999961854	EXP	braille_word: image = {}
+128.52439999961854	EXP	dutch_word: text = wagon
+128.71939999961853	DATA	Mouse: 0 button up, pos=(818,785)
+129.038	EXP	braille_word: autoDraw = true
+129.038	EXP	braille_word: anchor = center
+135.31360000038146	DATA	Keydown: ArrowDown
+135.35069999980925	EXP	dutch_word: autoDraw = true
+136.01730000019074	DATA	Mouse: 0 button down, pos=(818,785)
+136.04130000019074	EXP	braille_word: autoDraw = null
+136.04130000019074	EXP	dutch_word: autoDraw = null
+136.04130000019074	EXP	word_rsp: autoDraw = null
+136.04130000019074	EXP	braille_word: image = {}
+136.04130000019074	EXP	dutch_word: text = leuk
+136.04130000019074	EXP	word_rsp: editable = true
+136.04130000019074	EXP	word_rsp: autoDraw = true
+136.04130000019074	EXP	word_rsp: anchor = center
+136.04130000019074	EXP	word_rsp: autoDraw = true
+136.04130000019074	EXP	word_rsp: anchor = center
+136.23019999980926	DATA	Mouse: 0 button up, pos=(818,785)
+136.55210000038147	EXP	braille_word: autoDraw = true
+136.55210000038147	EXP	braille_word: anchor = center
+141.41560000038146	DATA	Keydown: l
+143.184	DATA	Keydown: e
+144.83439999961854	DATA	Keydown: u
+145.16060000038146	DATA	Keydown: k
+146.06369999980927	DATA	Keydown: ArrowDown
+146.09630000019072	EXP	dutch_word: autoDraw = true
+148.2135	DATA	Mouse: 0 button down, pos=(1000,678)
+148.23539999961852	EXP	braille_word: autoDraw = null
+148.23539999961852	EXP	dutch_word: autoDraw = null
+148.23539999961852	EXP	word_rsp: autoDraw = null
+148.23539999961852	EXP	braille_word: image = {}
+148.23539999961852	EXP	dutch_word: text = openbaar
+148.42930000019072	DATA	Mouse: 0 button up, pos=(1000,678)
+148.74889999961852	EXP	braille_word: autoDraw = true
+148.74889999961852	EXP	braille_word: anchor = center
+157.90969999980928	DATA	Keydown: ArrowDown
+157.94260000038147	EXP	dutch_word: autoDraw = true
+158.34260000038148	DATA	Mouse: 0 button down, pos=(1000,678)
+158.36460000038147	EXP	braille_word: autoDraw = null
+158.36460000038147	EXP	dutch_word: autoDraw = null
+158.36460000038147	EXP	word_rsp: autoDraw = null
+158.36460000038147	EXP	braille_word: image = {}
+158.36460000038147	EXP	dutch_word: text = gedicht
+158.55860000038146	DATA	Mouse: 0 button up, pos=(1000,678)
+158.878	EXP	braille_word: autoDraw = true
+158.878	EXP	braille_word: anchor = center
+164.6445	DATA	Keydown: ArrowDown
+164.67439999961852	EXP	dutch_word: autoDraw = true
+165.3235	DATA	Mouse: 0 button down, pos=(1000,678)
+165.34480000019073	EXP	braille_word: autoDraw = null
+165.34480000019073	EXP	dutch_word: autoDraw = null
+165.34480000019073	EXP	word_rsp: autoDraw = null
+165.34480000019073	EXP	braille_word: image = {}
+165.34480000019073	EXP	dutch_word: text = trekker
+165.53669999980926	DATA	Mouse: 0 button up, pos=(1000,678)
+165.85889999961853	EXP	braille_word: autoDraw = true
+165.85889999961853	EXP	braille_word: anchor = center
+169.70239999961854	DATA	Keydown: ArrowDown
+169.73889999961852	EXP	dutch_word: autoDraw = true
+170.39069999980927	DATA	Mouse: 0 button down, pos=(1000,678)
+170.40989999961852	EXP	braille_word: autoDraw = null
+170.40989999961852	EXP	dutch_word: autoDraw = null
+170.40989999961852	EXP	word_rsp: autoDraw = null
+170.40989999961852	EXP	braille_word: image = {}
+170.40989999961852	EXP	dutch_word: text = stoom
+170.6055	DATA	Mouse: 0 button up, pos=(1000,678)
+170.92389999961853	EXP	braille_word: autoDraw = true
+170.92389999961853	EXP	braille_word: anchor = center
+174.75369999980927	DATA	Keydown: ArrowDown
+174.78730000019073	EXP	dutch_word: autoDraw = true
+175.28730000019073	DATA	Mouse: 0 button down, pos=(1000,678)
+175.3085	EXP	braille_word: autoDraw = null
+175.3085	EXP	dutch_word: autoDraw = null
+175.3085	EXP	word_rsp: autoDraw = null
+175.3085	EXP	braille_word: image = {}
+175.3085	EXP	dutch_word: text = kust
+175.50360000038148	DATA	Mouse: 0 button up, pos=(1000,678)
+175.82230000019072	EXP	braille_word: autoDraw = true
+175.82230000019072	EXP	braille_word: anchor = center
+179.08589999961853	DATA	Keydown: ArrowDown
+180.21910000038147	DATA	Keydown: ArrowDown
+180.25219999980925	EXP	dutch_word: autoDraw = true
+180.83589999961853	DATA	Mouse: 0 button down, pos=(1000,678)
+180.85610000038147	EXP	braille_word: autoDraw = null
+180.85610000038147	EXP	dutch_word: autoDraw = null
+180.85610000038147	EXP	word_rsp: autoDraw = null
+180.85610000038147	EXP	braille_word: image = {}
+180.85610000038147	EXP	dutch_word: text = waken
+181.05189999961854	DATA	Mouse: 0 button up, pos=(1000,678)
+181.37	EXP	braille_word: autoDraw = true
+181.37	EXP	braille_word: anchor = center
+185.51719999980926	DATA	Keydown: ArrowDown
+185.55010000038146	EXP	dutch_word: autoDraw = true
+186.0025	DATA	Mouse: 0 button down, pos=(1000,678)
+186.02139999961852	EXP	braille_word: autoDraw = null
+186.02139999961852	EXP	dutch_word: autoDraw = null
+186.02139999961852	EXP	word_rsp: autoDraw = null
+186.02139999961852	EXP	braille_word: image = {}
+186.02139999961852	EXP	dutch_word: text = site
+186.21719999980925	DATA	Mouse: 0 button up, pos=(1000,678)
+186.53530000019074	EXP	braille_word: autoDraw = true
+186.53530000019074	EXP	braille_word: anchor = center
+194.86019999980925	DATA	Keydown: ArrowDown
+194.89660000038145	EXP	dutch_word: autoDraw = true
+195.37960000038146	DATA	Mouse: 0 button down, pos=(1000,678)
+195.40189999961854	EXP	braille_word: autoDraw = null
+195.40189999961854	EXP	dutch_word: autoDraw = null
+195.40189999961854	EXP	word_rsp: autoDraw = null
+195.40189999961854	EXP	braille_word: image = {}
+195.40189999961854	EXP	dutch_word: text = feestdag
+195.59510000038148	DATA	Mouse: 0 button up, pos=(1000,678)
+195.91510000038147	EXP	braille_word: autoDraw = true
+195.91510000038147	EXP	braille_word: anchor = center
+202.21110000038146	DATA	Keydown: ArrowDown
+202.24460000038147	EXP	dutch_word: autoDraw = true
+202.70839999961854	DATA	Mouse: 0 button down, pos=(1000,678)
+202.73219999980927	EXP	braille_word: autoDraw = null
+202.73219999980927	EXP	dutch_word: autoDraw = null
+202.73219999980927	EXP	word_rsp: autoDraw = null
+202.73219999980927	EXP	braille_word: image = {}
+202.73219999980927	EXP	dutch_word: text = bisschop
+202.91889999961853	DATA	Mouse: 0 button up, pos=(1000,678)
+203.24630000019073	EXP	braille_word: autoDraw = true
+203.24630000019073	EXP	braille_word: anchor = center
+210.77960000038146	DATA	Keydown: ArrowDown
+210.80760000038146	EXP	dutch_word: autoDraw = true
+211.35489999961854	DATA	Mouse: 0 button down, pos=(1000,678)
+211.38019999980926	EXP	braille_word: autoDraw = null
+211.38019999980926	EXP	dutch_word: autoDraw = null
+211.38019999980926	EXP	word_rsp: autoDraw = null
+211.38019999980926	EXP	braille_word: image = {}
+211.38019999980926	EXP	dutch_word: text = totaal
+211.57160000038147	DATA	Mouse: 0 button up, pos=(1000,678)
+211.89339999961854	EXP	braille_word: autoDraw = true
+211.89339999961854	EXP	braille_word: anchor = center
+216.72739999961854	DATA	Keydown: ArrowDown
+216.75669999980926	EXP	dutch_word: autoDraw = true
+217.19	DATA	Mouse: 0 button down, pos=(1000,678)
+217.21069999980926	EXP	braille_word: autoDraw = null
+217.21069999980926	EXP	dutch_word: autoDraw = null
+217.21069999980926	EXP	word_rsp: autoDraw = null
+217.21069999980926	EXP	braille_word: image = {}
+217.21069999980926	EXP	dutch_word: text = leren
+217.404	DATA	Mouse: 0 button up, pos=(1000,678)
+217.72469999980927	EXP	braille_word: autoDraw = true
+217.72469999980927	EXP	braille_word: anchor = center
+221.50710000038146	DATA	Keydown: ArrowDown
+221.53810000038146	EXP	dutch_word: autoDraw = true
+221.99430000019072	DATA	Mouse: 0 button down, pos=(1000,678)
+222.00910000038147	EXP	braille_word: autoDraw = null
+222.00910000038147	EXP	dutch_word: autoDraw = null
+222.00910000038147	EXP	word_rsp: autoDraw = null
+222.00910000038147	EXP	braille_word: image = {}
+222.00910000038147	EXP	dutch_word: text = aanraden
+222.20889999961852	DATA	Mouse: 0 button up, pos=(1000,678)
+222.523	EXP	braille_word: autoDraw = true
+222.523	EXP	braille_word: anchor = center
+230.39830000019074	DATA	Keydown: ArrowDown
+230.43510000038148	EXP	dutch_word: autoDraw = true
+230.91519999980926	DATA	Mouse: 0 button down, pos=(1000,678)
+230.94039999961853	EXP	braille_word: autoDraw = null
+230.94039999961853	EXP	dutch_word: autoDraw = null
+230.94039999961853	EXP	word_rsp: autoDraw = null
+230.94039999961853	EXP	braille_word: image = {}
+230.94039999961853	EXP	dutch_word: text = vorm
+231.13160000038147	DATA	Mouse: 0 button up, pos=(1000,678)
+231.45330000019072	EXP	braille_word: autoDraw = true
+231.45330000019072	EXP	braille_word: anchor = center
+235.46869999980927	DATA	Keydown: ArrowDown
+235.50010000038148	EXP	dutch_word: autoDraw = true
+235.95230000019075	DATA	Mouse: 0 button down, pos=(1000,678)
+235.97299999999998	EXP	braille_word: autoDraw = null
+235.97299999999998	EXP	dutch_word: autoDraw = null
+235.97299999999998	EXP	word_rsp: autoDraw = null
+235.97299999999998	EXP	braille_word: image = {}
+235.97299999999998	EXP	dutch_word: text = wegen
+235.97299999999998	EXP	word_rsp: editable = true
+235.97299999999998	EXP	word_rsp: autoDraw = true
+235.97299999999998	EXP	word_rsp: anchor = center
+235.97299999999998	EXP	word_rsp: autoDraw = true
+235.97299999999998	EXP	word_rsp: anchor = center
+236.167	DATA	Mouse: 0 button up, pos=(1000,678)
+236.48480000019075	EXP	braille_word: autoDraw = true
+236.48480000019075	EXP	braille_word: anchor = center
+238.56580000019073	DATA	Keydown: w
+239.22880000019074	DATA	Keydown: e
+240.08719999980926	DATA	Keydown: g
+240.219	DATA	Keydown: e
+240.34969999980927	DATA	Keydown: n
+241.11480000019074	DATA	Keydown: ArrowDown
+241.14760000038146	EXP	dutch_word: autoDraw = true
+243.69910000038146	DATA	Mouse: 0 button down, pos=(1000,678)
+243.71930000019074	EXP	braille_word: autoDraw = null
+243.71930000019074	EXP	dutch_word: autoDraw = null
+243.71930000019074	EXP	word_rsp: autoDraw = null
+243.71930000019074	EXP	braille_word: image = {}
+243.71930000019074	EXP	dutch_word: text = ziek
+243.7935	DATA	Mouse: 0 button up, pos=(1000,678)
+244.2325	EXP	braille_word: autoDraw = true
+244.2325	EXP	braille_word: anchor = center
+247.49239999961853	DATA	Keydown: ArrowDown
+248.3585	DATA	Keydown: ArrowDown
+248.39530000019073	EXP	dutch_word: autoDraw = true
+248.99230000019074	DATA	Mouse: 0 button down, pos=(1000,678)
+249.01839999961854	EXP	braille_word: autoDraw = null
+249.01839999961854	EXP	dutch_word: autoDraw = null
+249.01839999961854	EXP	word_rsp: autoDraw = null
+249.01839999961854	EXP	braille_word: image = {}
+249.01839999961854	EXP	dutch_word: text = eetlust
+249.01839999961854	EXP	word_rsp: editable = true
+249.01839999961854	EXP	word_rsp: autoDraw = true
+249.01839999961854	EXP	word_rsp: anchor = center
+249.01839999961854	EXP	word_rsp: autoDraw = true
+249.01839999961854	EXP	word_rsp: anchor = center
+249.209	DATA	Mouse: 0 button up, pos=(1000,678)
+249.53089999961853	EXP	braille_word: autoDraw = true
+249.53089999961853	EXP	braille_word: anchor = center
+250.99769999980927	DATA	Keydown: e
+251.45810000038148	DATA	Keydown: e
+252.0745	DATA	Keydown: t
+252.76730000019074	DATA	Keydown: l
+254.51569999980927	DATA	Keydown: u
+254.66010000038148	DATA	Keydown: s
+254.83180000019073	DATA	Keydown: t
+255.57330000019073	DATA	Keydown: ArrowDown
+255.60930000019073	EXP	dutch_word: autoDraw = true
+256.09310000038147	DATA	Mouse: 0 button down, pos=(1000,678)
+256.1148999996185	EXP	braille_word: autoDraw = null
+256.1148999996185	EXP	dutch_word: autoDraw = null
+256.1148999996185	EXP	word_rsp: autoDraw = null
+256.1148999996185	EXP	braille_word: image = {}
+256.1148999996185	EXP	dutch_word: text = taal
+256.30580000019074	DATA	Mouse: 0 button up, pos=(1000,678)
+256.62830000019073	EXP	braille_word: autoDraw = true
+256.62830000019073	EXP	braille_word: anchor = center
+259.7746999998093	DATA	Keydown: ArrowDown
+260.7243999996185	DATA	Keydown: ArrowDown
+260.7583999996185	EXP	dutch_word: autoDraw = true
+261.19760000038144	DATA	Mouse: 0 button down, pos=(1000,678)
+261.21419999980924	EXP	braille_word: autoDraw = null
+261.21419999980924	EXP	dutch_word: autoDraw = null
+261.21419999980924	EXP	word_rsp: autoDraw = null
+261.21419999980924	EXP	braille_word: image = {}
+261.21419999980924	EXP	dutch_word: text = opkomen
+261.21419999980924	EXP	word_rsp: editable = true
+261.21419999980924	EXP	word_rsp: autoDraw = true
+261.21419999980924	EXP	word_rsp: anchor = center
+261.21419999980924	EXP	word_rsp: autoDraw = true
+261.21419999980924	EXP	word_rsp: anchor = center
+261.4126000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+261.7266000003815	EXP	braille_word: autoDraw = true
+261.7266000003815	EXP	braille_word: anchor = center
+263.30710000038147	DATA	Keydown: o
+263.454	DATA	Keydown: p
+264.7585	DATA	Keydown: k
+265.0035	DATA	Keydown: o
+265.6533000001907	DATA	Keydown: m
+265.8035	DATA	Keydown: e
+265.95660000038146	DATA	Keydown: n
+266.82219999980924	DATA	Keydown: ArrowDown
+266.85580000019075	EXP	dutch_word: autoDraw = true
+267.6065	DATA	Mouse: 0 button down, pos=(1000,678)
+267.62789999961853	EXP	braille_word: autoDraw = null
+267.62789999961853	EXP	dutch_word: autoDraw = null
+267.62789999961853	EXP	word_rsp: autoDraw = null
+267.62789999961853	EXP	braille_word: image = {}
+267.62789999961853	EXP	dutch_word: text = knie
+267.65819999980926	DATA	Mouse: 0 button up, pos=(1000,678)
+268.14139999961856	EXP	braille_word: autoDraw = true
+268.14139999961856	EXP	braille_word: anchor = center
+272.8335	DATA	Keydown: ArrowDown
+272.8705	EXP	dutch_word: autoDraw = true
+273.4101000003815	DATA	Mouse: 0 button down, pos=(1000,678)
+273.4248999996185	EXP	braille_word: autoDraw = null
+273.4248999996185	EXP	dutch_word: autoDraw = null
+273.4248999996185	EXP	word_rsp: autoDraw = null
+273.4248999996185	EXP	braille_word: image = {}
+273.4248999996185	EXP	dutch_word: text = waarop
+273.62519999980924	DATA	Mouse: 0 button up, pos=(1000,678)
+273.939	EXP	braille_word: autoDraw = true
+273.939	EXP	braille_word: anchor = center
+277.6716999998093	DATA	Keydown: ArrowDown
+277.7026999998093	EXP	dutch_word: autoDraw = true
+278.208	DATA	Mouse: 0 button down, pos=(1000,678)
+278.22319999980925	EXP	braille_word: autoDraw = null
+278.22319999980925	EXP	dutch_word: autoDraw = null
+278.22319999980925	EXP	word_rsp: autoDraw = null
+278.22319999980925	EXP	braille_word: image = {}
+278.22319999980925	EXP	dutch_word: text = mening
+278.42289999961855	DATA	Mouse: 0 button up, pos=(1000,678)
+278.7373999996185	EXP	braille_word: autoDraw = true
+278.7373999996185	EXP	braille_word: anchor = center
+284.0063000001907	DATA	Keydown: ArrowDown
+284.03360000038145	EXP	dutch_word: autoDraw = true
+284.46660000038145	DATA	Mouse: 0 button down, pos=(1000,678)
+284.48810000038145	EXP	braille_word: autoDraw = null
+284.48810000038145	EXP	dutch_word: autoDraw = null
+284.48810000038145	EXP	word_rsp: autoDraw = null
+284.48810000038145	EXP	braille_word: image = {}
+284.48810000038145	EXP	dutch_word: text = geliefd
+284.67919999980927	DATA	Mouse: 0 button up, pos=(1000,678)
+285.00210000038146	EXP	braille_word: autoDraw = true
+285.00210000038146	EXP	braille_word: anchor = center
+292.5686000003815	DATA	Keydown: ArrowDown
+292.59680000019074	EXP	dutch_word: autoDraw = true
+293.083	DATA	Mouse: 0 button down, pos=(1000,678)
+293.1041999998093	EXP	braille_word: autoDraw = null
+293.1041999998093	EXP	dutch_word: autoDraw = null
+293.1041999998093	EXP	word_rsp: autoDraw = null
+293.1041999998093	EXP	braille_word: image = {}
+293.1041999998093	EXP	dutch_word: text = zwart
+293.1041999998093	EXP	word_rsp: editable = true
+293.1041999998093	EXP	word_rsp: autoDraw = true
+293.1041999998093	EXP	word_rsp: anchor = center
+293.1041999998093	EXP	word_rsp: autoDraw = true
+293.1041999998093	EXP	word_rsp: anchor = center
+293.29760000038146	DATA	Mouse: 0 button up, pos=(1000,678)
+293.61589999961853	EXP	braille_word: autoDraw = true
+293.61589999961853	EXP	braille_word: anchor = center
+296.49269999980925	DATA	Keydown: z
+296.9626000003815	DATA	Keydown: w
+300.54139999961853	DATA	Keydown: a
+300.6913999996185	DATA	Keydown: r
+300.82869999980926	DATA	Keydown: t
+301.68260000038146	DATA	Keydown: ArrowDown
+301.7103000001907	EXP	dutch_word: autoDraw = true
+302.228	DATA	Mouse: 0 button down, pos=(1000,678)
+302.24980000019076	EXP	braille_word: autoDraw = null
+302.24980000019076	EXP	dutch_word: autoDraw = null
+302.24980000019076	EXP	word_rsp: autoDraw = null
+302.24980000019076	EXP	braille_word: image = {}
+302.24980000019076	EXP	dutch_word: text = sufferd
+302.44369999980927	DATA	Mouse: 0 button up, pos=(1000,678)
+302.76239999961854	EXP	braille_word: autoDraw = true
+302.76239999961854	EXP	braille_word: anchor = center
+312.7445	DATA	Keydown: ArrowDown
+312.77389999961855	EXP	dutch_word: autoDraw = true
+313.40369999980925	DATA	Mouse: 0 button down, pos=(1000,678)
+313.4305	EXP	braille_word: autoDraw = null
+313.4305	EXP	dutch_word: autoDraw = null
+313.4305	EXP	word_rsp: autoDraw = null
+313.4305	EXP	braille_word: image = {}
+313.4305	EXP	dutch_word: text = komisch
+313.4305	EXP	word_rsp: editable = true
+313.4305	EXP	word_rsp: autoDraw = true
+313.4305	EXP	word_rsp: anchor = center
+313.4305	EXP	word_rsp: autoDraw = true
+313.4305	EXP	word_rsp: anchor = center
+313.62019999980924	DATA	Mouse: 0 button up, pos=(1000,678)
+313.9431999998093	EXP	braille_word: autoDraw = true
+313.9431999998093	EXP	braille_word: anchor = center
+315.5733000001907	DATA	Keydown: k
+315.94730000019075	DATA	Keydown: o
+318.028	DATA	Keydown: m
+319.1738999996185	DATA	Keydown: i
+320.1385	DATA	Keydown: s
+323.2586000003815	DATA	Keydown: c
+323.35360000038145	DATA	Keydown: h
+324.48310000038146	DATA	Keydown: ArrowDown
+324.5201999998093	EXP	dutch_word: autoDraw = true
+325.4198000001907	DATA	Mouse: 0 button down, pos=(1000,678)
+325.44210000038146	EXP	braille_word: autoDraw = null
+325.44210000038146	EXP	dutch_word: autoDraw = null
+325.44210000038146	EXP	word_rsp: autoDraw = null
+325.44210000038146	EXP	braille_word: image = {}
+325.44210000038146	EXP	dutch_word: text = geduld
+325.6356000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+325.95469999980924	EXP	braille_word: autoDraw = true
+325.95469999980924	EXP	braille_word: anchor = center
+331.4475	DATA	Keydown: ArrowDown
+331.4845	EXP	dutch_word: autoDraw = true
+331.9341000003815	DATA	Mouse: 0 button down, pos=(1000,678)
+331.957	EXP	braille_word: autoDraw = null
+331.957	EXP	dutch_word: autoDraw = null
+331.957	EXP	word_rsp: autoDraw = null
+331.957	EXP	braille_word: image = {}
+331.957	EXP	dutch_word: text = wijlen
+331.957	EXP	word_rsp: editable = true
+331.957	EXP	word_rsp: autoDraw = true
+331.957	EXP	word_rsp: anchor = center
+331.957	EXP	word_rsp: autoDraw = true
+331.957	EXP	word_rsp: anchor = center
+332.1475	DATA	Mouse: 0 button up, pos=(1000,678)
+332.46869999980925	EXP	braille_word: autoDraw = true
+332.46869999980925	EXP	braille_word: anchor = center
+335.1401000003815	DATA	Keydown: w
+336.42919999980927	DATA	Keydown: i
+338.6155	DATA	Keydown: j
+338.8208999996185	DATA	Keydown: l
+340.4318999996185	DATA	Keydown: e
+340.7988999996185	DATA	Keydown: n
+341.41589999961855	DATA	Keydown: ArrowDown
+341.44689999961855	EXP	dutch_word: autoDraw = true
+343.327	DATA	Mouse: 0 button down, pos=(1000,678)
+343.35269999980926	EXP	braille_word: autoDraw = null
+343.35269999980926	EXP	dutch_word: autoDraw = null
+343.35269999980926	EXP	word_rsp: autoDraw = null
+343.35269999980926	EXP	braille_word: image = {}
+343.35269999980926	EXP	dutch_word: text = steel
+343.41719999980927	DATA	Mouse: 0 button up, pos=(1000,678)
+343.8661999998093	EXP	braille_word: autoDraw = true
+343.8661999998093	EXP	braille_word: anchor = center
+347.0435	DATA	Keydown: ArrowDown
+347.9451999998093	DATA	Keydown: ArrowDown
+347.9778000001907	EXP	dutch_word: autoDraw = true
+348.52810000038147	DATA	Mouse: 0 button down, pos=(1000,678)
+348.5493999996185	EXP	braille_word: autoDraw = null
+348.5493999996185	EXP	dutch_word: autoDraw = null
+348.5493999996185	EXP	word_rsp: autoDraw = null
+348.5493999996185	EXP	braille_word: image = {}
+348.5493999996185	EXP	dutch_word: text = laag
+348.59180000019074	DATA	Mouse: 0 button up, pos=(1000,678)
+349.0633999996185	EXP	braille_word: autoDraw = true
+349.0633999996185	EXP	braille_word: anchor = center
+350.981	DATA	Keydown: ArrowDown
+351.8236000003815	DATA	Keydown: ArrowDown
+352.7063000001907	DATA	Keydown: ArrowDown
+352.7436000003815	EXP	dutch_word: autoDraw = true
+353.8935	DATA	Mouse: 0 button down, pos=(1000,678)
+353.9145	EXP	braille_word: autoDraw = null
+353.9145	EXP	dutch_word: autoDraw = null
+353.9145	EXP	word_rsp: autoDraw = null
+353.9145	EXP	braille_word: image = {}
+353.9145	EXP	dutch_word: text = schaamte
+354.1065	DATA	Mouse: 0 button up, pos=(1000,678)
+354.4285	EXP	braille_word: autoDraw = true
+354.4285	EXP	braille_word: anchor = center
+367.42219999980927	DATA	Keydown: ArrowDown
+367.45480000019074	EXP	dutch_word: autoDraw = true
+368.04519999980926	DATA	Mouse: 0 button down, pos=(1000,678)
+368.06	EXP	braille_word: autoDraw = null
+368.06	EXP	dutch_word: autoDraw = null
+368.06	EXP	word_rsp: autoDraw = null
+368.06	EXP	braille_word: image = {}
+368.06	EXP	dutch_word: text = waarvan
+368.25969999980924	DATA	Mouse: 0 button up, pos=(1000,678)
+368.5731000003815	EXP	braille_word: autoDraw = true
+368.5731000003815	EXP	braille_word: anchor = center
+384.03360000038145	DATA	Keydown: ArrowLeft
+384.706	DATA	Keydown: ArrowDown
+384.73260000038147	EXP	dutch_word: autoDraw = true
+385.40419999980924	DATA	Mouse: 0 button down, pos=(1000,678)
+385.4211999998093	EXP	braille_word: autoDraw = null
+385.4211999998093	EXP	dutch_word: autoDraw = null
+385.4211999998093	EXP	word_rsp: autoDraw = null
+385.4211999998093	EXP	braille_word: image = {}
+385.4211999998093	EXP	dutch_word: text = vreten
+385.6191000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+385.93460000038147	EXP	braille_word: autoDraw = true
+385.93460000038147	EXP	braille_word: anchor = center
+391.7146999998093	DATA	Keydown: ArrowDown
+391.74719999980925	EXP	dutch_word: autoDraw = true
+392.4205	DATA	Mouse: 0 button down, pos=(1000,678)
+392.4348000001907	EXP	braille_word: autoDraw = null
+392.4348000001907	EXP	dutch_word: autoDraw = null
+392.4348000001907	EXP	word_rsp: autoDraw = null
+392.4348000001907	EXP	braille_word: image = {}
+392.4348000001907	EXP	dutch_word: text = weigeren
+392.6353999996185	DATA	Mouse: 0 button up, pos=(1000,678)
+392.94869999980926	EXP	braille_word: autoDraw = true
+392.94869999980926	EXP	braille_word: anchor = center
+402.8233999996185	DATA	Keydown: ArrowDown
+402.8591999998093	EXP	dutch_word: autoDraw = true
+404.24989999961855	DATA	Mouse: 0 button down, pos=(1000,678)
+404.2645	EXP	braille_word: autoDraw = null
+404.2645	EXP	dutch_word: autoDraw = null
+404.2645	EXP	word_rsp: autoDraw = null
+404.2645	EXP	braille_word: image = {}
+404.2645	EXP	dutch_word: text = blik
+404.46480000019073	DATA	Mouse: 0 button up, pos=(1000,678)
+404.778	EXP	braille_word: autoDraw = true
+404.778	EXP	braille_word: anchor = center
+407.07189999961855	DATA	Keydown: ArrowDown
+413.7903000001907	DATA	Keydown: ArrowDown
+413.8231000003815	EXP	dutch_word: autoDraw = true
+414.48589999961854	DATA	Mouse: 0 button down, pos=(1000,678)
+414.5113999996185	EXP	braille_word: autoDraw = null
+414.5113999996185	EXP	dutch_word: autoDraw = null
+414.5113999996185	EXP	word_rsp: autoDraw = null
+414.5113999996185	EXP	braille_word: image = {}
+414.5113999996185	EXP	dutch_word: text = driemaal
+414.7026999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+415.02480000019074	EXP	braille_word: autoDraw = true
+415.02480000019074	EXP	braille_word: anchor = center
+421.8668000001907	DATA	Keydown: ArrowDown
+421.90310000038147	EXP	dutch_word: autoDraw = true
+422.47069999980926	DATA	Mouse: 0 button down, pos=(1000,678)
+422.4911999998093	EXP	braille_word: autoDraw = null
+422.4911999998093	EXP	dutch_word: autoDraw = null
+422.4911999998093	EXP	word_rsp: autoDraw = null
+422.4911999998093	EXP	braille_word: image = {}
+422.4911999998093	EXP	dutch_word: text = gezond
+422.6868000001907	DATA	Mouse: 0 button up, pos=(1000,678)
+423.00460000038146	EXP	braille_word: autoDraw = true
+423.00460000038146	EXP	braille_word: anchor = center
+429.95430000019076	DATA	Keydown: ArrowDown
+429.9841000003815	EXP	dutch_word: autoDraw = true
+432.91330000019076	DATA	Mouse: 0 button down, pos=(1000,678)
+432.93830000019074	EXP	braille_word: autoDraw = null
+432.93830000019074	EXP	dutch_word: autoDraw = null
+432.93830000019074	EXP	word_rsp: autoDraw = null
+432.93830000019074	EXP	braille_word: image = {}
+432.93830000019074	EXP	dutch_word: text = ijdel
+433.1243000001907	DATA	Mouse: 0 button up, pos=(1000,678)
+433.4511000003815	EXP	braille_word: autoDraw = true
+433.4511000003815	EXP	braille_word: anchor = center
+437.6986000003815	DATA	Keydown: ArrowDown
+437.73130000019074	EXP	dutch_word: autoDraw = true
+438.32780000019073	DATA	Mouse: 0 button down, pos=(1000,678)
+438.3521999998093	EXP	braille_word: autoDraw = null
+438.3521999998093	EXP	dutch_word: autoDraw = null
+438.3521999998093	EXP	word_rsp: autoDraw = null
+438.3521999998093	EXP	braille_word: image = {}
+438.3521999998093	EXP	dutch_word: text = flirt
+438.538	DATA	Mouse: 0 button up, pos=(1000,678)
+438.8663999996185	EXP	braille_word: autoDraw = true
+438.8663999996185	EXP	braille_word: anchor = center
+443.7703999996185	DATA	Keydown: ArrowDown
+443.79610000038144	EXP	dutch_word: autoDraw = true
+445.76860000038147	DATA	Mouse: 0 button down, pos=(1000,678)
+445.78380000019075	EXP	braille_word: autoDraw = null
+445.78380000019075	EXP	dutch_word: autoDraw = null
+445.78380000019075	EXP	word_rsp: autoDraw = null
+445.78380000019075	EXP	braille_word: image = {}
+445.78380000019075	EXP	dutch_word: text = nodig
+445.9835	DATA	Mouse: 0 button up, pos=(1000,678)
+446.2973000001907	EXP	braille_word: autoDraw = true
+446.2973000001907	EXP	braille_word: anchor = center
+451.3736000003815	DATA	Keydown: ArrowDown
+451.4101000003815	EXP	dutch_word: autoDraw = true
+452.0775	DATA	Mouse: 0 button down, pos=(1000,678)
+452.0976000003815	EXP	braille_word: autoDraw = null
+452.0976000003815	EXP	dutch_word: autoDraw = null
+452.0976000003815	EXP	word_rsp: autoDraw = null
+452.0976000003815	EXP	braille_word: image = {}
+452.0976000003815	EXP	dutch_word: text = klimmen
+452.29339999961854	DATA	Mouse: 0 button up, pos=(1000,678)
+452.6118999996185	EXP	braille_word: autoDraw = true
+452.6118999996185	EXP	braille_word: anchor = center
+455.71230000019074	DATA	Keydown: ArrowDown
+456.69119999980927	DATA	Keydown: ArrowDown
+456.725	EXP	dutch_word: autoDraw = true
+457.2751999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+457.29610000038144	EXP	braille_word: autoDraw = null
+457.29610000038144	EXP	dutch_word: autoDraw = null
+457.29610000038144	EXP	word_rsp: autoDraw = null
+457.29610000038144	EXP	braille_word: image = {}
+457.29610000038144	EXP	dutch_word: text = poes
+457.49039999961855	DATA	Mouse: 0 button up, pos=(1000,678)
+457.81010000038145	EXP	braille_word: autoDraw = true
+457.81010000038145	EXP	braille_word: anchor = center
+463.1696000003815	DATA	Keydown: ArrowDown
+463.2063000001907	EXP	dutch_word: autoDraw = true
+463.91930000019073	DATA	Mouse: 0 button down, pos=(1000,678)
+463.94439999961855	EXP	braille_word: autoDraw = null
+463.94439999961855	EXP	dutch_word: autoDraw = null
+463.94439999961855	EXP	word_rsp: autoDraw = null
+463.94439999961855	EXP	braille_word: image = {}
+463.94439999961855	EXP	dutch_word: text = afval
+464.12960000038146	DATA	Mouse: 0 button up, pos=(1000,678)
+464.45780000019073	EXP	braille_word: autoDraw = true
+464.45780000019073	EXP	braille_word: anchor = center
+469.65730000019073	DATA	Keydown: ArrowDown
+469.68739999961855	EXP	dutch_word: autoDraw = true
+470.2846999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+470.30839999961853	EXP	braille_word: autoDraw = null
+470.30839999961853	EXP	dutch_word: autoDraw = null
+470.30839999961853	EXP	word_rsp: autoDraw = null
+470.30839999961853	EXP	braille_word: image = {}
+470.30839999961853	EXP	dutch_word: text = soda
+470.5005	DATA	Mouse: 0 button up, pos=(1000,678)
+470.82239999961854	EXP	braille_word: autoDraw = true
+470.82239999961854	EXP	braille_word: anchor = center
+479.2341000003815	DATA	Keydown: ArrowDown
+479.26680000019076	EXP	dutch_word: autoDraw = true
+479.83460000038144	DATA	Mouse: 0 button down, pos=(1000,678)
+479.85569999980925	EXP	braille_word: autoDraw = null
+479.85569999980925	EXP	dutch_word: autoDraw = null
+479.85569999980925	EXP	word_rsp: autoDraw = null
+479.85569999980925	EXP	braille_word: image = {}
+479.85569999980925	EXP	dutch_word: text = opzicht
+480.05060000038145	DATA	Mouse: 0 button up, pos=(1000,678)
+480.36880000019073	EXP	braille_word: autoDraw = true
+480.36880000019073	EXP	braille_word: anchor = center
+491.82660000038146	DATA	Keydown: ArrowDown
+491.86289999961855	EXP	dutch_word: autoDraw = true
+492.5513999996185	DATA	Mouse: 0 button down, pos=(1000,678)
+492.56789999961853	EXP	braille_word: autoDraw = null
+492.56789999961853	EXP	dutch_word: autoDraw = null
+492.56789999961853	EXP	word_rsp: autoDraw = null
+492.56789999961853	EXP	braille_word: image = {}
+492.56789999961853	EXP	dutch_word: text = joggen
+492.7658999996185	DATA	Mouse: 0 button up, pos=(1000,678)
+493.08069999980927	EXP	braille_word: autoDraw = true
+493.08069999980927	EXP	braille_word: anchor = center
+499.96480000019073	DATA	Keydown: ArrowDown
+499.99330000019074	EXP	dutch_word: autoDraw = true
+500.71069999980926	DATA	Mouse: 0 button down, pos=(1000,678)
+500.73199999999997	EXP	braille_word: autoDraw = null
+500.73199999999997	EXP	dutch_word: autoDraw = null
+500.73199999999997	EXP	word_rsp: autoDraw = null
+500.73199999999997	EXP	braille_word: image = {}
+500.73199999999997	EXP	dutch_word: text = loyaal
+500.9268000001907	DATA	Mouse: 0 button up, pos=(1000,678)
+501.2448000001907	EXP	braille_word: autoDraw = true
+501.2448000001907	EXP	braille_word: anchor = center
+503.9055	DATA	Keydown: ArrowDown
+504.3278999996185	DATA	Keydown: ArrowDown
+505.21210000038144	DATA	Keydown: ArrowDown
+505.24210000038147	EXP	dutch_word: autoDraw = true
+505.77860000038146	DATA	Mouse: 0 button down, pos=(1000,678)
+505.79589999961854	EXP	braille_word: autoDraw = null
+505.79589999961854	EXP	dutch_word: autoDraw = null
+505.79589999961854	EXP	word_rsp: autoDraw = null
+505.79589999961854	EXP	braille_word: image = {}
+505.79589999961854	EXP	dutch_word: text = gebit
+505.9936000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+506.30989999961855	EXP	braille_word: autoDraw = true
+506.30989999961855	EXP	braille_word: anchor = center
+514.0550000000001	DATA	Keydown: ArrowDown
+514.0883000001908	EXP	dutch_word: autoDraw = true
+514.8786999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+514.8938000001908	EXP	braille_word: autoDraw = null
+514.8938000001908	EXP	dutch_word: autoDraw = null
+514.8938000001908	EXP	word_rsp: autoDraw = null
+514.8938000001908	EXP	braille_word: image = {}
+514.8938000001908	EXP	dutch_word: text = schep
+515.0936000003816	DATA	Mouse: 0 button up, pos=(1000,678)
+515.4073000001908	EXP	braille_word: autoDraw = true
+515.4073000001908	EXP	braille_word: anchor = center
+525.6258000001908	DATA	Keydown: ArrowDown
+525.6513000001908	EXP	dutch_word: autoDraw = true
+526.3240000000001	DATA	Mouse: 0 button down, pos=(1000,678)
+526.3398000001907	EXP	braille_word: autoDraw = null
+526.3398000001907	EXP	dutch_word: autoDraw = null
+526.3398000001907	EXP	word_rsp: autoDraw = null
+526.3398000001907	EXP	braille_word: image = {}
+526.3398000001907	EXP	dutch_word: text = doodmoe
+526.5390000000001	DATA	Mouse: 0 button up, pos=(1000,678)
+526.8530000000001	EXP	braille_word: autoDraw = true
+526.8530000000001	EXP	braille_word: anchor = center
+534.5361999998094	DATA	Keydown: ArrowDown
+534.5655	EXP	dutch_word: autoDraw = true
+535.282	DATA	Mouse: 0 button down, pos=(1000,678)
+535.3055	EXP	braille_word: autoDraw = null
+535.3055	EXP	dutch_word: autoDraw = null
+535.3055	EXP	word_rsp: autoDraw = null
+535.3055	EXP	braille_word: image = {}
+535.3055	EXP	dutch_word: text = plek
+535.3055	EXP	word_rsp: editable = true
+535.3055	EXP	word_rsp: autoDraw = true
+535.3055	EXP	word_rsp: anchor = center
+535.3055	EXP	word_rsp: autoDraw = true
+535.3055	EXP	word_rsp: anchor = center
+535.4953000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+535.817	EXP	braille_word: autoDraw = true
+535.817	EXP	braille_word: anchor = center
+537.2981000003815	DATA	Keydown: p
+537.4943999996186	DATA	Keydown: l
+538.735	DATA	Keydown: e
+538.8771000003816	DATA	Keydown: k
+539.4830000000001	DATA	Keydown: ArrowDown
+539.513	EXP	dutch_word: autoDraw = true
+540.0801999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+540.1021000003815	EXP	braille_word: autoDraw = null
+540.1021000003815	EXP	dutch_word: autoDraw = null
+540.1021000003815	EXP	word_rsp: autoDraw = null
+540.1021000003815	EXP	braille_word: image = {}
+540.1021000003815	EXP	dutch_word: text = twijfel
+540.2933000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+540.6163999996186	EXP	braille_word: autoDraw = true
+540.6163999996186	EXP	braille_word: anchor = center
+546.2120000000001	DATA	Keydown: ArrowDown
+546.245	EXP	dutch_word: autoDraw = true
+546.8991999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+546.9151999998094	EXP	braille_word: autoDraw = null
+546.9151999998094	EXP	dutch_word: autoDraw = null
+546.9151999998094	EXP	word_rsp: autoDraw = null
+546.9151999998094	EXP	braille_word: image = {}
+546.9151999998094	EXP	dutch_word: text = besmet
+547.114	DATA	Mouse: 0 button up, pos=(1000,678)
+547.4291000003815	EXP	braille_word: autoDraw = true
+547.4291000003815	EXP	braille_word: anchor = center
+555.7765	DATA	Keydown: ArrowDown
+555.8075	EXP	dutch_word: autoDraw = true
+556.4493000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+556.4630000000001	EXP	braille_word: autoDraw = null
+556.4630000000001	EXP	dutch_word: autoDraw = null
+556.4630000000001	EXP	word_rsp: autoDraw = null
+556.4630000000001	EXP	braille_word: image = {}
+556.4630000000001	EXP	dutch_word: text = kasteel
+556.6641000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+556.9758000001908	EXP	braille_word: autoDraw = true
+556.9758000001908	EXP	braille_word: anchor = center
+561.0636999998093	DATA	Keydown: ArrowDown
+561.0896999998093	EXP	dutch_word: autoDraw = true
+561.7431000003816	DATA	Mouse: 0 button down, pos=(1000,678)
+561.7606999998093	EXP	braille_word: autoDraw = null
+561.7606999998093	EXP	dutch_word: autoDraw = null
+561.7606999998093	EXP	word_rsp: autoDraw = null
+561.7606999998093	EXP	braille_word: image = {}
+561.7606999998093	EXP	dutch_word: text = maken
+561.9578999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+562.2741000003815	EXP	braille_word: autoDraw = true
+562.2741000003815	EXP	braille_word: anchor = center
+566.2713999996186	DATA	Keydown: ArrowDown
+566.3045000000001	EXP	dutch_word: autoDraw = true
+566.8881999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+566.9088000001908	EXP	braille_word: autoDraw = null
+566.9088000001908	EXP	dutch_word: autoDraw = null
+566.9088000001908	EXP	word_rsp: autoDraw = null
+566.9088000001908	EXP	braille_word: image = {}
+566.9088000001908	EXP	dutch_word: text = bedoelen
+567.1038999996185	DATA	Mouse: 0 button up, pos=(1000,678)
+567.4228999996186	EXP	braille_word: autoDraw = true
+567.4228999996186	EXP	braille_word: anchor = center
+573.5688999996186	DATA	Keydown: ArrowDown
+573.6020000000001	EXP	dutch_word: autoDraw = true
+574.5425	DATA	Mouse: 0 button down, pos=(1000,678)
+574.5566000003815	EXP	braille_word: autoDraw = null
+574.5566000003815	EXP	dutch_word: autoDraw = null
+574.5566000003815	EXP	word_rsp: autoDraw = null
+574.5566000003815	EXP	braille_word: image = {}
+574.5566000003815	EXP	dutch_word: text = rijp
+574.7575	DATA	Mouse: 0 button up, pos=(1000,678)
+575.0703000001907	EXP	braille_word: autoDraw = true
+575.0703000001907	EXP	braille_word: anchor = center
+579.9171999998093	DATA	Keydown: ArrowDown
+579.95	EXP	dutch_word: autoDraw = true
+580.5661000003815	DATA	Mouse: 0 button down, pos=(1000,678)
+580.5876000003815	EXP	braille_word: autoDraw = null
+580.5876000003815	EXP	dutch_word: autoDraw = null
+580.5876000003815	EXP	word_rsp: autoDraw = null
+580.5876000003815	EXP	braille_word: image = {}
+580.5876000003815	EXP	dutch_word: text = toegeven
+580.7738000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+581.1016999998093	EXP	braille_word: autoDraw = true
+581.1016999998093	EXP	braille_word: anchor = center
+588.7655000000001	DATA	Keydown: ArrowDown
+588.7963999996185	EXP	dutch_word: autoDraw = true
+589.3878999996186	DATA	Mouse: 0 button down, pos=(1000,678)
+589.4016999998094	EXP	braille_word: autoDraw = null
+589.4016999998094	EXP	dutch_word: autoDraw = null
+589.4016999998094	EXP	word_rsp: autoDraw = null
+589.4016999998094	EXP	braille_word: image = {}
+589.4016999998094	EXP	dutch_word: text = staren
+589.6028999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+589.9146999998093	EXP	braille_word: autoDraw = true
+589.9146999998093	EXP	braille_word: anchor = center
+596.1446999998093	DATA	Keydown: ArrowDown
+596.1780000000001	EXP	dutch_word: autoDraw = true
+596.7103000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+596.7323000001908	EXP	braille_word: autoDraw = null
+596.7323000001908	EXP	dutch_word: autoDraw = null
+596.7323000001908	EXP	word_rsp: autoDraw = null
+596.7323000001908	EXP	braille_word: image = {}
+596.7323000001908	EXP	dutch_word: text = jaar
+596.927	DATA	Mouse: 0 button up, pos=(1000,678)
+597.2460000000001	EXP	braille_word: autoDraw = true
+597.2460000000001	EXP	braille_word: anchor = center
+602.2088000001908	DATA	Keydown: ArrowDown
+602.2425000000001	EXP	dutch_word: autoDraw = true
+602.7661999998094	DATA	Mouse: 0 button down, pos=(1000,678)
+602.7791000003815	EXP	braille_word: autoDraw = null
+602.7791000003815	EXP	dutch_word: autoDraw = null
+602.7791000003815	EXP	word_rsp: autoDraw = null
+602.7791000003815	EXP	braille_word: image = {}
+602.7791000003815	EXP	dutch_word: text = schuilen
+602.9811000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+603.2933999996186	EXP	braille_word: autoDraw = true
+603.2933999996186	EXP	braille_word: anchor = center
+614.3841999998093	DATA	Keydown: ArrowDown
+614.4211000003816	EXP	dutch_word: autoDraw = true
+614.9546000003816	DATA	Mouse: 0 button down, pos=(1000,678)
+614.9765000000001	EXP	braille_word: autoDraw = null
+614.9765000000001	EXP	dutch_word: autoDraw = null
+614.9765000000001	EXP	word_rsp: autoDraw = null
+614.9765000000001	EXP	braille_word: image = {}
+614.9765000000001	EXP	dutch_word: text = vuur
+615.1708000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+615.4893000001908	EXP	braille_word: autoDraw = true
+615.4893000001908	EXP	braille_word: anchor = center
+618.1731000003815	DATA	Keydown: ArrowDown
+618.6001000003815	DATA	Keydown: ArrowDown
+619.6363000001908	DATA	Keydown: ArrowDown
+619.6696999998093	EXP	dutch_word: autoDraw = true
+620.1608000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+620.1738000001908	EXP	braille_word: autoDraw = null
+620.1738000001908	EXP	dutch_word: autoDraw = null
+620.1738000001908	EXP	word_rsp: autoDraw = null
+620.1738000001908	EXP	braille_word: image = {}
+620.1738000001908	EXP	dutch_word: text = strekken
+620.3758999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+620.6876999998093	EXP	braille_word: autoDraw = true
+620.6876999998093	EXP	braille_word: anchor = center
+624.8903999996186	DATA	Keydown: ArrowDown
+624.9181000003815	EXP	dutch_word: autoDraw = true
+625.418	DATA	Mouse: 0 button down, pos=(1000,678)
+625.4390000000001	EXP	braille_word: autoDraw = null
+625.4390000000001	EXP	dutch_word: autoDraw = null
+625.4390000000001	EXP	word_rsp: autoDraw = null
+625.4390000000001	EXP	braille_word: image = {}
+625.4390000000001	EXP	dutch_word: text = smullen
+625.6345	DATA	Mouse: 0 button up, pos=(1000,678)
+625.9533000001908	EXP	braille_word: autoDraw = true
+625.9533000001908	EXP	braille_word: anchor = center
+629.691	DATA	Keydown: ArrowDown
+629.7163000001908	EXP	dutch_word: autoDraw = true
+630.2001999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+630.2208999996186	EXP	braille_word: autoDraw = null
+630.2208999996186	EXP	dutch_word: autoDraw = null
+630.2208999996186	EXP	word_rsp: autoDraw = null
+630.2208999996186	EXP	braille_word: image = {}
+630.2208999996186	EXP	dutch_word: text = innemen
+630.4151999998094	DATA	Mouse: 0 button up, pos=(1000,678)
+630.7348000001908	EXP	braille_word: autoDraw = true
+630.7348000001908	EXP	braille_word: anchor = center
+638.0103000001908	DATA	Keydown: ArrowDown
+638.0465	EXP	dutch_word: autoDraw = true
+638.5265	DATA	Mouse: 0 button down, pos=(1000,678)
+638.5518000001908	EXP	braille_word: autoDraw = null
+638.5518000001908	EXP	dutch_word: autoDraw = null
+638.5518000001908	EXP	word_rsp: autoDraw = null
+638.5518000001908	EXP	braille_word: image = {}
+638.5518000001908	EXP	dutch_word: text = mand
+638.7431000003816	DATA	Mouse: 0 button up, pos=(1000,678)
+639.0651000003816	EXP	braille_word: autoDraw = true
+639.0651000003816	EXP	braille_word: anchor = center
+649.3228000001908	DATA	Keydown: ArrowDown
+649.3591999998093	EXP	dutch_word: autoDraw = true
+649.9061999998094	DATA	Mouse: 0 button down, pos=(1000,678)
+649.9316000003815	EXP	braille_word: autoDraw = null
+649.9316000003815	EXP	dutch_word: autoDraw = null
+649.9316000003815	EXP	word_rsp: autoDraw = null
+649.9316000003815	EXP	braille_word: image = {}
+649.9316000003815	EXP	dutch_word: text = apparaat
+650.1173000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+650.4446000003816	EXP	braille_word: autoDraw = true
+650.4446000003816	EXP	braille_word: anchor = center
+659.1861000003815	DATA	Keydown: ArrowDown
+659.2233999996186	EXP	dutch_word: autoDraw = true
+660.5716000003815	DATA	Keydown: ArrowDown
+661.1455000000001	DATA	Mouse: 0 button down, pos=(1000,678)
+661.1606999998094	EXP	braille_word: autoDraw = null
+661.1606999998094	EXP	dutch_word: autoDraw = null
+661.1606999998094	EXP	word_rsp: autoDraw = null
+661.1606999998094	EXP	braille_word: image = {}
+661.1606999998094	EXP	dutch_word: text = mist
+661.3603999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+661.6738999996186	EXP	braille_word: autoDraw = true
+661.6738999996186	EXP	braille_word: anchor = center
+665.0178000001908	DATA	Keydown: ArrowDown
+665.8708999996186	DATA	Keydown: ArrowDown
+665.9036999998093	EXP	dutch_word: autoDraw = true
+666.3718000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+666.3918000001908	EXP	braille_word: autoDraw = null
+666.3918000001908	EXP	dutch_word: autoDraw = null
+666.3918000001908	EXP	word_rsp: autoDraw = null
+666.3918000001908	EXP	braille_word: image = {}
+666.3918000001908	EXP	dutch_word: text = nakijken
+666.5875000000001	DATA	Mouse: 0 button up, pos=(1000,678)
+666.9056999998094	EXP	braille_word: autoDraw = true
+666.9056999998094	EXP	braille_word: anchor = center
+675.4678999996186	DATA	Keydown: ArrowDown
+675.5008000001908	EXP	dutch_word: autoDraw = true
+676.0141999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+676.0391999998093	EXP	braille_word: autoDraw = null
+676.0391999998093	EXP	dutch_word: autoDraw = null
+676.0391999998093	EXP	word_rsp: autoDraw = null
+676.0391999998093	EXP	braille_word: image = {}
+676.0391999998093	EXP	dutch_word: text = snuiven
+676.2305	DATA	Mouse: 0 button up, pos=(1000,678)
+676.5523999996186	EXP	braille_word: autoDraw = true
+676.5523999996186	EXP	braille_word: anchor = center
+688.1963999996186	DATA	Keydown: ArrowDown
+688.2296000003815	EXP	dutch_word: autoDraw = true
+688.8098999996186	DATA	Mouse: 0 button down, pos=(1000,678)
+688.8348999996186	EXP	braille_word: autoDraw = null
+688.8348999996186	EXP	dutch_word: autoDraw = null
+688.8348999996186	EXP	word_rsp: autoDraw = null
+688.8348999996186	EXP	braille_word: image = {}
+688.8348999996186	EXP	dutch_word: text = baas
+689.0196999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+689.3483000001908	EXP	braille_word: autoDraw = true
+689.3483000001908	EXP	braille_word: anchor = center
+692.2850000000001	DATA	Keydown: ArrowDown
+693.0956000003815	DATA	Keydown: ArrowDown
+693.1286999998093	EXP	dutch_word: autoDraw = true
+693.6748000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+693.6991999998094	EXP	braille_word: autoDraw = null
+693.6991999998094	EXP	dutch_word: autoDraw = null
+693.6991999998094	EXP	word_rsp: autoDraw = null
+693.6991999998094	EXP	braille_word: image = {}
+693.6991999998094	EXP	dutch_word: text = koffie
+693.8853000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+694.2131000003815	EXP	braille_word: autoDraw = true
+694.2131000003815	EXP	braille_word: anchor = center
+699.0895	DATA	Keydown: ArrowDown
+699.1263000001908	EXP	dutch_word: autoDraw = true
+699.6940000000001	DATA	Mouse: 0 button down, pos=(1000,678)
+699.7153999996186	EXP	braille_word: autoDraw = null
+699.7153999996186	EXP	dutch_word: autoDraw = null
+699.7153999996186	EXP	word_rsp: autoDraw = null
+699.7153999996186	EXP	braille_word: image = {}
+699.7153999996186	EXP	dutch_word: text = parel
+699.7153999996186	EXP	word_rsp: editable = true
+699.7153999996186	EXP	word_rsp: autoDraw = true
+699.7153999996186	EXP	word_rsp: anchor = center
+699.7153999996186	EXP	word_rsp: autoDraw = true
+699.7153999996186	EXP	word_rsp: anchor = center
+699.9095000000001	DATA	Mouse: 0 button up, pos=(1000,678)
+700.2281000003816	EXP	braille_word: autoDraw = true
+700.2281000003816	EXP	braille_word: anchor = center
+702.0238000001908	DATA	Keydown: p
+703.3216999998093	DATA	Keydown: a
+703.6096000003815	DATA	Keydown: r
+703.8381000003815	DATA	Keydown: e
+703.9453999996185	DATA	Keydown: l
+704.7146000003816	DATA	Keydown: ArrowDown
+704.7405000000001	EXP	dutch_word: autoDraw = true
+705.8081999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+705.8291999998094	EXP	braille_word: autoDraw = null
+705.8291999998094	EXP	dutch_word: autoDraw = null
+705.8291999998094	EXP	word_rsp: autoDraw = null
+705.8291999998094	EXP	braille_word: image = {}
+705.8291999998094	EXP	dutch_word: text = bever
+706.0236999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+706.3428999996186	EXP	braille_word: autoDraw = true
+706.3428999996186	EXP	braille_word: anchor = center
+711.7741000003815	DATA	Keydown: ArrowDown
+711.8053000001908	EXP	dutch_word: autoDraw = true
+712.3583999996185	DATA	Mouse: 0 button down, pos=(1000,678)
+712.3765000000001	EXP	braille_word: autoDraw = null
+712.3765000000001	EXP	dutch_word: autoDraw = null
+712.3765000000001	EXP	word_rsp: autoDraw = null
+712.3765000000001	EXP	braille_word: image = {}
+712.3765000000001	EXP	dutch_word: text = geheim
+712.5733000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+712.8901999998093	EXP	braille_word: autoDraw = true
+712.8901999998093	EXP	braille_word: anchor = center
+719.4001999998093	DATA	Keydown: ArrowDown
+719.4365	EXP	dutch_word: autoDraw = true
+720.0528000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+720.0741000003816	EXP	braille_word: autoDraw = null
+720.0741000003816	EXP	dutch_word: autoDraw = null
+720.0741000003816	EXP	word_rsp: autoDraw = null
+720.0741000003816	EXP	braille_word: image = {}
+720.0741000003816	EXP	dutch_word: text = mijn
+720.2675	DATA	Mouse: 0 button up, pos=(1000,678)
+720.5876999998093	EXP	braille_word: autoDraw = true
+720.5876999998093	EXP	braille_word: anchor = center
+724.984	DATA	Keydown: ArrowDown
+725.0175	EXP	dutch_word: autoDraw = true
+725.5036999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+725.5218000001908	EXP	braille_word: autoDraw = null
+725.5218000001908	EXP	dutch_word: autoDraw = null
+725.5218000001908	EXP	word_rsp: autoDraw = null
+725.5218000001908	EXP	braille_word: image = {}
+725.5218000001908	EXP	dutch_word: text = kennis
+725.7183999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+726.0351999998093	EXP	braille_word: autoDraw = true
+726.0351999998093	EXP	braille_word: anchor = center
+729.7491999998093	DATA	Keydown: ArrowDown
+729.7826999998093	EXP	dutch_word: autoDraw = true
+732.1061999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+732.1198000001908	EXP	braille_word: autoDraw = null
+732.1198000001908	EXP	dutch_word: autoDraw = null
+732.1198000001908	EXP	word_rsp: autoDraw = null
+732.1198000001908	EXP	braille_word: image = {}
+732.1198000001908	EXP	dutch_word: text = uien
+732.3216999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+732.6328999996185	EXP	braille_word: autoDraw = true
+732.6328999996185	EXP	braille_word: anchor = center
+735.6213000001908	DATA	Keydown: ArrowDown
+736.8101999998094	DATA	Keydown: ArrowDown
+736.8461999998093	EXP	dutch_word: autoDraw = true
+737.3101999998094	DATA	Mouse: 0 button down, pos=(1000,678)
+737.3345	EXP	braille_word: autoDraw = null
+737.3345	EXP	dutch_word: autoDraw = null
+737.3345	EXP	word_rsp: autoDraw = null
+737.3345	EXP	braille_word: image = {}
+737.3345	EXP	dutch_word: text = vinger
+737.5263000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+737.8485000000001	EXP	braille_word: autoDraw = true
+737.8485000000001	EXP	braille_word: anchor = center
+741.4688000001908	DATA	Keydown: ArrowDown
+741.4953000001908	EXP	dutch_word: autoDraw = true
+741.9956999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+742.0163000001908	EXP	braille_word: autoDraw = null
+742.0163000001908	EXP	dutch_word: autoDraw = null
+742.0163000001908	EXP	word_rsp: autoDraw = null
+742.0163000001908	EXP	braille_word: image = {}
+742.0163000001908	EXP	dutch_word: text = bleek
+742.2116999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+742.5301999998093	EXP	braille_word: autoDraw = true
+742.5301999998093	EXP	braille_word: anchor = center
+745.0905	DATA	Keydown: ArrowDown
+745.8231999998093	DATA	Keydown: ArrowDown
+747.2936999998093	DATA	Keydown: ArrowDown
+747.3263999996186	EXP	dutch_word: autoDraw = true
+747.8398000001907	DATA	Mouse: 0 button down, pos=(1000,678)
+747.8641999998093	EXP	braille_word: autoDraw = null
+747.8641999998093	EXP	dutch_word: autoDraw = null
+747.8641999998093	EXP	word_rsp: autoDraw = null
+747.8641999998093	EXP	braille_word: image = {}
+747.8641999998093	EXP	dutch_word: text = moes
+748.0563000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+748.3788000001908	EXP	braille_word: autoDraw = true
+748.3788000001908	EXP	braille_word: anchor = center
+754.9075	DATA	Keydown: ArrowDown
+754.9406999998093	EXP	dutch_word: autoDraw = true
+755.4268000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+755.4455	EXP	braille_word: autoDraw = null
+755.4455	EXP	dutch_word: autoDraw = null
+755.4455	EXP	word_rsp: autoDraw = null
+755.4455	EXP	braille_word: image = {}
+755.4455	EXP	dutch_word: text = middelen
+755.6416999998094	DATA	Mouse: 0 button up, pos=(1000,678)
+755.9591999998094	EXP	braille_word: autoDraw = true
+755.9591999998094	EXP	braille_word: anchor = center
+764.0395000000001	DATA	Keydown: ArrowDown
+764.0713999996186	EXP	dutch_word: autoDraw = true
+764.6543000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+764.6756999998094	EXP	braille_word: autoDraw = null
+764.6756999998094	EXP	dutch_word: autoDraw = null
+764.6756999998094	EXP	word_rsp: autoDraw = null
+764.6756999998094	EXP	braille_word: image = {}
+764.6756999998094	EXP	dutch_word: text = klauw
+764.8701999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+765.1891999998094	EXP	braille_word: autoDraw = true
+765.1891999998094	EXP	braille_word: anchor = center
+777.3796000003815	DATA	Keydown: ArrowDown
+777.4161000003816	EXP	dutch_word: autoDraw = true
+778.0396999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+778.0546999998094	EXP	braille_word: autoDraw = null
+778.0546999998094	EXP	dutch_word: autoDraw = null
+778.0546999998094	EXP	word_rsp: autoDraw = null
+778.0546999998094	EXP	braille_word: image = {}
+778.0546999998094	EXP	dutch_word: text = getuigen
+778.2543999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+778.5678000001908	EXP	braille_word: autoDraw = true
+778.5678000001908	EXP	braille_word: anchor = center
+783.4971000003816	DATA	Keydown: ArrowDown
+783.5310000000001	EXP	dutch_word: autoDraw = true
+784.2520000000001	DATA	Mouse: 0 button down, pos=(1000,678)
+784.2685	EXP	braille_word: autoDraw = null
+784.2685	EXP	dutch_word: autoDraw = null
+784.2685	EXP	word_rsp: autoDraw = null
+784.2685	EXP	braille_word: image = {}
+784.2685	EXP	dutch_word: text = mode
+784.4670000000001	DATA	Mouse: 0 button up, pos=(1000,678)
+784.7818999996185	EXP	braille_word: autoDraw = true
+784.7818999996185	EXP	braille_word: anchor = center
+791.6943999996186	DATA	Keydown: ArrowDown
+791.7278999996186	EXP	dutch_word: autoDraw = true
+792.3453000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+792.3665000000001	EXP	braille_word: autoDraw = null
+792.3665000000001	EXP	dutch_word: autoDraw = null
+792.3665000000001	EXP	word_rsp: autoDraw = null
+792.3665000000001	EXP	braille_word: image = {}
+792.3665000000001	EXP	dutch_word: text = zout
+792.5611999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+792.8791999998093	EXP	braille_word: autoDraw = true
+792.8791999998093	EXP	braille_word: anchor = center
+801.2216000003815	DATA	Keydown: ArrowDown
+801.2575	EXP	dutch_word: autoDraw = true
+801.7546999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+801.7800000000001	EXP	braille_word: autoDraw = null
+801.7800000000001	EXP	dutch_word: autoDraw = null
+801.7800000000001	EXP	word_rsp: autoDraw = null
+801.7800000000001	EXP	braille_word: image = {}
+801.7800000000001	EXP	dutch_word: text = goedkoop
+801.9711999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+802.2926999998093	EXP	braille_word: autoDraw = true
+802.2926999998093	EXP	braille_word: anchor = center
+807.7456999998093	DATA	Keydown: ArrowDown
+807.773	EXP	dutch_word: autoDraw = true
+808.3921000003816	DATA	Mouse: 0 button down, pos=(1000,678)
+808.4108000001908	EXP	braille_word: autoDraw = null
+808.4108000001908	EXP	dutch_word: autoDraw = null
+808.4108000001908	EXP	word_rsp: autoDraw = null
+808.4108000001908	EXP	braille_word: image = {}
+808.4108000001908	EXP	dutch_word: text = bijkomen
+808.6066000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+808.9240000000001	EXP	braille_word: autoDraw = true
+808.9240000000001	EXP	braille_word: anchor = center
+819.7821000003815	DATA	Keydown: ArrowDown
+819.8181999998093	EXP	dutch_word: autoDraw = true
+820.3196999998094	DATA	Mouse: 0 button down, pos=(1000,678)
+820.3411000003815	EXP	braille_word: autoDraw = null
+820.3411000003815	EXP	dutch_word: autoDraw = null
+820.3411000003815	EXP	word_rsp: autoDraw = null
+820.3411000003815	EXP	braille_word: image = {}
+820.3411000003815	EXP	dutch_word: text = aanzoek
+820.5353000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+820.8531000003816	EXP	braille_word: autoDraw = true
+820.8531000003816	EXP	braille_word: anchor = center
+824.7561999998093	DATA	Keydown: ArrowDown
+824.7836999998093	EXP	dutch_word: autoDraw = true
+825.2841999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+825.3046000003815	EXP	braille_word: autoDraw = null
+825.3046000003815	EXP	dutch_word: autoDraw = null
+825.3046000003815	EXP	word_rsp: autoDraw = null
+825.3046000003815	EXP	braille_word: image = {}
+825.3046000003815	EXP	dutch_word: text = slak
+825.5001000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+825.8181000003815	EXP	braille_word: autoDraw = true
+825.8181000003815	EXP	braille_word: anchor = center
+827.4291999998093	DATA	Keydown: ArrowDown
+828.5348999996186	DATA	Keydown: ArrowDown
+829.7486999998093	DATA	Keydown: ArrowDown
+829.7818999996185	EXP	dutch_word: autoDraw = true
+830.3446000003815	DATA	Mouse: 0 button down, pos=(1000,678)
+830.3696000003815	EXP	braille_word: autoDraw = null
+830.3696000003815	EXP	dutch_word: autoDraw = null
+830.3696000003815	EXP	word_rsp: autoDraw = null
+830.3696000003815	EXP	braille_word: image = {}
+830.3696000003815	EXP	dutch_word: text = eenhoorn
+830.5618000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+830.8836000003815	EXP	braille_word: autoDraw = true
+830.8836000003815	EXP	braille_word: anchor = center
+841.4301999998094	DATA	Keydown: ArrowDown
+841.4611999998093	EXP	dutch_word: autoDraw = true
+842.0458000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+842.0661999998093	EXP	braille_word: autoDraw = null
+842.0661999998093	EXP	dutch_word: autoDraw = null
+842.0661999998093	EXP	word_rsp: autoDraw = null
+842.0661999998093	EXP	braille_word: image = {}
+842.0661999998093	EXP	dutch_word: text = graaf
+842.2610000000001	DATA	Mouse: 0 button up, pos=(1000,678)
+842.5791000003816	EXP	braille_word: autoDraw = true
+842.5791000003816	EXP	braille_word: anchor = center
+845.8808000001908	DATA	Keydown: ArrowDown
+846.7561999998093	DATA	Keydown: ArrowDown
+846.7928999996186	EXP	dutch_word: autoDraw = true
+847.4393000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+847.4638000001908	EXP	braille_word: autoDraw = null
+847.4638000001908	EXP	dutch_word: autoDraw = null
+847.4638000001908	EXP	word_rsp: autoDraw = null
+847.4638000001908	EXP	braille_word: image = {}
+847.4638000001908	EXP	dutch_word: text = kabel
+847.6558999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+847.9771000003815	EXP	braille_word: autoDraw = true
+847.9771000003815	EXP	braille_word: anchor = center
+851.2878999996186	DATA	Keydown: ArrowDown
+852.0598000001908	DATA	Keydown: ArrowDown
+852.0911000003815	EXP	dutch_word: autoDraw = true
+853.6541000003815	DATA	Mouse: 0 button down, pos=(1000,678)
+853.6783999996186	EXP	braille_word: autoDraw = null
+853.6783999996186	EXP	dutch_word: autoDraw = null
+853.6783999996186	EXP	word_rsp: autoDraw = null
+853.6783999996186	EXP	braille_word: image = {}
+853.6783999996186	EXP	dutch_word: text = kleren
+853.865	DATA	Mouse: 0 button up, pos=(1000,678)
+854.1918000001908	EXP	braille_word: autoDraw = true
+854.1918000001908	EXP	braille_word: anchor = center
+862.9535000000001	DATA	Keydown: ArrowDown
+862.9868000001908	EXP	dutch_word: autoDraw = true
+863.6375	DATA	Mouse: 0 button down, pos=(1000,678)
+863.6588000001908	EXP	braille_word: autoDraw = null
+863.6588000001908	EXP	dutch_word: autoDraw = null
+863.6588000001908	EXP	word_rsp: autoDraw = null
+863.6588000001908	EXP	braille_word: image = {}
+863.6588000001908	EXP	dutch_word: text = woede
+863.8536000003816	DATA	Mouse: 0 button up, pos=(1000,678)
+864.1718000001908	EXP	braille_word: autoDraw = true
+864.1718000001908	EXP	braille_word: anchor = center
+869.2370000000001	DATA	Keydown: ArrowDown
+869.2683999996186	EXP	dutch_word: autoDraw = true
+869.8816999998094	DATA	Mouse: 0 button down, pos=(1000,678)
+869.9061999998094	EXP	braille_word: autoDraw = null
+869.9061999998094	EXP	dutch_word: autoDraw = null
+869.9061999998094	EXP	word_rsp: autoDraw = null
+869.9061999998094	EXP	braille_word: image = {}
+869.9061999998094	EXP	dutch_word: text = aarzelen
+870.0983000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+870.4201000003816	EXP	braille_word: autoDraw = true
+870.4201000003816	EXP	braille_word: anchor = center
+876.6406999998093	DATA	Keydown: ArrowDown
+876.6656999998094	EXP	dutch_word: autoDraw = true
+877.317	DATA	Mouse: 0 button down, pos=(1000,678)
+877.3371000003815	EXP	braille_word: autoDraw = null
+877.3371000003815	EXP	dutch_word: autoDraw = null
+877.3371000003815	EXP	word_rsp: autoDraw = null
+877.3371000003815	EXP	braille_word: image = {}
+877.3371000003815	EXP	dutch_word: text = weeshuis
+877.5326000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+877.8508000001908	EXP	braille_word: autoDraw = true
+877.8508000001908	EXP	braille_word: anchor = center
+887.8253000001907	DATA	Keydown: ArrowDown
+887.8616000003815	EXP	dutch_word: autoDraw = true
+888.6586999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+888.6836000003815	EXP	braille_word: autoDraw = null
+888.6836000003815	EXP	dutch_word: autoDraw = null
+888.6836000003815	EXP	word_rsp: autoDraw = null
+888.6836000003815	EXP	braille_word: image = {}
+888.6836000003815	EXP	dutch_word: text = prikken
+888.8751000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+889.1975000000001	EXP	braille_word: autoDraw = true
+889.1975000000001	EXP	braille_word: anchor = center
+891.9445000000001	DATA	Keydown: ArrowDown
+892.7435	DATA	Keydown: ArrowDown
+892.7771999998093	EXP	dutch_word: autoDraw = true
+893.3596999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+893.3816000003816	EXP	braille_word: autoDraw = null
+893.3816000003816	EXP	dutch_word: autoDraw = null
+893.3816000003816	EXP	word_rsp: autoDraw = null
+893.3816000003816	EXP	braille_word: image = {}
+893.3816000003816	EXP	dutch_word: text = praat
+893.5736000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+893.8956999998093	EXP	braille_word: autoDraw = true
+893.8956999998093	EXP	braille_word: anchor = center
+899.8216999998093	DATA	Keydown: ArrowDown
+899.8581000003816	EXP	dutch_word: autoDraw = true
+900.5323999996186	DATA	Mouse: 0 button down, pos=(1000,678)
+900.5453999996186	EXP	braille_word: autoDraw = null
+900.5453999996186	EXP	dutch_word: autoDraw = null
+900.5453999996186	EXP	word_rsp: autoDraw = null
+900.5453999996186	EXP	braille_word: image = {}
+900.5453999996186	EXP	dutch_word: text = maaltijd
+900.7478000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+901.0591999998093	EXP	braille_word: autoDraw = true
+901.0591999998093	EXP	braille_word: anchor = center
+904.7950000000001	DATA	Keydown: ArrowDown
+904.8236000003815	EXP	dutch_word: autoDraw = true
+906.5793000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+906.5938000001908	EXP	braille_word: autoDraw = null
+906.5938000001908	EXP	dutch_word: autoDraw = null
+906.5938000001908	EXP	word_rsp: autoDraw = null
+906.5938000001908	EXP	braille_word: image = {}
+906.5938000001908	EXP	dutch_word: text = heengaan
+906.7941999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+907.1073999996186	EXP	braille_word: autoDraw = true
+907.1073999996186	EXP	braille_word: anchor = center
+911.8533000001908	DATA	Keydown: ArrowDown
+911.8870000000001	EXP	dutch_word: autoDraw = true
+912.5580000000001	DATA	Mouse: 0 button down, pos=(1000,678)
+912.5751000003816	EXP	braille_word: autoDraw = null
+912.5751000003816	EXP	dutch_word: autoDraw = null
+912.5751000003816	EXP	word_rsp: autoDraw = null
+912.5751000003816	EXP	braille_word: image = {}
+912.5751000003816	EXP	dutch_word: text = snoep
+912.7728999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+913.0883999996186	EXP	braille_word: autoDraw = true
+913.0883999996186	EXP	braille_word: anchor = center
+916.4155000000001	DATA	Keydown: ArrowDown
+917.1351000003815	DATA	Keydown: ArrowDown
+917.1691000003815	EXP	dutch_word: autoDraw = true
+917.86	DATA	Mouse: 0 button down, pos=(1000,678)
+917.8728000001908	EXP	braille_word: autoDraw = null
+917.8728000001908	EXP	dutch_word: autoDraw = null
+917.8728000001908	EXP	word_rsp: autoDraw = null
+917.8728000001908	EXP	braille_word: image = {}
+917.8728000001908	EXP	dutch_word: text = bloeien
+918.075	DATA	Mouse: 0 button up, pos=(1000,678)
+918.3866999998094	EXP	braille_word: autoDraw = true
+918.3866999998094	EXP	braille_word: anchor = center
+923.7661999998094	DATA	Keydown: ArrowDown
+923.7998999996186	EXP	dutch_word: autoDraw = true
+924.5321000003815	DATA	Mouse: 0 button down, pos=(1000,678)
+924.5561999998093	EXP	braille_word: autoDraw = null
+924.5561999998093	EXP	dutch_word: autoDraw = null
+924.5561999998093	EXP	word_rsp: autoDraw = null
+924.5561999998093	EXP	braille_word: image = {}
+924.5561999998093	EXP	dutch_word: text = jurk
+924.5561999998093	EXP	word_rsp: editable = true
+924.5561999998093	EXP	word_rsp: autoDraw = true
+924.5561999998093	EXP	word_rsp: anchor = center
+924.5561999998093	EXP	word_rsp: autoDraw = true
+924.5561999998093	EXP	word_rsp: anchor = center
+924.7461999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+925.0678999996186	EXP	braille_word: autoDraw = true
+925.0678999996186	EXP	braille_word: anchor = center
+927.4901000003815	DATA	Keydown: j
+931.3635	DATA	Keydown: u
+933.3468999996186	DATA	Keydown: r
+933.9183999996186	DATA	Keydown: k
+935.0518000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+935.2668000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+936.096	DATA	Keydown: ArrowDown
+936.1293999996186	EXP	dutch_word: autoDraw = true
+936.6983999996186	DATA	Mouse: 0 button down, pos=(1000,678)
+936.7178999996186	EXP	braille_word: autoDraw = null
+936.7178999996186	EXP	dutch_word: autoDraw = null
+936.7178999996186	EXP	word_rsp: autoDraw = null
+936.7178999996186	EXP	braille_word: image = {}
+936.7178999996186	EXP	dutch_word: text = excuus
+936.9128999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+937.2306000003815	EXP	braille_word: autoDraw = true
+937.2306000003815	EXP	braille_word: anchor = center
+942.2071999998093	DATA	Keydown: ArrowDown
+942.2443000001908	EXP	dutch_word: autoDraw = true
+942.8956999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+942.9146999998093	EXP	braille_word: autoDraw = null
+942.9146999998093	EXP	dutch_word: autoDraw = null
+942.9146999998093	EXP	word_rsp: autoDraw = null
+942.9146999998093	EXP	braille_word: image = {}
+942.9146999998093	EXP	dutch_word: text = heilig
+943.1118000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+943.4290000000001	EXP	braille_word: autoDraw = true
+943.4290000000001	EXP	braille_word: anchor = center
+957.7893000001908	DATA	Keydown: ArrowLeft
+958.9266000003815	DATA	Keydown: ArrowDown
+958.9545	EXP	dutch_word: autoDraw = true
+959.5258000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+959.543	EXP	braille_word: autoDraw = null
+959.543	EXP	dutch_word: autoDraw = null
+959.543	EXP	word_rsp: autoDraw = null
+959.543	EXP	braille_word: image = {}
+959.543	EXP	dutch_word: text = grappen
+959.7403000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+960.0565	EXP	braille_word: autoDraw = true
+960.0565	EXP	braille_word: anchor = center
+963.8591999998093	DATA	Keydown: ArrowDown
+963.8865000000001	EXP	dutch_word: autoDraw = true
+964.5041000003815	DATA	Mouse: 0 button down, pos=(1000,678)
+964.524	EXP	braille_word: autoDraw = null
+964.524	EXP	dutch_word: autoDraw = null
+964.524	EXP	word_rsp: autoDraw = null
+964.524	EXP	braille_word: image = {}
+964.524	EXP	dutch_word: text = vlek
+964.7195	DATA	Mouse: 0 button up, pos=(1000,678)
+965.0376999998093	EXP	braille_word: autoDraw = true
+965.0376999998093	EXP	braille_word: anchor = center
+967.5188999996186	DATA	Keydown: ArrowDown
+968.3016000003815	DATA	Keydown: ArrowDown
+969.7345	DATA	Keydown: ArrowDown
+969.7681999998093	EXP	dutch_word: autoDraw = true
+970.7803999996186	DATA	Mouse: 0 button down, pos=(1000,678)
+970.8051999998094	EXP	braille_word: autoDraw = null
+970.8051999998094	EXP	dutch_word: autoDraw = null
+970.8051999998094	EXP	word_rsp: autoDraw = null
+970.8051999998094	EXP	braille_word: image = {}
+970.8051999998094	EXP	dutch_word: text = baai
+970.9920000000001	DATA	Mouse: 0 button up, pos=(1000,678)
+971.3188000001908	EXP	braille_word: autoDraw = true
+971.3188000001908	EXP	braille_word: anchor = center
+980.1646999998093	DATA	Keydown: ArrowDown
+980.1973000001908	EXP	dutch_word: autoDraw = true
+980.9273999996186	DATA	Mouse: 0 button down, pos=(1000,678)
+980.9525000000001	EXP	braille_word: autoDraw = null
+980.9525000000001	EXP	dutch_word: autoDraw = null
+980.9525000000001	EXP	word_rsp: autoDraw = null
+980.9525000000001	EXP	braille_word: image = {}
+980.9525000000001	EXP	dutch_word: text = boeien
+981.144	DATA	Mouse: 0 button up, pos=(1000,678)
+981.4653999996186	EXP	braille_word: autoDraw = true
+981.4653999996186	EXP	braille_word: anchor = center
+986.062	DATA	Keydown: ArrowDown
+986.0958999996186	EXP	dutch_word: autoDraw = true
+986.7753999996186	DATA	Mouse: 0 button down, pos=(1000,678)
+986.8000000000001	EXP	braille_word: autoDraw = null
+986.8000000000001	EXP	dutch_word: autoDraw = null
+986.8000000000001	EXP	word_rsp: autoDraw = null
+986.8000000000001	EXP	braille_word: image = {}
+986.8000000000001	EXP	dutch_word: text = verhaal
+986.9858999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+987.3135000000001	EXP	braille_word: autoDraw = true
+987.3135000000001	EXP	braille_word: anchor = center
+993.1596000003815	DATA	Keydown: ArrowDown
+993.1938000001908	EXP	dutch_word: autoDraw = true
+993.7928000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+993.8146999998094	EXP	braille_word: autoDraw = null
+993.8146999998094	EXP	dutch_word: autoDraw = null
+993.8146999998094	EXP	word_rsp: autoDraw = null
+993.8146999998094	EXP	braille_word: image = {}
+993.8146999998094	EXP	dutch_word: text = zuster
+994.0006000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+994.3280000000001	EXP	braille_word: autoDraw = true
+994.3280000000001	EXP	braille_word: anchor = center
+997.9916000003815	DATA	Keydown: ArrowDown
+998.0253000001908	EXP	dutch_word: autoDraw = true
+998.6148999996186	DATA	Mouse: 0 button down, pos=(1000,678)
+998.6291999998093	EXP	braille_word: autoDraw = null
+998.6291999998093	EXP	dutch_word: autoDraw = null
+998.6291999998093	EXP	word_rsp: autoDraw = null
+998.6291999998093	EXP	braille_word: image = {}
+998.6291999998093	EXP	dutch_word: text = zaal
+998.8296999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+999.1433000001908	EXP	braille_word: autoDraw = true
+999.1433000001908	EXP	braille_word: anchor = center
+1002.1453999996186	DATA	Keydown: ArrowDown
+1003.0533000001908	DATA	Keydown: ArrowDown
+1003.0896999998093	EXP	dutch_word: autoDraw = true
+1003.8056000003816	DATA	Mouse: 0 button down, pos=(1000,678)
+1003.8273000001908	EXP	braille_word: autoDraw = null
+1003.8273000001908	EXP	dutch_word: autoDraw = null
+1003.8273000001908	EXP	word_rsp: autoDraw = null
+1003.8273000001908	EXP	braille_word: image = {}
+1003.8273000001908	EXP	dutch_word: text = tekst
+1004.0193999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+1004.3413000001908	EXP	braille_word: autoDraw = true
+1004.3413000001908	EXP	braille_word: anchor = center
+1008.1101999998093	DATA	Keydown: ArrowDown
+1008.1383999996186	EXP	dutch_word: autoDraw = true
+1008.7071000003815	DATA	Mouse: 0 button down, pos=(1000,678)
+1008.7258000001908	EXP	braille_word: autoDraw = null
+1008.7258000001908	EXP	dutch_word: autoDraw = null
+1008.7258000001908	EXP	word_rsp: autoDraw = null
+1008.7258000001908	EXP	braille_word: image = {}
+1008.7258000001908	EXP	dutch_word: text = opheffen
+1008.9216000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+1009.2396999998093	EXP	braille_word: autoDraw = true
+1009.2396999998093	EXP	braille_word: anchor = center
+1017.8678000001908	DATA	Keydown: ArrowDown
+1017.9011000003816	EXP	dutch_word: autoDraw = true
+1018.6310000000001	DATA	Mouse: 0 button down, pos=(1000,678)
+1018.6563999996185	EXP	braille_word: autoDraw = null
+1018.6563999996185	EXP	dutch_word: autoDraw = null
+1018.6563999996185	EXP	word_rsp: autoDraw = null
+1018.6563999996185	EXP	braille_word: image = {}
+1018.6563999996185	EXP	dutch_word: text = toeval
+1018.8413999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+1019.1696999998093	EXP	braille_word: autoDraw = true
+1019.1696999998093	EXP	braille_word: anchor = center
+1023.4498999996187	DATA	Keydown: ArrowDown
+1023.4828000001909	EXP	dutch_word: autoDraw = true
+1024.196199999809	DATA	Mouse: 0 button down, pos=(1000,678)
+1024.2206000003814	EXP	braille_word: autoDraw = null
+1024.2206000003814	EXP	dutch_word: autoDraw = null
+1024.2206000003814	EXP	word_rsp: autoDraw = null
+1024.2206000003814	EXP	braille_word: image = {}
+1024.2206000003814	EXP	dutch_word: text = diep
+1024.4066000003813	DATA	Mouse: 0 button up, pos=(1000,678)
+1024.7338999996184	EXP	braille_word: autoDraw = true
+1024.7338999996184	EXP	braille_word: anchor = center
+1029.9311000003813	DATA	Keydown: ArrowDown
+1029.9641000003814	EXP	dutch_word: autoDraw = true
+1030.5635	DATA	Mouse: 0 button down, pos=(1000,678)
+1030.5851000003813	EXP	braille_word: autoDraw = null
+1030.5851000003813	EXP	dutch_word: autoDraw = null
+1030.5851000003813	EXP	word_rsp: autoDraw = null
+1030.5851000003813	EXP	braille_word: image = {}
+1030.5851000003813	EXP	dutch_word: text = traag
+1030.7768999996185	DATA	Mouse: 0 button up, pos=(1000,678)
+1031.0981999998091	EXP	braille_word: autoDraw = true
+1031.0981999998091	EXP	braille_word: anchor = center
+1034.1926999998093	DATA	Keydown: ArrowDown
+1035.259	DATA	Keydown: ArrowDown
+1035.2958000001906	EXP	dutch_word: autoDraw = true
+1035.9156000003813	DATA	Mouse: 0 button down, pos=(1000,678)
+1035.9333000001907	EXP	braille_word: autoDraw = null
+1035.9333000001907	EXP	dutch_word: autoDraw = null
+1035.9333000001907	EXP	word_rsp: autoDraw = null
+1035.9333000001907	EXP	braille_word: image = {}
+1035.9333000001907	EXP	dutch_word: text = rechten
+1036.1301999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+1036.4468000001907	EXP	braille_word: autoDraw = true
+1036.4468000001907	EXP	braille_word: anchor = center
+1041.9271000003814	DATA	Keydown: ArrowDown
+1041.960699999809	EXP	dutch_word: autoDraw = true
+1042.5233999996185	DATA	Mouse: 0 button down, pos=(1000,678)
+1042.5476999998093	EXP	braille_word: autoDraw = null
+1042.5476999998093	EXP	dutch_word: autoDraw = null
+1042.5476999998093	EXP	word_rsp: autoDraw = null
+1042.5476999998093	EXP	braille_word: image = {}
+1042.5476999998093	EXP	dutch_word: text = huisdier
+1042.7338000001907	DATA	Mouse: 0 button up, pos=(1000,678)
+1043.0615	EXP	braille_word: autoDraw = true
+1043.0615	EXP	braille_word: anchor = center
+1057.1876999998092	DATA	Keydown: ArrowDown
+1057.221	EXP	dutch_word: autoDraw = true
+1057.8516999998092	DATA	Mouse: 0 button down, pos=(1000,678)
+1057.8764999999999	EXP	braille_word: autoDraw = null
+1057.8764999999999	EXP	dutch_word: autoDraw = null
+1057.8764999999999	EXP	word_rsp: autoDraw = null
+1057.8764999999999	EXP	braille_word: image = {}
+1057.8764999999999	EXP	dutch_word: text = techniek
+1058.0621000003814	DATA	Mouse: 0 button up, pos=(1000,678)
+1058.3898000001907	EXP	braille_word: autoDraw = true
+1058.3898000001907	EXP	braille_word: anchor = center
+1066.8181999998092	DATA	Keydown: ArrowDown
+1066.8511000003814	EXP	dutch_word: autoDraw = true
+1067.5048999996184	DATA	Mouse: 0 button down, pos=(1000,678)
+1067.5248999996186	EXP	braille_word: autoDraw = null
+1067.5248999996186	EXP	dutch_word: autoDraw = null
+1067.5248999996186	EXP	word_rsp: autoDraw = null
+1067.5248999996186	EXP	braille_word: image = {}
+1067.5248999996186	EXP	dutch_word: text = mijnheer
+1067.5248999996186	EXP	word_rsp: editable = true
+1067.5248999996186	EXP	word_rsp: autoDraw = true
+1067.5248999996186	EXP	word_rsp: anchor = center
+1067.5248999996186	EXP	word_rsp: autoDraw = true
+1067.5248999996186	EXP	word_rsp: anchor = center
+1067.7196000003814	DATA	Mouse: 0 button up, pos=(1000,678)
+1068.0368000001906	EXP	braille_word: autoDraw = true
+1068.0368000001906	EXP	braille_word: anchor = center
+1070.097	DATA	Keydown: m
+1071.1216999998092	DATA	Keydown: i
+1072.6221999998093	DATA	Keydown: j
+1073.3323999996185	DATA	Keydown: n
+1074.4991000003813	DATA	Keydown: h
+1074.8823999996184	DATA	Keydown: e
+1075.0876999998093	DATA	Keydown: e
+1075.3123000001906	DATA	Keydown: r
+1076.1948000001908	DATA	Keydown: ArrowDown
+1076.2313000001907	EXP	dutch_word: autoDraw = true
+1076.7026000003814	DATA	Mouse: 0 button down, pos=(1000,678)
+1076.7208000001906	EXP	braille_word: autoDraw = null
+1076.7208000001906	EXP	dutch_word: autoDraw = null
+1076.7208000001906	EXP	word_rsp: autoDraw = null
+1076.7208000001906	EXP	braille_word: image = {}
+1076.7208000001906	EXP	dutch_word: text = waarbij
+1076.9175	DATA	Mouse: 0 button up, pos=(1000,678)
+1077.2333000001906	EXP	braille_word: autoDraw = true
+1077.2333000001906	EXP	braille_word: anchor = center
+1089.9098999996186	DATA	Keydown: ArrowDown
+1089.9438000001908	EXP	dutch_word: autoDraw = true
+1090.6453000001907	DATA	Mouse: 0 button down, pos=(1000,678)
+1090.6651999998091	EXP	braille_word: autoDraw = null
+1090.6651999998091	EXP	dutch_word: autoDraw = null
+1090.6651999998091	EXP	word_rsp: autoDraw = null
+1090.6651999998091	EXP	braille_word: image = {}
+1090.6651999998091	EXP	dutch_word: text = woning
+1090.8616999998092	DATA	Mouse: 0 button up, pos=(1000,678)
+1091.1781000003814	EXP	braille_word: autoDraw = true
+1091.1781000003814	EXP	braille_word: anchor = center
+1094.9086000003815	DATA	Keydown: ArrowDown
+1094.9421000003815	EXP	dutch_word: autoDraw = true
+1095.5221999998091	DATA	Mouse: 0 button down, pos=(1000,678)
+1095.5463999996184	EXP	braille_word: autoDraw = null
+1095.5463999996184	EXP	dutch_word: autoDraw = null
+1095.5463999996184	EXP	word_rsp: autoDraw = null
+1095.5463999996184	EXP	braille_word: image = {}
+1095.5463999996184	EXP	dutch_word: text = gerucht
+1095.7326999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+1096.0596000003814	EXP	braille_word: autoDraw = true
+1096.0596000003814	EXP	braille_word: anchor = center
+1101.3438999996185	DATA	Keydown: ArrowDown
+1101.3733000001907	EXP	dutch_word: autoDraw = true
+1101.9111999998092	DATA	Mouse: 0 button down, pos=(1000,678)
+1101.9276999998092	EXP	braille_word: autoDraw = null
+1101.9276999998092	EXP	dutch_word: autoDraw = null
+1101.9276999998092	EXP	word_rsp: autoDraw = null
+1101.9276999998092	EXP	braille_word: image = {}
+1101.9276999998092	EXP	dutch_word: text = ticket
+1102.1261999998092	DATA	Mouse: 0 button up, pos=(1000,678)
+1102.4413000001907	EXP	braille_word: autoDraw = true
+1102.4413000001907	EXP	braille_word: anchor = center
+1118.4873999996184	DATA	Keydown: ArrowDown
+1118.5171000003813	EXP	dutch_word: autoDraw = true
+1119.2853000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+1119.3056999998091	EXP	braille_word: autoDraw = null
+1119.3056999998091	EXP	dutch_word: autoDraw = null
+1119.3056999998091	EXP	word_rsp: autoDraw = null
+1119.3056999998091	EXP	braille_word: image = {}
+1119.3056999998091	EXP	dutch_word: text = laken
+1119.5008000001906	DATA	Mouse: 0 button up, pos=(1000,678)
+1119.8191999998091	EXP	braille_word: autoDraw = true
+1119.8191999998091	EXP	braille_word: anchor = center
+1125.6283999996185	DATA	Keydown: ArrowDown
+1125.665	EXP	dutch_word: autoDraw = true
+1126.2116000003814	DATA	Mouse: 0 button down, pos=(1000,678)
+1126.2359999999999	EXP	braille_word: autoDraw = null
+1126.2359999999999	EXP	dutch_word: autoDraw = null
+1126.2359999999999	EXP	word_rsp: autoDraw = null
+1126.2359999999999	EXP	braille_word: image = {}
+1126.2359999999999	EXP	dutch_word: text = gegeven
+1126.4281999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+1126.7496000003814	EXP	braille_word: autoDraw = true
+1126.7496000003814	EXP	braille_word: anchor = center
+1131.3146000003815	DATA	Keydown: ArrowDown
+1131.3466000003814	EXP	dutch_word: autoDraw = true
+1131.8673000001907	DATA	Mouse: 0 button down, pos=(1000,678)
+1131.8838999996185	EXP	braille_word: autoDraw = null
+1131.8838999996185	EXP	dutch_word: autoDraw = null
+1131.8838999996185	EXP	word_rsp: autoDraw = null
+1131.8838999996185	EXP	braille_word: image = {}
+1131.8838999996185	EXP	dutch_word: text = schatten
+1132.0826999998092	DATA	Mouse: 0 button up, pos=(1000,678)
+1132.398199999809	EXP	braille_word: autoDraw = true
+1132.398199999809	EXP	braille_word: anchor = center
+1138.248	DATA	Keydown: ArrowDown
+1138.2768999996185	EXP	dutch_word: autoDraw = true
+1138.7185	DATA	Mouse: 0 button down, pos=(1000,678)
+1138.7313000001907	EXP	braille_word: autoDraw = null
+1138.7313000001907	EXP	dutch_word: autoDraw = null
+1138.7313000001907	EXP	word_rsp: autoDraw = null
+1138.7313000001907	EXP	braille_word: image = {}
+1138.7313000001907	EXP	dutch_word: text = schat
+1138.9334999999999	DATA	Mouse: 0 button up, pos=(1000,678)
+1139.2468000001907	EXP	braille_word: autoDraw = true
+1139.2468000001907	EXP	braille_word: anchor = center
+1143.0984999999998	DATA	Keydown: ArrowDown
+1143.1258000001906	EXP	dutch_word: autoDraw = true
+1143.6556999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+1143.6803000001908	EXP	braille_word: autoDraw = null
+1143.6803000001908	EXP	dutch_word: autoDraw = null
+1143.6803000001908	EXP	word_rsp: autoDraw = null
+1143.6803000001908	EXP	braille_word: image = {}
+1143.6803000001908	EXP	dutch_word: text = keihard
+1143.8663999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+1144.1936999998093	EXP	braille_word: autoDraw = true
+1144.1936999998093	EXP	braille_word: anchor = center
+1153.8428999996186	DATA	Keydown: ArrowDown
+1153.8716999998092	EXP	dutch_word: autoDraw = true
+1154.3908000001907	DATA	Mouse: 0 button down, pos=(1000,678)
+1154.4105	EXP	braille_word: autoDraw = null
+1154.4105	EXP	dutch_word: autoDraw = null
+1154.4105	EXP	word_rsp: autoDraw = null
+1154.4105	EXP	braille_word: image = {}
+1154.4105	EXP	dutch_word: text = kaal
+1154.6055	DATA	Mouse: 0 button up, pos=(1000,678)
+1154.9231999998092	EXP	braille_word: autoDraw = true
+1154.9231999998092	EXP	braille_word: anchor = center
+1156.4238999996185	DATA	Keydown: ArrowDown
+1157.7338999996184	DATA	Keydown: ArrowDown
+1158.5033999996185	DATA	Keydown: ArrowDown
+1158.5375	EXP	dutch_word: autoDraw = true
+1159.1834999999999	DATA	Mouse: 0 button down, pos=(1000,678)
+1159.2078999996186	EXP	braille_word: autoDraw = null
+1159.2078999996186	EXP	dutch_word: autoDraw = null
+1159.2078999996186	EXP	word_rsp: autoDraw = null
+1159.2078999996186	EXP	braille_word: image = {}
+1159.2078999996186	EXP	dutch_word: text = jasje
+1159.4003999996185	DATA	Mouse: 0 button up, pos=(1000,678)
+1159.7214999999999	EXP	braille_word: autoDraw = true
+1159.7214999999999	EXP	braille_word: anchor = center
+1170.0631999998093	DATA	Keydown: ArrowDown
+1170.0993999996185	EXP	dutch_word: autoDraw = true
+1171.455	DATA	Mouse: 0 button down, pos=(1000,678)
+1171.4716999998093	EXP	braille_word: autoDraw = null
+1171.4716999998093	EXP	dutch_word: autoDraw = null
+1171.4716999998093	EXP	word_rsp: autoDraw = null
+1171.4716999998093	EXP	braille_word: image = {}
+1171.4716999998093	EXP	dutch_word: text = baron
+1171.6699999999998	DATA	Mouse: 0 button up, pos=(1000,678)
+1171.984199999809	EXP	braille_word: autoDraw = true
+1171.984199999809	EXP	braille_word: anchor = center
+1176.7276999998091	DATA	Keydown: ArrowDown
+1176.7646999998092	EXP	dutch_word: autoDraw = true
+1177.2475	DATA	Mouse: 0 button down, pos=(1000,678)
+1177.2688000001906	EXP	braille_word: autoDraw = null
+1177.2688000001906	EXP	dutch_word: autoDraw = null
+1177.2688000001906	EXP	word_rsp: autoDraw = null
+1177.2688000001906	EXP	braille_word: image = {}
+1177.2688000001906	EXP	dutch_word: text = spanning
+1177.460699999809	DATA	Mouse: 0 button up, pos=(1000,678)
+1177.7823000001906	EXP	braille_word: autoDraw = true
+1177.7823000001906	EXP	braille_word: anchor = center
+1183.9968999996186	DATA	Keydown: ArrowDown
+1184.0281999998092	EXP	dutch_word: autoDraw = true
+1184.7128999996185	DATA	Mouse: 0 button down, pos=(1000,678)
+1184.7333000001906	EXP	braille_word: autoDraw = null
+1184.7333000001906	EXP	dutch_word: autoDraw = null
+1184.7333000001906	EXP	word_rsp: autoDraw = null
+1184.7333000001906	EXP	braille_word: image = {}
+1184.7333000001906	EXP	dutch_word: text = muziek
+1184.9283999996185	DATA	Mouse: 0 button up, pos=(1000,678)
+1185.2465	EXP	braille_word: autoDraw = true
+1185.2465	EXP	braille_word: anchor = center
+1194.0803999996185	DATA	Keydown: ArrowDown
+1194.1083000001906	EXP	dutch_word: autoDraw = true
+1194.648	DATA	Mouse: 0 button down, pos=(1000,678)
+1194.663	EXP	braille_word: autoDraw = null
+1194.663	EXP	dutch_word: autoDraw = null
+1194.663	EXP	word_rsp: autoDraw = null
+1194.663	EXP	braille_word: image = {}
+1194.663	EXP	dutch_word: text = slagen
+1194.8629999999998	DATA	Mouse: 0 button up, pos=(1000,678)
+1195.1763999996185	EXP	braille_word: autoDraw = true
+1195.1763999996185	EXP	braille_word: anchor = center
+1198.424	DATA	Keydown: ArrowDown
+1199.1946999998092	DATA	Keydown: ArrowDown
+1199.2234999999998	EXP	dutch_word: autoDraw = true
+1199.8143999996184	DATA	Mouse: 0 button down, pos=(1000,678)
+1199.8273000001907	EXP	braille_word: autoDraw = null
+1199.8273000001907	EXP	dutch_word: autoDraw = null
+1199.8273000001907	EXP	word_rsp: autoDraw = null
+1199.8273000001907	EXP	braille_word: image = {}
+1199.8273000001907	EXP	dutch_word: text = leek
+1200.0293999996184	DATA	Mouse: 0 button up, pos=(1000,678)
+1200.3418000001907	EXP	braille_word: autoDraw = true
+1200.3418000001907	EXP	braille_word: anchor = center
+1202.2058999996184	DATA	Keydown: ArrowDown
+1203.3351999998092	DATA	Keydown: ArrowDown
+1203.9611999998092	DATA	Keydown: ArrowDown
+1203.9885	EXP	dutch_word: autoDraw = true
+1204.5216999998092	DATA	Mouse: 0 button down, pos=(1000,678)
+1204.5423999996185	EXP	braille_word: autoDraw = null
+1204.5423999996185	EXP	dutch_word: autoDraw = null
+1204.5423999996185	EXP	word_rsp: autoDraw = null
+1204.5423999996185	EXP	braille_word: image = {}
+1204.5423999996185	EXP	dutch_word: text = anarchie
+1204.7371999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+1205.0565	EXP	braille_word: autoDraw = true
+1205.0565	EXP	braille_word: anchor = center
+1232.1828000001906	DATA	Keydown: ArrowDown
+1232.2115	EXP	dutch_word: autoDraw = true
+1233.2518999996184	DATA	Mouse: 0 button down, pos=(1000,678)
+1233.2668999996185	EXP	braille_word: autoDraw = null
+1233.2668999996185	EXP	dutch_word: autoDraw = null
+1233.2668999996185	EXP	word_rsp: autoDraw = null
+1233.2668999996185	EXP	braille_word: image = {}
+1233.2668999996185	EXP	dutch_word: text = stof
+1233.4663999996185	DATA	Mouse: 0 button up, pos=(1000,678)
+1233.7798000001908	EXP	braille_word: autoDraw = true
+1233.7798000001908	EXP	braille_word: anchor = center
+1237.7003000001907	DATA	Keydown: ArrowDown
+1237.7271000003814	EXP	dutch_word: autoDraw = true
+1238.1473999996185	DATA	Mouse: 0 button down, pos=(1000,678)
+1238.1648000001908	EXP	braille_word: autoDraw = null
+1238.1648000001908	EXP	dutch_word: autoDraw = null
+1238.1648000001908	EXP	word_rsp: autoDraw = null
+1238.1648000001908	EXP	braille_word: image = {}
+1238.1648000001908	EXP	dutch_word: text = steek
+1238.3623000001908	DATA	Mouse: 0 button up, pos=(1000,678)
+1238.6781000003814	EXP	braille_word: autoDraw = true
+1238.6781000003814	EXP	braille_word: anchor = center
+1240.7466999998092	DATA	Keydown: ArrowDown
+1241.9258999996184	DATA	Keydown: ArrowDown
+1242.4951999998093	DATA	Keydown: ArrowDown
+1242.5258000001907	EXP	dutch_word: autoDraw = true
+1243.1221999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+1243.1464999999998	EXP	braille_word: autoDraw = null
+1243.1464999999998	EXP	dutch_word: autoDraw = null
+1243.1464999999998	EXP	word_rsp: autoDraw = null
+1243.1464999999998	EXP	braille_word: image = {}
+1243.1464999999998	EXP	dutch_word: text = strak
+1243.3328000001907	DATA	Mouse: 0 button up, pos=(1000,678)
+1243.6598999996186	EXP	braille_word: autoDraw = true
+1243.6598999996186	EXP	braille_word: anchor = center
+1246.8873999996185	DATA	Keydown: ArrowDown
+1247.4536000003814	DATA	Keydown: ArrowDown
+1247.4901999998092	EXP	dutch_word: autoDraw = true
+1248.1426000003814	DATA	Mouse: 0 button down, pos=(1000,678)
+1248.1613999996184	EXP	braille_word: autoDraw = null
+1248.1613999996184	EXP	dutch_word: autoDraw = null
+1248.1613999996184	EXP	word_rsp: autoDraw = null
+1248.1613999996184	EXP	braille_word: image = {}
+1248.1613999996184	EXP	dutch_word: text = attentie
+1248.3573999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+1248.6748999996184	EXP	braille_word: autoDraw = true
+1248.6748999996184	EXP	braille_word: anchor = center
+1256.1	DATA	Keydown: ArrowDown
+1256.1378000001907	EXP	dutch_word: autoDraw = true
+1256.6713999996184	DATA	Mouse: 0 button down, pos=(1000,678)
+1256.6924999999999	EXP	braille_word: autoDraw = null
+1256.6924999999999	EXP	dutch_word: autoDraw = null
+1256.6924999999999	EXP	word_rsp: autoDraw = null
+1256.6924999999999	EXP	braille_word: image = {}
+1256.6924999999999	EXP	dutch_word: text = kanjer
+1256.8863000001907	DATA	Mouse: 0 button up, pos=(1000,678)
+1257.2053000001906	EXP	braille_word: autoDraw = true
+1257.2053000001906	EXP	braille_word: anchor = center
+1262.0651000003813	DATA	Keydown: ArrowDown
+1262.1021000003814	EXP	dutch_word: autoDraw = true
+1262.6715	DATA	Mouse: 0 button down, pos=(1000,678)
+1262.6898000001906	EXP	braille_word: autoDraw = null
+1262.6898000001906	EXP	dutch_word: autoDraw = null
+1262.6898000001906	EXP	word_rsp: autoDraw = null
+1262.6898000001906	EXP	braille_word: image = {}
+1262.6898000001906	EXP	dutch_word: text = blijven
+1262.8868999996184	DATA	Mouse: 0 button up, pos=(1000,678)
+1263.2031000003815	EXP	braille_word: autoDraw = true
+1263.2031000003815	EXP	braille_word: anchor = center
+1268.6338000001906	DATA	Keydown: ArrowDown
+1268.6666999998092	EXP	dutch_word: autoDraw = true
+1269.2368000001907	DATA	Mouse: 0 button down, pos=(1000,678)
+1269.2548999996184	EXP	braille_word: autoDraw = null
+1269.2548999996184	EXP	dutch_word: autoDraw = null
+1269.2548999996184	EXP	word_rsp: autoDraw = null
+1269.2548999996184	EXP	braille_word: image = {}
+1269.2548999996184	EXP	dutch_word: text = palm
+1269.4516999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+1269.7678999996185	EXP	braille_word: autoDraw = true
+1269.7678999996185	EXP	braille_word: anchor = center
+1273.1878999996184	DATA	Keydown: ArrowDown
+1274.3173000001907	DATA	Keydown: ArrowDown
+1274.3478000001908	EXP	dutch_word: autoDraw = true
+1274.9468000001907	DATA	Mouse: 0 button down, pos=(1000,678)
+1274.9688999996185	EXP	braille_word: autoDraw = null
+1274.9688999996185	EXP	dutch_word: autoDraw = null
+1274.9688999996185	EXP	word_rsp: autoDraw = null
+1274.9688999996185	EXP	braille_word: image = {}
+1274.9688999996185	EXP	dutch_word: text = geluid
+1275.1608000001906	DATA	Mouse: 0 button up, pos=(1000,678)
+1275.4823000001907	EXP	braille_word: autoDraw = true
+1275.4823000001907	EXP	braille_word: anchor = center
+1282.6913999996184	DATA	Keydown: ArrowDown
+1282.7278999996186	EXP	dutch_word: autoDraw = true
+1283.3678000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+1283.3831999998092	EXP	braille_word: autoDraw = null
+1283.3831999998092	EXP	dutch_word: autoDraw = null
+1283.3831999998092	EXP	word_rsp: autoDraw = null
+1283.3831999998092	EXP	braille_word: image = {}
+1283.3831999998092	EXP	dutch_word: text = hier
+1283.5828000001907	DATA	Mouse: 0 button up, pos=(1000,678)
+1283.8961000003815	EXP	braille_word: autoDraw = true
+1283.8961000003815	EXP	braille_word: anchor = center
+1288.8843000001907	DATA	Keydown: ArrowDown
+1288.9096999998092	EXP	dutch_word: autoDraw = true
+1289.5121999998091	DATA	Mouse: 0 button down, pos=(1000,678)
+1289.531	EXP	braille_word: autoDraw = null
+1289.531	EXP	dutch_word: autoDraw = null
+1289.531	EXP	word_rsp: autoDraw = null
+1289.531	EXP	braille_word: image = {}
+1289.531	EXP	dutch_word: text = flits
+1289.7278999996186	DATA	Mouse: 0 button up, pos=(1000,678)
+1290.0436999998092	EXP	braille_word: autoDraw = true
+1290.0436999998092	EXP	braille_word: anchor = center
+1293.8916000003815	DATA	Keydown: ArrowDown
+1293.9248999996184	EXP	dutch_word: autoDraw = true
+1294.7211999998092	DATA	Mouse: 0 button down, pos=(1000,678)
+1294.7456000003815	EXP	braille_word: autoDraw = null
+1294.7456000003815	EXP	dutch_word: autoDraw = null
+1294.7456000003815	EXP	word_rsp: autoDraw = null
+1294.7456000003815	EXP	braille_word: image = {}
+1294.7456000003815	EXP	dutch_word: text = vullen
+1294.9375	DATA	Mouse: 0 button up, pos=(1000,678)
+1295.2588000001906	EXP	braille_word: autoDraw = true
+1295.2588000001906	EXP	braille_word: anchor = center
+1298.7066000003815	DATA	Keydown: ArrowDown
+1299.8693999996185	DATA	Keydown: ArrowDown
+1299.9063000001906	EXP	dutch_word: autoDraw = true
+1300.9733000001906	DATA	Mouse: 0 button down, pos=(1000,678)
+1300.9931999998091	EXP	braille_word: autoDraw = null
+1300.9931999998091	EXP	dutch_word: autoDraw = null
+1300.9931999998091	EXP	word_rsp: autoDraw = null
+1300.9931999998091	EXP	braille_word: image = {}
+1300.9931999998091	EXP	dutch_word: text = liefje
+1301.1888000001907	DATA	Mouse: 0 button up, pos=(1000,678)
+1301.5068999996186	EXP	braille_word: autoDraw = true
+1301.5068999996186	EXP	braille_word: anchor = center
+1307.3896000003815	DATA	Keydown: ArrowDown
+1307.4205	EXP	dutch_word: autoDraw = true
+1308.0666999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+1308.0919999999999	EXP	braille_word: autoDraw = null
+1308.0919999999999	EXP	dutch_word: autoDraw = null
+1308.0919999999999	EXP	word_rsp: autoDraw = null
+1308.0919999999999	EXP	braille_word: image = {}
+1308.0919999999999	EXP	dutch_word: text = lukken
+1308.2833000001906	DATA	Mouse: 0 button up, pos=(1000,678)
+1308.604699999809	EXP	braille_word: autoDraw = true
+1308.604699999809	EXP	braille_word: anchor = center
+1310.6323999996184	DATA	Keydown: ArrowDown
+1311.7246999998092	DATA	Keydown: ArrowDown
+1312.5483999996184	DATA	Keydown: ArrowDown
+1312.5863000001907	EXP	dutch_word: autoDraw = true
+1314.3833000001907	DATA	Mouse: 0 button down, pos=(1000,678)
+1314.4056999998093	EXP	braille_word: autoDraw = null
+1314.4056999998093	EXP	dutch_word: autoDraw = null
+1314.4056999998093	EXP	word_rsp: autoDraw = null
+1314.4056999998093	EXP	braille_word: image = {}
+1314.4056999998093	EXP	dutch_word: text = seizoen
+1314.5974999999999	DATA	Mouse: 0 button up, pos=(1000,678)
+1314.9191999998093	EXP	braille_word: autoDraw = true
+1314.9191999998093	EXP	braille_word: anchor = center
+1321.932	DATA	Keydown: ArrowDown
+1321.9653000001906	EXP	dutch_word: autoDraw = true
+1322.6285	DATA	Mouse: 0 button down, pos=(1000,678)
+1322.6533999996184	EXP	braille_word: autoDraw = null
+1322.6533999996184	EXP	dutch_word: autoDraw = null
+1322.6533999996184	EXP	word_rsp: autoDraw = null
+1322.6533999996184	EXP	braille_word: image = {}
+1322.6533999996184	EXP	dutch_word: text = hiervan
+1322.8388999996184	DATA	Mouse: 0 button up, pos=(1000,678)
+1323.1663999996185	EXP	braille_word: autoDraw = true
+1323.1663999996185	EXP	braille_word: anchor = center
+1330.7668000001906	DATA	Keydown: ArrowDown
+1330.7951999998093	EXP	dutch_word: autoDraw = true
+1331.3946999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+1331.417	EXP	braille_word: autoDraw = null
+1331.417	EXP	dutch_word: autoDraw = null
+1331.417	EXP	word_rsp: autoDraw = null
+1331.417	EXP	braille_word: image = {}
+1331.417	EXP	dutch_word: text = woestijn
+1331.6113999996185	DATA	Mouse: 0 button up, pos=(1000,678)
+1331.9299999999998	EXP	braille_word: autoDraw = true
+1331.9299999999998	EXP	braille_word: anchor = center
+1338.2108999996185	DATA	Keydown: ArrowDown
+1338.2428999996184	EXP	dutch_word: autoDraw = true
+1338.7496999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+1338.7641999998093	EXP	braille_word: autoDraw = null
+1338.7641999998093	EXP	dutch_word: autoDraw = null
+1338.7641999998093	EXP	word_rsp: autoDraw = null
+1338.7641999998093	EXP	braille_word: image = {}
+1338.7641999998093	EXP	dutch_word: text = vervoer
+1338.965199999809	DATA	Mouse: 0 button up, pos=(1000,678)
+1339.2775	EXP	braille_word: autoDraw = true
+1339.2775	EXP	braille_word: anchor = center
+1346.2573000001908	DATA	Keydown: ArrowDown
+1346.2898999996185	EXP	dutch_word: autoDraw = true
+1346.8363999996184	DATA	Mouse: 0 button down, pos=(1000,678)
+1346.8636000003814	EXP	braille_word: autoDraw = null
+1346.8636000003814	EXP	dutch_word: autoDraw = null
+1346.8636000003814	EXP	word_rsp: autoDraw = null
+1346.8636000003814	EXP	braille_word: image = {}
+1346.8636000003814	EXP	dutch_word: text = dans
+1346.8636000003814	EXP	word_rsp: editable = true
+1346.8636000003814	EXP	word_rsp: autoDraw = true
+1346.8636000003814	EXP	word_rsp: anchor = center
+1346.8636000003814	EXP	word_rsp: autoDraw = true
+1346.8636000003814	EXP	word_rsp: anchor = center
+1347.0563000001907	DATA	Mouse: 0 button up, pos=(1000,678)
+1347.3746000003814	EXP	braille_word: autoDraw = true
+1347.3746000003814	EXP	braille_word: anchor = center
+1350.3761999998092	DATA	Keydown: d
+1352.5883000001907	DATA	Keydown: a
+1355.5708999996184	DATA	Keydown: m
+1356.6056000003814	DATA	Keydown: Backspace
+1357.1358999996185	DATA	Keydown: n
+1358.1596999998092	DATA	Keydown: s
+1358.7865	DATA	Keydown: ArrowDown
+1358.8188000001908	EXP	dutch_word: autoDraw = true
+1360.8851000003815	DATA	Mouse: 0 button down, pos=(1000,678)
+1360.9091000003814	EXP	braille_word: autoDraw = null
+1360.9091000003814	EXP	dutch_word: autoDraw = null
+1360.9091000003814	EXP	word_rsp: autoDraw = null
+1360.9091000003814	EXP	braille_word: image = {}
+1360.9091000003814	EXP	dutch_word: text = lever
+1360.9091000003814	EXP	word_rsp: editable = true
+1360.9091000003814	EXP	word_rsp: autoDraw = true
+1360.9091000003814	EXP	word_rsp: anchor = center
+1360.9091000003814	EXP	word_rsp: autoDraw = true
+1360.9091000003814	EXP	word_rsp: anchor = center
+1360.9344999999998	DATA	Mouse: 0 button up, pos=(1000,678)
+1361.4196999998092	EXP	braille_word: autoDraw = true
+1361.4196999998092	EXP	braille_word: anchor = center
+1362.8193000001907	DATA	Keydown: l
+1363.2176000003815	DATA	Keydown: e
+1364.2041999998091	DATA	Keydown: v
+1364.3553999996184	DATA	Keydown: e
+1364.4806999998093	DATA	Keydown: n
+1365.7841999998093	DATA	Keydown: Backspace
+1365.9053000001907	DATA	Keydown: r
+1367.1213999996185	DATA	Keydown: ArrowDown
+1367.1493000001906	EXP	dutch_word: autoDraw = true
+1367.7963999996184	DATA	Mouse: 0 button down, pos=(1000,678)
+1367.8216999998092	EXP	braille_word: autoDraw = null
+1367.8216999998092	EXP	dutch_word: autoDraw = null
+1367.8216999998092	EXP	word_rsp: autoDraw = null
+1367.8216999998092	EXP	braille_word: image = {}
+1367.8216999998092	EXP	dutch_word: text = lokken
+1368.0128999996184	DATA	Mouse: 0 button up, pos=(1000,678)
+1368.3343000001908	EXP	braille_word: autoDraw = true
+1368.3343000001908	EXP	braille_word: anchor = center
+1370.9965	DATA	Keydown: ArrowDown
+1372.3141000003814	DATA	Keydown: ArrowDown
+1372.3476999998093	EXP	dutch_word: autoDraw = true
+1373.0443999996185	DATA	Mouse: 0 button down, pos=(1000,678)
+1373.069	EXP	braille_word: autoDraw = null
+1373.069	EXP	dutch_word: autoDraw = null
+1373.069	EXP	word_rsp: autoDraw = null
+1373.069	EXP	braille_word: image = {}
+1373.069	EXP	dutch_word: text = kreeft
+1373.2611999998092	DATA	Mouse: 0 button up, pos=(1000,678)
+1373.5825	EXP	braille_word: autoDraw = true
+1373.5825	EXP	braille_word: anchor = center
+1377.7463999996185	DATA	Keydown: ArrowDown
+1377.7791999998092	EXP	dutch_word: autoDraw = true
+1378.3468000001906	DATA	Mouse: 0 button down, pos=(1000,678)
+1378.3673999996186	EXP	braille_word: autoDraw = null
+1378.3673999996186	EXP	dutch_word: autoDraw = null
+1378.3673999996186	EXP	word_rsp: autoDraw = null
+1378.3673999996186	EXP	braille_word: image = {}
+1378.3673999996186	EXP	dutch_word: text = stemming
+1378.562	DATA	Mouse: 0 button up, pos=(1000,678)
+1378.8809999999999	EXP	braille_word: autoDraw = true
+1378.8809999999999	EXP	braille_word: anchor = center
+1383.6608999996186	DATA	Keydown: ArrowDown
+1383.6944999999998	EXP	dutch_word: autoDraw = true
+1384.2738999996184	DATA	Mouse: 0 button down, pos=(1000,678)
+1384.2986000003814	EXP	braille_word: autoDraw = null
+1384.2986000003814	EXP	dutch_word: autoDraw = null
+1384.2986000003814	EXP	word_rsp: autoDraw = null
+1384.2986000003814	EXP	braille_word: image = {}
+1384.2986000003814	EXP	dutch_word: text = dubbel
+1384.4908000001906	DATA	Mouse: 0 button up, pos=(1000,678)
+1384.812	EXP	braille_word: autoDraw = true
+1384.812	EXP	braille_word: anchor = center
+1390.7883999996184	DATA	Keydown: ArrowDown
+1390.8253000001907	EXP	dutch_word: autoDraw = true
+1391.3551000003813	DATA	Mouse: 0 button down, pos=(1000,678)
+1391.3803000001906	EXP	braille_word: autoDraw = null
+1391.3803000001906	EXP	dutch_word: autoDraw = null
+1391.3803000001906	EXP	word_rsp: autoDraw = null
+1391.3803000001906	EXP	braille_word: image = {}
+1391.3803000001906	EXP	dutch_word: text = blad
+1391.5661999998092	DATA	Mouse: 0 button up, pos=(1000,678)
+1391.892699999809	EXP	braille_word: autoDraw = true
+1391.892699999809	EXP	braille_word: anchor = center
+1398.6451999998092	DATA	Keydown: ArrowDown
+1398.6726999998093	EXP	dutch_word: autoDraw = true
+1399.2034999999998	DATA	Mouse: 0 button down, pos=(1000,678)
+1399.2263999996185	EXP	braille_word: autoDraw = null
+1399.2263999996185	EXP	dutch_word: autoDraw = null
+1399.2263999996185	EXP	word_rsp: autoDraw = null
+1399.2263999996185	EXP	braille_word: image = {}
+1399.2263999996185	EXP	dutch_word: text = koppen
+1399.4188000001907	DATA	Mouse: 0 button up, pos=(1000,678)
+1399.7398000001906	EXP	braille_word: autoDraw = true
+1399.7398000001906	EXP	braille_word: anchor = center
+1401.9903999996184	DATA	Keydown: ArrowDown
+1403.768	DATA	Keydown: ArrowDown
+1403.8041999998093	EXP	dutch_word: autoDraw = true
+1404.62	DATA	Mouse: 0 button down, pos=(1000,678)
+1404.6436999998093	EXP	braille_word: autoDraw = null
+1404.6436999998093	EXP	dutch_word: autoDraw = null
+1404.6436999998093	EXP	word_rsp: autoDraw = null
+1404.6436999998093	EXP	braille_word: image = {}
+1404.6436999998093	EXP	dutch_word: text = voorraad
+1404.6436999998093	EXP	word_rsp: editable = true
+1404.6436999998093	EXP	word_rsp: autoDraw = true
+1404.6436999998093	EXP	word_rsp: anchor = center
+1404.6436999998093	EXP	word_rsp: autoDraw = true
+1404.6436999998093	EXP	word_rsp: anchor = center
+1404.8368999996185	DATA	Mouse: 0 button up, pos=(1000,678)
+1405.1551999998092	EXP	braille_word: autoDraw = true
+1405.1551999998092	EXP	braille_word: anchor = center
+1407.1368999996184	DATA	Keydown: v
+1408.0415	DATA	Keydown: o
+1408.4189999999999	DATA	Keydown: o
+1408.7518000001908	DATA	Keydown: r
+1409.2655	DATA	Keydown: r
+1409.6268000001908	DATA	Keydown: a
+1409.9188000001907	DATA	Keydown: a
+1410.4021000003813	DATA	Keydown: d
+1411.3674999999998	DATA	Keydown: ArrowDown
+1411.4009999999998	EXP	dutch_word: autoDraw = true
+1413.2013000001907	DATA	Mouse: 0 button down, pos=(1000,678)
+1413.223	EXP	braille_word: autoDraw = null
+1413.223	EXP	dutch_word: autoDraw = null
+1413.223	EXP	word_rsp: autoDraw = null
+1413.223	EXP	braille_word: image = {}
+1413.223	EXP	dutch_word: text = piste
+1413.2361999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+1413.7358000001907	EXP	braille_word: autoDraw = true
+1413.7358000001907	EXP	braille_word: anchor = center
+1417.1326000003814	DATA	Keydown: ArrowDown
+1418.4321999998092	DATA	Keydown: ArrowDown
+1418.4656999998092	EXP	dutch_word: autoDraw = true
+1419.0286999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+1419.0551000003813	EXP	braille_word: autoDraw = null
+1419.0551000003813	EXP	dutch_word: autoDraw = null
+1419.0551000003813	EXP	word_rsp: autoDraw = null
+1419.0551000003813	EXP	braille_word: image = {}
+1419.0551000003813	EXP	dutch_word: text = invloed
+1419.0551000003813	EXP	word_rsp: editable = true
+1419.0551000003813	EXP	word_rsp: autoDraw = true
+1419.0551000003813	EXP	word_rsp: anchor = center
+1419.0551000003813	EXP	word_rsp: autoDraw = true
+1419.0551000003813	EXP	word_rsp: anchor = center
+1419.2483000001907	DATA	Mouse: 0 button up, pos=(1000,678)
+1419.5671999998092	EXP	braille_word: autoDraw = true
+1419.5671999998092	EXP	braille_word: anchor = center
+1426.4691999998092	DATA	Keydown: i
+1426.937	DATA	Keydown: n
+1427.1296999998092	DATA	Keydown: v
+1427.2998000001908	DATA	Keydown: l
+1427.9628000001908	DATA	Keydown: o
+1428.1633999996184	DATA	Keydown: e
+1429.0493000001907	DATA	Keydown: d
+1429.6444999999999	DATA	Keydown: ArrowDown
+1429.6781000003814	EXP	dutch_word: autoDraw = true
+1430.5336000003815	DATA	Mouse: 0 button down, pos=(1000,678)
+1430.5513000001906	EXP	braille_word: autoDraw = null
+1430.5513000001906	EXP	dutch_word: autoDraw = null
+1430.5513000001906	EXP	word_rsp: autoDraw = null
+1430.5513000001906	EXP	braille_word: image = {}
+1430.5513000001906	EXP	dutch_word: text = stal
+1430.6156000003814	DATA	Mouse: 0 button up, pos=(1000,678)
+1431.0628999996184	EXP	braille_word: autoDraw = true
+1431.0628999996184	EXP	braille_word: anchor = center
+1433.0004999999999	DATA	Keydown: ArrowDown
+1434.1273999996185	DATA	Keydown: ArrowDown
+1434.7971999998092	DATA	Keydown: ArrowDown
+1434.827	EXP	dutch_word: autoDraw = true
+1435.8271999998092	DATA	Mouse: 0 button down, pos=(1000,678)
+1435.8478000001908	EXP	braille_word: autoDraw = null
+1435.8478000001908	EXP	dutch_word: autoDraw = null
+1435.8478000001908	EXP	word_rsp: autoDraw = null
+1435.8478000001908	EXP	braille_word: image = {}
+1435.8478000001908	EXP	dutch_word: text = afnemen
+1436.043	DATA	Mouse: 0 button up, pos=(1000,678)
+1436.3623999996184	EXP	braille_word: autoDraw = true
+1436.3623999996184	EXP	braille_word: anchor = center
+1442.3151000003813	DATA	Keydown: ArrowDown
+1442.341	EXP	dutch_word: autoDraw = true
+1442.9376000003815	DATA	Mouse: 0 button down, pos=(1000,678)
+1442.9626000003814	EXP	braille_word: autoDraw = null
+1442.9626000003814	EXP	dutch_word: autoDraw = null
+1442.9626000003814	EXP	word_rsp: autoDraw = null
+1442.9626000003814	EXP	braille_word: image = {}
+1442.9626000003814	EXP	dutch_word: text = hechten
+1443.1483000001906	DATA	Mouse: 0 button up, pos=(1000,678)
+1443.4753000001906	EXP	braille_word: autoDraw = true
+1443.4753000001906	EXP	braille_word: anchor = center
+1452.6568000001907	DATA	Keydown: ArrowDown
+1452.6871000003814	EXP	dutch_word: autoDraw = true
+1453.2898000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+1453.3093999996186	EXP	braille_word: autoDraw = null
+1453.3093999996186	EXP	dutch_word: autoDraw = null
+1453.3093999996186	EXP	word_rsp: autoDraw = null
+1453.3093999996186	EXP	braille_word: image = {}
+1453.3093999996186	EXP	dutch_word: text = akkoord
+1453.5043000001906	DATA	Mouse: 0 button up, pos=(1000,678)
+1453.8221000003814	EXP	braille_word: autoDraw = true
+1453.8221000003814	EXP	braille_word: anchor = center
+1456.3905	DATA	Keydown: ArrowDown
+1458.0396999998093	DATA	Keydown: ArrowDown
+1458.0688999996185	EXP	dutch_word: autoDraw = true
+1459.0521000003814	DATA	Mouse: 0 button down, pos=(1000,678)
+1459.0733000001908	EXP	braille_word: autoDraw = null
+1459.0733000001908	EXP	dutch_word: autoDraw = null
+1459.0733000001908	EXP	word_rsp: autoDraw = null
+1459.0733000001908	EXP	braille_word: image = {}
+1459.0733000001908	EXP	dutch_word: text = lust
+1459.2645	DATA	Mouse: 0 button up, pos=(1000,678)
+1459.5868999996185	EXP	braille_word: autoDraw = true
+1459.5868999996185	EXP	braille_word: anchor = center
+1461.586	DATA	Keydown: ArrowDown
+1462.9486000003815	DATA	Keydown: ArrowDown
+1463.617	DATA	Keydown: ArrowDown
+1463.6503000001908	EXP	dutch_word: autoDraw = true
+1464.4508999996185	DATA	Mouse: 0 button down, pos=(1000,678)
+1464.4716000003814	EXP	braille_word: autoDraw = null
+1464.4716000003814	EXP	dutch_word: autoDraw = null
+1464.4716000003814	EXP	word_rsp: autoDraw = null
+1464.4716000003814	EXP	braille_word: image = {}
+1464.4716000003814	EXP	dutch_word: text = geit
+1464.6668999996184	DATA	Mouse: 0 button up, pos=(1000,678)
+1464.985	EXP	braille_word: autoDraw = true
+1464.985	EXP	braille_word: anchor = center
+1467.7625	DATA	Keydown: ArrowDown
+1468.9621000003815	DATA	Keydown: ArrowDown
+1468.998699999809	EXP	dutch_word: autoDraw = true
+1469.5951999998092	DATA	Mouse: 0 button down, pos=(1000,678)
+1469.6195	EXP	braille_word: autoDraw = null
+1469.6195	EXP	dutch_word: autoDraw = null
+1469.6195	EXP	word_rsp: autoDraw = null
+1469.6195	EXP	braille_word: image = {}
+1469.6195	EXP	dutch_word: text = aflopen
+1469.8118000001907	DATA	Mouse: 0 button up, pos=(1000,678)
+1470.133699999809	EXP	braille_word: autoDraw = true
+1470.133699999809	EXP	braille_word: anchor = center
+1477.9293000001908	DATA	Keydown: ArrowDown
+1477.9621000003815	EXP	dutch_word: autoDraw = true
+1478.6028000001907	DATA	Mouse: 0 button down, pos=(1000,678)
+1478.6166000003814	EXP	braille_word: autoDraw = null
+1478.6166000003814	EXP	dutch_word: autoDraw = null
+1478.6166000003814	EXP	word_rsp: autoDraw = null
+1478.6166000003814	EXP	braille_word: image = {}
+1478.6166000003814	EXP	dutch_word: text = geld
+1478.8178000001906	DATA	Mouse: 0 button up, pos=(1000,678)
+1479.1298999996184	EXP	braille_word: autoDraw = true
+1479.1298999996184	EXP	braille_word: anchor = center
+1482.5641000003814	DATA	Keydown: ArrowDown
+1483.4986000003814	DATA	Keydown: ArrowDown
+1483.5271000003813	EXP	dutch_word: autoDraw = true
+1484.4736000003813	DATA	Mouse: 0 button down, pos=(1000,678)
+1484.4981000003813	EXP	braille_word: autoDraw = null
+1484.4981000003813	EXP	dutch_word: autoDraw = null
+1484.4981000003813	EXP	word_rsp: autoDraw = null
+1484.4981000003813	EXP	braille_word: image = {}
+1484.4981000003813	EXP	dutch_word: text = strikken
+1484.684	DATA	Mouse: 0 button up, pos=(1000,678)
+1485.012	EXP	braille_word: autoDraw = true
+1485.012	EXP	braille_word: anchor = center
+1489.3883000001906	DATA	Keydown: ArrowDown
+1489.4251000003815	EXP	dutch_word: autoDraw = true
+1490.0641999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+1490.0793999996185	EXP	braille_word: autoDraw = null
+1490.0793999996185	EXP	dutch_word: autoDraw = null
+1490.0793999996185	EXP	word_rsp: autoDraw = null
+1490.0793999996185	EXP	braille_word: image = {}
+1490.0793999996185	EXP	dutch_word: text = daarheen
+1490.2791000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+1490.5933999996184	EXP	braille_word: autoDraw = true
+1490.5933999996184	EXP	braille_word: anchor = center
+1498.09	DATA	Keydown: ArrowDown
+1498.1216999998092	EXP	dutch_word: autoDraw = true
+1498.8721000003814	DATA	Mouse: 0 button down, pos=(1000,678)
+1498.8933999996184	EXP	braille_word: autoDraw = null
+1498.8933999996184	EXP	dutch_word: autoDraw = null
+1498.8933999996184	EXP	word_rsp: autoDraw = null
+1498.8933999996184	EXP	braille_word: image = {}
+1498.8933999996184	EXP	dutch_word: text = jagen
+1499.0871000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+1499.407199999809	EXP	braille_word: autoDraw = true
+1499.407199999809	EXP	braille_word: anchor = center
+1503.8213999996185	DATA	Keydown: ArrowDown
+1503.8535	EXP	dutch_word: autoDraw = true
+1504.4205	DATA	Mouse: 0 button down, pos=(1000,678)
+1504.4411000003813	EXP	braille_word: autoDraw = null
+1504.4411000003813	EXP	dutch_word: autoDraw = null
+1504.4411000003813	EXP	word_rsp: autoDraw = null
+1504.4411000003813	EXP	braille_word: image = {}
+1504.4411000003813	EXP	dutch_word: text = knaap
+1504.6366999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+1504.9553999996185	EXP	braille_word: autoDraw = true
+1504.9553999996185	EXP	braille_word: anchor = center
+1507.6858000001907	DATA	Keydown: ArrowDown
+1508.715199999809	DATA	Keydown: ArrowDown
+1508.7521000003815	EXP	dutch_word: autoDraw = true
+1509.4066000003813	DATA	Mouse: 0 button down, pos=(1000,678)
+1509.4228000001906	EXP	braille_word: autoDraw = null
+1509.4228000001906	EXP	dutch_word: autoDraw = null
+1509.4228000001906	EXP	word_rsp: autoDraw = null
+1509.4228000001906	EXP	braille_word: image = {}
+1509.4228000001906	EXP	dutch_word: text = beseffen
+1509.6215	DATA	Mouse: 0 button up, pos=(1000,678)
+1509.9365	EXP	braille_word: autoDraw = true
+1509.9365	EXP	braille_word: anchor = center
+1518.2843000001906	DATA	Keydown: ArrowDown
+1518.3148999996185	EXP	dutch_word: autoDraw = true
+1518.8671999998091	DATA	Mouse: 0 button down, pos=(1000,678)
+1518.887	EXP	braille_word: autoDraw = null
+1518.887	EXP	dutch_word: autoDraw = null
+1518.887	EXP	word_rsp: autoDraw = null
+1518.887	EXP	braille_word: image = {}
+1518.887	EXP	dutch_word: text = groen
+1519.0818999996184	DATA	Mouse: 0 button up, pos=(1000,678)
+1519.3993000001906	EXP	braille_word: autoDraw = true
+1519.3993000001906	EXP	braille_word: anchor = center
+1521.0605	DATA	Keydown: ArrowDown
+1522.482	DATA	Keydown: ArrowDown
+1524.2596999998093	DATA	Keydown: ArrowDown
+1524.2966000003814	EXP	dutch_word: autoDraw = true
+1524.9208000001906	DATA	Mouse: 0 button down, pos=(1000,678)
+1524.9336999998093	EXP	braille_word: autoDraw = null
+1524.9336999998093	EXP	dutch_word: autoDraw = null
+1524.9336999998093	EXP	word_rsp: autoDraw = null
+1524.9336999998093	EXP	braille_word: image = {}
+1524.9336999998093	EXP	dutch_word: text = oprotten
+1525.1356999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+1525.4476999998092	EXP	braille_word: autoDraw = true
+1525.4476999998092	EXP	braille_word: anchor = center
+1533.1068000001908	DATA	Keydown: ArrowDown
+1533.143	EXP	dutch_word: autoDraw = true
+1533.7651999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+1533.7818000001907	EXP	braille_word: autoDraw = null
+1533.7818000001907	EXP	dutch_word: autoDraw = null
+1533.7818000001907	EXP	word_rsp: autoDraw = null
+1533.7818000001907	EXP	braille_word: image = {}
+1533.7818000001907	EXP	dutch_word: text = samen
+1533.9801000003813	DATA	Mouse: 0 button up, pos=(1000,678)
+1534.2948999996186	EXP	braille_word: autoDraw = true
+1534.2948999996186	EXP	braille_word: anchor = center
+1536.9281000003814	DATA	Keydown: ArrowDown
+1538.1583000001906	DATA	Keydown: ArrowDown
+1538.1918000001906	EXP	dutch_word: autoDraw = true
+1538.8583999996185	DATA	Mouse: 0 button down, pos=(1000,678)
+1538.8795	EXP	braille_word: autoDraw = null
+1538.8795	EXP	dutch_word: autoDraw = null
+1538.8795	EXP	word_rsp: autoDraw = null
+1538.8795	EXP	braille_word: image = {}
+1538.8795	EXP	dutch_word: text = slapen
+1539.0715	DATA	Mouse: 0 button up, pos=(1000,678)
+1539.3931000003813	EXP	braille_word: autoDraw = true
+1539.3931000003813	EXP	braille_word: anchor = center
+1542.7073999996185	DATA	Keydown: ArrowDown
+1543.5601999998091	DATA	Keydown: ArrowDown
+1543.5903000001906	EXP	dutch_word: autoDraw = true
+1544.2106000003814	DATA	Mouse: 0 button down, pos=(1000,678)
+1544.2275	EXP	braille_word: autoDraw = null
+1544.2275	EXP	dutch_word: autoDraw = null
+1544.2275	EXP	word_rsp: autoDraw = null
+1544.2275	EXP	braille_word: image = {}
+1544.2275	EXP	dutch_word: text = volop
+1544.4256000003813	DATA	Mouse: 0 button up, pos=(1000,678)
+1544.7411000003815	EXP	braille_word: autoDraw = true
+1544.7411000003815	EXP	braille_word: anchor = center
+1548.4443000001907	DATA	Keydown: ArrowDown
+1548.4718999996185	EXP	dutch_word: autoDraw = true
+1549.0768000001906	DATA	Mouse: 0 button down, pos=(1000,678)
+1549.0943999996184	EXP	braille_word: autoDraw = null
+1549.0943999996184	EXP	dutch_word: autoDraw = null
+1549.0943999996184	EXP	word_rsp: autoDraw = null
+1549.0943999996184	EXP	braille_word: image = {}
+1549.0943999996184	EXP	dutch_word: text = zweven
+1549.0943999996184	EXP	word_rsp: editable = true
+1549.0943999996184	EXP	word_rsp: autoDraw = true
+1549.0943999996184	EXP	word_rsp: anchor = center
+1549.0943999996184	EXP	word_rsp: autoDraw = true
+1549.0943999996184	EXP	word_rsp: anchor = center
+1549.2916999998092	DATA	Mouse: 0 button up, pos=(1000,678)
+1549.6063000001907	EXP	braille_word: autoDraw = true
+1549.6063000001907	EXP	braille_word: anchor = center
+1551.6873000001906	DATA	Keydown: z
+1552.3006000003813	DATA	Keydown: z
+1553.0571000003815	DATA	Keydown: Enter
+1554.2873999996184	DATA	Keydown: z
+1555.5728000001907	DATA	Keydown: w
+1556.9025	DATA	Keydown: e
+1558.2486000003814	DATA	Keydown: v
+1558.3816000003815	DATA	Keydown: e
+1559.2416000003814	DATA	Keydown: n
+1559.8848999996185	DATA	Keydown: ArrowDown
+1559.9178000001907	EXP	dutch_word: autoDraw = true
+1560.4478000001907	DATA	Mouse: 0 button down, pos=(1000,678)
+1560.4759999999999	EXP	braille_word: autoDraw = null
+1560.4759999999999	EXP	dutch_word: autoDraw = null
+1560.4759999999999	EXP	word_rsp: autoDraw = null
+1560.4759999999999	EXP	endTrain_text: autoDraw = true
+1560.6676000003813	DATA	Mouse: 0 button up, pos=(1000,678)
+1938.8566999998093	DATA	Mouse: 0 button down, pos=(1000,678)
+1938.8756999998093	EXP	endTrain_text: autoDraw = null
+1938.8756999998093	EXP	testInstr_text: autoDraw = true
+1938.9865	DATA	Mouse: 0 button up, pos=(1000,678)
+1953.1323999996184	DATA	Mouse: 0 button down, pos=(1000,678)
+1953.1628999996185	EXP	testInstr_text: autoDraw = null
+1953.1628999996185	EXP	test_word: image = {}
+1953.1628999996185	EXP	test_response: editable = true
+1953.1628999996185	EXP	test_word: autoDraw = true
+1953.1628999996185	EXP	test_word: anchor = center
+1953.2253000001906	DATA	Mouse: 0 button up, pos=(1000,678)
+1959.1654999999998	EXP	test_word: autoDraw = null
+1959.1654999999998	EXP	test_response: autoDraw = true
+1959.1654999999998	EXP	test_response: anchor = center
+1959.7493999996184	DATA	Keydown: s
+1959.8956999998093	DATA	Keydown: o
+1960.0011999998092	DATA	Keydown: d
+1960.1123000001908	DATA	Keydown: a
+1962.8808000001907	DATA	Mouse: 0 button down, pos=(1000,678)
+1962.9071000003814	EXP	test_word: autoDraw = null
+1962.9071000003814	EXP	test_response: autoDraw = null
+1962.9071000003814	EXP	test_word: image = {}
+1962.9071000003814	EXP	test_response: editable = true
+1962.9071000003814	EXP	test_word: autoDraw = true
+1962.9071000003814	EXP	test_word: anchor = center
+1962.9486000003815	DATA	Mouse: 0 button up, pos=(1000,678)
+1968.8923000001907	EXP	test_word: autoDraw = null
+1968.912	EXP	test_response: autoDraw = true
+1968.912	EXP	test_response: anchor = center
+1970.6096000003813	DATA	Keydown: a
+1970.7956000003815	DATA	Keydown: a
+1970.9448000001908	DATA	Keydown: n
+1972.0003000001907	DATA	Keydown: z
+1973.7179999999998	DATA	Keydown: w
+1974.8571000003815	DATA	Keydown: .
+1975.0483000001907	DATA	Keydown: .
+1975.2293999996184	DATA	Keydown: .
+1975.9593000001908	DATA	Mouse: 0 button down, pos=(1000,678)
+1975.9859999999999	EXP	test_word: autoDraw = null
+1975.9859999999999	EXP	test_response: autoDraw = null
+1975.9859999999999	EXP	test_word: image = {}
+1975.9859999999999	EXP	test_response: editable = true
+1975.9859999999999	EXP	test_word: autoDraw = true
+1975.9859999999999	EXP	test_word: anchor = center
+1976.0341999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+1981.971	EXP	test_word: autoDraw = null
+1981.9914999999999	EXP	test_response: autoDraw = true
+1981.9914999999999	EXP	test_response: anchor = center
+1982.3746999998093	DATA	Keydown: v
+1982.4546000003813	DATA	Keydown: r
+1982.6154999999999	DATA	Keydown: e
+1982.7298000001906	DATA	Keydown: t
+1982.854699999809	DATA	Keydown: e
+1983.0118999996184	DATA	Keydown: n
+1984.1538000001906	DATA	Mouse: 0 button down, pos=(1000,678)
+1984.1833000001907	EXP	test_word: autoDraw = null
+1984.1833000001907	EXP	test_response: autoDraw = null
+1984.1833000001907	EXP	test_word: image = {}
+1984.1833000001907	EXP	test_response: editable = true
+1984.1833000001907	EXP	test_word: autoDraw = true
+1984.1833000001907	EXP	test_word: anchor = center
+1984.2406999998093	DATA	Mouse: 0 button up, pos=(1000,678)
+1990.1678999996184	EXP	test_word: autoDraw = null
+1990.1878000001907	EXP	test_response: autoDraw = true
+1990.1878000001907	EXP	test_response: anchor = center
+1990.7553000001906	DATA	Keydown: w
+1990.9791000003813	DATA	Keydown: a
+1991.1351999998092	DATA	Keydown: g
+1991.3556000003814	DATA	Keydown: o
+1991.5545	DATA	Keydown: n
+1992.0711000003814	DATA	Mouse: 0 button down, pos=(1000,678)
+1992.096	EXP	test_word: autoDraw = null
+1992.096	EXP	test_response: autoDraw = null
+1992.096	EXP	test_word: image = {}
+1992.096	EXP	test_response: editable = true
+1992.096	EXP	test_word: autoDraw = true
+1992.096	EXP	test_word: anchor = center
+1992.142	DATA	Mouse: 0 button up, pos=(1000,678)
+1998.0821999998093	EXP	test_word: autoDraw = null
+1998.1023000001908	EXP	test_response: autoDraw = true
+1998.1023000001908	EXP	test_response: anchor = center
+1999.4823999996186	DATA	Keydown: d
+1999.7101000003813	DATA	Keydown: r
+2000.0666000003814	DATA	Keydown: o
+2000.2071999998093	DATA	Keydown: o
+2003.9373999996185	DATA	Keydown: i
+2004.8638000001906	DATA	Keydown: Shift
+2005.1003000001906	DATA	Keydown: .
+2005.2638000001907	DATA	Keydown: .
+2006.1006000003815	DATA	Mouse: 0 button down, pos=(1000,678)
+2006.1256000003814	EXP	test_word: autoDraw = null
+2006.1256000003814	EXP	test_response: autoDraw = null
+2006.1256000003814	EXP	test_word: image = {}
+2006.1256000003814	EXP	test_response: editable = true
+2006.1256000003814	EXP	test_word: autoDraw = true
+2006.1256000003814	EXP	test_word: anchor = center
+2006.1996999998091	DATA	Mouse: 0 button up, pos=(1000,678)
+2012.1108000001907	EXP	test_word: autoDraw = null
+2012.1305	EXP	test_response: autoDraw = true
+2012.1305	EXP	test_response: anchor = center
+2012.9776999998091	DATA	Keydown: m
+2013.2216000003814	DATA	Keydown: i
+2013.3271000003815	DATA	Keydown: d
+2013.5046000003815	DATA	Keydown: d
+2013.5978999996184	DATA	Keydown: e
+2013.7468999996186	DATA	Keydown: n
+2014.2458999996184	DATA	Mouse: 0 button down, pos=(1000,678)
+2014.2741000003814	EXP	test_word: autoDraw = null
+2014.2741000003814	EXP	test_response: autoDraw = null
+2014.2741000003814	EXP	test_word: image = {}
+2014.2741000003814	EXP	test_response: editable = true
+2014.2741000003814	EXP	test_word: autoDraw = true
+2014.2741000003814	EXP	test_word: anchor = center
+2014.3139999999999	DATA	Mouse: 0 button up, pos=(1000,678)
+2020.258	EXP	test_word: autoDraw = null
+2020.2773999996184	EXP	test_response: autoDraw = true
+2020.2773999996184	EXP	test_response: anchor = center
+2020.7411999998092	DATA	Keydown: k
+2020.8918999996185	DATA	Keydown: l
+2021.0748000001906	DATA	Keydown: i
+2021.3648000001906	DATA	Keydown: p
+2021.5159999999998	DATA	Keydown: p
+2021.6243000001907	DATA	Keydown: e
+2021.7616000003813	DATA	Keydown: n
+2022.4243999996186	DATA	Mouse: 0 button down, pos=(1000,678)
+2022.4534999999998	EXP	test_word: autoDraw = null
+2022.4534999999998	EXP	test_response: autoDraw = null
+2022.4534999999998	EXP	test_word: image = {}
+2022.4534999999998	EXP	test_response: editable = true
+2022.4534999999998	EXP	test_word: autoDraw = true
+2022.4534999999998	EXP	test_word: anchor = center
+2022.4793000001907	DATA	Mouse: 0 button up, pos=(1000,678)
+2028.4386000003815	EXP	test_word: autoDraw = null
+2028.4583999996185	EXP	test_response: autoDraw = true
+2028.4583999996185	EXP	test_response: anchor = center
+2030.192	DATA	Keydown: b
+2030.308	DATA	Keydown: e
+2030.3878999996184	DATA	Keydown: g
+2030.605	DATA	Keydown: o
+2030.8916000003815	DATA	Keydown: g
+2033.9643000001906	DATA	Mouse: 0 button down, pos=(966,751)
+2033.9761000003814	EXP	test_word: autoDraw = null
+2033.9761000003814	EXP	test_response: autoDraw = null
+2033.9761000003814	EXP	test_word: image = {}
+2033.9761000003814	EXP	test_response: editable = true
+2033.9761000003814	EXP	test_word: autoDraw = true
+2033.9761000003814	EXP	test_word: anchor = center
+2034.0613999996185	DATA	Mouse: 0 button up, pos=(966,751)
+2039.9678999996186	EXP	test_word: autoDraw = null
+2039.9878999996185	EXP	test_response: autoDraw = true
+2039.9878999996185	EXP	test_response: anchor = center
+2040.3121000003814	DATA	Keydown: k
+2040.4546999998092	DATA	Keydown: a
+2040.6551999998092	DATA	Keydown: a
+2040.7881999998092	DATA	Keydown: l
+2042.0214999999998	DATA	Mouse: 0 button down, pos=(966,750)
+2042.0473000001907	EXP	test_word: autoDraw = null
+2042.0473000001907	EXP	test_response: autoDraw = null
+2042.0473000001907	EXP	test_word: image = {}
+2042.0473000001907	EXP	test_response: editable = true
+2042.0473000001907	EXP	test_word: autoDraw = true
+2042.0473000001907	EXP	test_word: anchor = center
+2042.2346000003813	DATA	Mouse: 0 button up, pos=(966,750)
+2048.032	EXP	test_word: autoDraw = null
+2048.0518999996184	EXP	test_response: autoDraw = true
+2048.0518999996184	EXP	test_response: anchor = center
+2048.7253999996183	DATA	Keydown: s
+2048.8235	DATA	Keydown: t
+2048.9816000003816	DATA	Keydown: e
+2049.2818999996184	DATA	Keydown: m
+2049.418699999809	DATA	Keydown: m
+2049.5995	DATA	Keydown: i
+2049.7853999996187	DATA	Keydown: n
+2049.9558999996184	DATA	Keydown: g
+2050.534800000191	DATA	Mouse: 0 button down, pos=(966,750)
+2050.5598999996187	EXP	test_word: autoDraw = null
+2050.5598999996187	EXP	test_response: autoDraw = null
+2050.5598999996187	EXP	test_word: image = {}
+2050.5598999996187	EXP	test_response: editable = true
+2050.5598999996187	EXP	test_word: autoDraw = true
+2050.5598999996187	EXP	test_word: anchor = center
+2050.5606000003813	DATA	Mouse: 0 button up, pos=(966,750)
+2056.5456000003815	EXP	test_word: autoDraw = null
+2056.5655	EXP	test_response: autoDraw = true
+2056.5655	EXP	test_response: anchor = center
+2058.0653999996184	DATA	Keydown: o
+2058.1706000003815	DATA	Keydown: p
+2058.537199999809	DATA	Keydown: k
+2058.7123999996184	DATA	Keydown: i
+2058.9231000003815	DATA	Keydown: c
+2059.0286000003816	DATA	Keydown: h
+2059.206	DATA	Keydown: t
+2059.9281999998093	DATA	Mouse: 0 button down, pos=(966,750)
+2059.9575	EXP	test_word: autoDraw = null
+2059.9575	EXP	test_response: autoDraw = null
+2059.9575	EXP	test_word: image = {}
+2059.9575	EXP	test_response: editable = true
+2059.9575	EXP	test_word: autoDraw = true
+2059.9575	EXP	test_word: anchor = center
+2060.0063000001905	DATA	Mouse: 0 button up, pos=(966,750)
+2065.9426000003814	EXP	test_word: autoDraw = null
+2065.9623000001907	EXP	test_response: autoDraw = true
+2065.9623000001907	EXP	test_response: anchor = center
+2068.4286000003813	DATA	Keydown: g
+2068.4973000001905	DATA	Keydown: e
+2068.6586999998094	DATA	Keydown: d
+2068.87	DATA	Keydown: i
+2069.1088000001905	DATA	Keydown: c
+2069.4251000003815	DATA	Keydown: h
+2069.574699999809	DATA	Keydown: t
+2070.1085	DATA	Mouse: 0 button down, pos=(966,750)
+2070.1373999996185	EXP	test_word: autoDraw = null
+2070.1373999996185	EXP	test_response: autoDraw = null
+2070.1373999996185	EXP	test_word: image = {}
+2070.1373999996185	EXP	test_response: editable = true
+2070.1373999996185	EXP	test_word: autoDraw = true
+2070.1373999996185	EXP	test_word: anchor = center
+2070.1913000001905	DATA	Mouse: 0 button up, pos=(966,750)
+2076.1226999998094	EXP	test_word: autoDraw = null
+2076.1423000001905	EXP	test_response: autoDraw = true
+2076.1423000001905	EXP	test_response: anchor = center
+2077.1913999996186	DATA	Keydown: g
+2077.3611000003816	DATA	Keydown: i
+2077.5263000001905	DATA	Keydown: j
+2077.7481000003813	DATA	Keydown: f
+2078.3055	DATA	Mouse: 0 button down, pos=(966,750)
+2078.3338999996186	EXP	test_word: autoDraw = null
+2078.3338999996186	EXP	test_response: autoDraw = null
+2078.3338999996186	EXP	test_word: image = {}
+2078.3338999996186	EXP	test_response: editable = true
+2078.3338999996186	EXP	test_word: autoDraw = true
+2078.3338999996186	EXP	test_word: anchor = center
+2078.363600000381	DATA	Mouse: 0 button up, pos=(966,750)
+2084.3224999999998	EXP	test_word: autoDraw = null
+2084.3395	EXP	test_response: autoDraw = true
+2084.3395	EXP	test_response: anchor = center
+2086.5715	DATA	Keydown: z
+2086.7526000003813	DATA	Keydown: a
+2086.9128000001906	DATA	Keydown: a
+2087.1078999996184	DATA	Keydown: l
+2087.3301999998093	DATA	Keydown: r
+2087.5023000001906	DATA	Keydown: i
+2088.0023999996183	DATA	Keydown: Shift
+2088.1355	DATA	Keydown: .
+2088.284800000191	DATA	Keydown: .
+2088.4381000003814	DATA	Keydown: .
+2089.1925	DATA	Mouse: 0 button down, pos=(966,750)
+2089.2146000003813	EXP	test_word: autoDraw = null
+2089.2146000003813	EXP	test_response: autoDraw = null
+2089.2146000003813	EXP	test_word: image = {}
+2089.2146000003813	EXP	test_response: editable = true
+2089.2146000003813	EXP	test_word: autoDraw = true
+2089.2146000003813	EXP	test_word: anchor = center
+2089.2376000003815	DATA	Mouse: 0 button up, pos=(966,750)
+2095.1993000001908	EXP	test_word: autoDraw = null
+2095.2191000003813	EXP	test_response: autoDraw = true
+2095.2191000003813	EXP	test_response: anchor = center
+2095.619199999809	DATA	Keydown: g
+2095.7496999998093	DATA	Keydown: e
+2095.8498000001905	DATA	Keydown: b
+2096.3243000001908	DATA	Keydown: i
+2096.5668999996183	DATA	Keydown: t
+2097.0335	DATA	Mouse: 0 button down, pos=(966,750)
+2097.0615	EXP	test_word: autoDraw = null
+2097.0615	EXP	test_response: autoDraw = null
+2097.0615	EXP	test_word: image = {}
+2097.0615	EXP	test_response: editable = true
+2097.0615	EXP	test_word: autoDraw = true
+2097.0615	EXP	test_word: anchor = center
+2097.0826000003813	DATA	Mouse: 0 button up, pos=(966,750)
+2103.0465	EXP	test_word: autoDraw = null
+2103.066600000381	EXP	test_response: autoDraw = true
+2103.066600000381	EXP	test_response: anchor = center
+2104.7358999996186	DATA	Keydown: w
+2104.9328999996183	DATA	Keydown: o
+2105.1496999998094	DATA	Keydown: n
+2105.3165	DATA	Keydown: z
+2105.4561000003814	DATA	Keydown: i
+2105.648199999809	DATA	Keydown: n
+2105.8513999996185	DATA	Keydown: g
+2107.7625	DATA	Mouse: 0 button down, pos=(1003,843)
+2107.7906000003813	EXP	test_word: autoDraw = null
+2107.7906000003813	EXP	test_response: autoDraw = null
+2107.7906000003813	EXP	test_word: image = {}
+2107.7906000003813	EXP	test_response: editable = true
+2107.7906000003813	EXP	test_word: autoDraw = true
+2107.7906000003813	EXP	test_word: anchor = center
+2107.8623999996184	DATA	Mouse: 0 button up, pos=(1003,843)
+2113.7763000001905	EXP	test_word: autoDraw = null
+2113.7961000003816	EXP	test_response: autoDraw = true
+2113.7961000003816	EXP	test_response: anchor = center
+2114.6325	DATA	Keydown: z
+2114.846800000191	DATA	Keydown: e
+2114.9598000001906	DATA	Keydown: i
+2115.0791000003815	DATA	Keydown: z
+2115.1798999996186	DATA	Keydown: o
+2115.3138999996186	DATA	Keydown: e
+2115.4098999996186	DATA	Keydown: n
+2117.6255	DATA	Keydown: Backspace
+2117.796	DATA	Keydown: Backspace
+2117.9416999998093	DATA	Keydown: Backspace
+2118.0785	DATA	Keydown: Backspace
+2118.2283999996184	DATA	Keydown: Backspace
+2118.3648999996185	DATA	Keydown: Backspace
+2118.5268999996183	DATA	Keydown: Backspace
+2119.0838999996186	DATA	Keydown: s
+2119.2783000001905	DATA	Keydown: e
+2119.4251000003815	DATA	Keydown: i
+2119.500800000191	DATA	Keydown: z
+2119.6121000003814	DATA	Keydown: o
+2119.7248000001905	DATA	Keydown: e
+2119.8415	DATA	Keydown: n
+2120.3798999996184	DATA	Mouse: 0 button down, pos=(904,762)
+2120.4036000003816	EXP	test_word: autoDraw = null
+2120.4036000003816	EXP	test_response: autoDraw = null
+2120.4036000003816	EXP	test_word: image = {}
+2120.4036000003816	EXP	test_response: editable = true
+2120.4036000003816	EXP	test_word: autoDraw = true
+2120.4036000003816	EXP	test_word: anchor = center
+2120.4245	DATA	Mouse: 0 button up, pos=(904,762)
+2126.3888000001907	EXP	test_word: autoDraw = null
+2126.4085	EXP	test_response: autoDraw = true
+2126.4085	EXP	test_response: anchor = center
+2128.1218999996186	DATA	Keydown: g
+2128.2048999996186	DATA	Keydown: e
+2128.346	DATA	Keydown: l
+2128.548199999809	DATA	Keydown: i
+2128.6086000003816	DATA	Keydown: e
+2128.8098999996187	DATA	Keydown: f
+2128.9386000003815	DATA	Keydown: d
+2129.532	DATA	Mouse: 0 button down, pos=(904,762)
+2129.5511999998093	EXP	test_word: autoDraw = null
+2129.5511999998093	EXP	test_response: autoDraw = null
+2129.5511999998093	EXP	test_word: image = {}
+2129.5511999998093	EXP	test_response: editable = true
+2129.5511999998093	EXP	test_word: autoDraw = true
+2129.5511999998093	EXP	test_word: anchor = center
+2129.6078999996184	DATA	Mouse: 0 button up, pos=(904,762)
+2135.5356000003812	EXP	test_word: autoDraw = null
+2135.5555	EXP	test_response: autoDraw = true
+2135.5555	EXP	test_response: anchor = center
+2136.7763999996187	DATA	Keydown: t
+2137.7853999996187	DATA	Keydown: u
+2138.6053999996184	DATA	Keydown: c
+2140.7701000003813	DATA	Keydown: h
+2141.7341999998093	DATA	Keydown: Shift
+2141.8906000003813	DATA	Keydown: .
+2142.0551000003816	DATA	Keydown: .
+2143.0528999996186	DATA	Mouse: 0 button down, pos=(904,762)
+2143.0793999996185	EXP	test_word: autoDraw = null
+2143.0793999996185	EXP	test_response: autoDraw = null
+2143.0793999996185	EXP	test_word: image = {}
+2143.0793999996185	EXP	test_response: editable = true
+2143.0793999996185	EXP	test_word: autoDraw = true
+2143.0793999996185	EXP	test_word: anchor = center
+2143.1003999996183	DATA	Mouse: 0 button up, pos=(904,762)
+2149.0673000001907	EXP	test_word: autoDraw = null
+2149.0846999998093	EXP	test_response: autoDraw = true
+2149.0846999998093	EXP	test_response: anchor = center
+2149.4481000003816	DATA	Keydown: l
+2149.6148999996185	DATA	Keydown: a
+2149.797800000191	DATA	Keydown: p
+2149.9348999996187	DATA	Keydown: p
+2150.0513999996183	DATA	Keydown: e
+2150.2205	DATA	Keydown: n
+2150.7636999998094	DATA	Mouse: 2 button down, pos=(904,762)
+2150.7723999996183	EXP	test_word: autoDraw = null
+2150.7723999996183	EXP	test_response: autoDraw = null
+2150.7723999996183	EXP	test_word: image = {}
+2150.7723999996183	EXP	test_response: editable = true
+2150.7723999996183	EXP	test_word: autoDraw = true
+2150.7723999996183	EXP	test_word: anchor = center
+2150.822	DATA	Mouse: 2 button up, pos=(904,762)
+2156.7641000003814	EXP	test_word: autoDraw = null
+2156.7973999996184	EXP	test_response: autoDraw = true
+2156.7973999996184	EXP	test_response: anchor = center
+2162.8134999999997	DATA	Mouse: 0 button down, pos=(857,762)
+2162.833	EXP	test_word: autoDraw = null
+2162.833	EXP	test_response: autoDraw = null
+2162.833	EXP	test_word: image = {}
+2162.833	EXP	test_response: editable = true
+2162.833	EXP	test_word: autoDraw = true
+2162.833	EXP	test_word: anchor = center
+2162.8626000003815	DATA	Mouse: 0 button up, pos=(857,762)
+2168.8265	EXP	test_word: autoDraw = null
+2168.8593000001906	EXP	test_response: autoDraw = true
+2168.8593000001906	EXP	test_response: anchor = center
+2169.145699999809	DATA	Keydown: a
+2169.5688000001905	DATA	Keydown: p
+2169.7143999996183	DATA	Keydown: p
+2169.9263999996183	DATA	Keydown: a
+2170.127	DATA	Keydown: r
+2170.259699999809	DATA	Keydown: a
+2170.413699999809	DATA	Keydown: a
+2170.510199999809	DATA	Keydown: t
+2171.4516000003814	DATA	Mouse: 0 button down, pos=(857,762)
+2171.4755	EXP	test_word: autoDraw = null
+2171.4755	EXP	test_response: autoDraw = null
+2171.4755	EXP	test_word: image = {}
+2171.4755	EXP	test_response: editable = true
+2171.4755	EXP	test_word: autoDraw = true
+2171.4755	EXP	test_word: anchor = center
+2171.5258999996186	DATA	Mouse: 0 button up, pos=(857,762)
+2177.456699999809	EXP	test_word: autoDraw = null
+2177.489800000191	EXP	test_response: autoDraw = true
+2177.489800000191	EXP	test_response: anchor = center
+2179.0403000001907	DATA	Keydown: d
+2179.1903000001907	DATA	Keydown: o
+2179.3568000001906	DATA	Keydown: z
+2180.1898999996183	DATA	Keydown: ;
+2180.8566999998093	DATA	Keydown: Backspace
+2181.1085	DATA	Keydown: Shift
+2181.263	DATA	Keydown: .
+2181.4063000001906	DATA	Keydown: .
+2181.545	DATA	Keydown: .
+2182.0893999996183	DATA	Mouse: 0 button down, pos=(857,762)
+2182.121800000191	EXP	test_word: autoDraw = null
+2182.121800000191	EXP	test_response: autoDraw = null
+2182.121800000191	EXP	test_word: image = {}
+2182.121800000191	EXP	test_response: editable = true
+2182.121800000191	EXP	test_word: autoDraw = true
+2182.121800000191	EXP	test_word: anchor = center
+2182.1296999998094	DATA	Mouse: 0 button up, pos=(857,762)
+2188.136	EXP	test_word: autoDraw = null
+2188.136	EXP	test_response: autoDraw = true
+2188.136	EXP	test_response: anchor = center
+2188.4698999996185	DATA	Keydown: g
+2188.5868000001906	DATA	Keydown: a
+2188.77	DATA	Keydown: a
+2188.9536000003814	DATA	Keydown: ,
+2189.8365	DATA	Keydown: Backspace
+2190.1866000003815	DATA	Keydown: n
+2190.8198000001908	DATA	Mouse: 0 button down, pos=(857,762)
+2190.8523999996187	EXP	test_word: autoDraw = null
+2190.8523999996187	EXP	test_response: autoDraw = null
+2190.8523999996187	EXP	test_word: image = {}
+2190.8523999996187	EXP	test_response: editable = true
+2190.8523999996187	EXP	test_word: autoDraw = true
+2190.8523999996187	EXP	test_word: anchor = center
+2190.8771000003812	DATA	Mouse: 0 button up, pos=(857,762)
+2196.8663999996184	EXP	test_word: autoDraw = null
+2196.8663999996184	EXP	test_response: autoDraw = true
+2196.8663999996184	EXP	test_response: anchor = center
+2197.2563999996187	DATA	Keydown: b
+2197.3508000001907	DATA	Keydown: r
+2197.4503999996186	DATA	Keydown: u
+2197.5525	DATA	Keydown: i
+2197.7841000003814	DATA	Keydown: n
+2198.3673999996186	DATA	Mouse: 0 button down, pos=(857,762)
+2198.3995	EXP	test_word: autoDraw = null
+2198.3995	EXP	test_response: autoDraw = null
+2198.3995	EXP	test_word: image = {}
+2198.3995	EXP	test_response: editable = true
+2198.3995	EXP	test_word: autoDraw = true
+2198.3995	EXP	test_word: anchor = center
+2198.4341000003815	DATA	Mouse: 0 button up, pos=(857,762)
+2204.3811999998093	EXP	test_word: autoDraw = null
+2204.4139999999998	EXP	test_response: autoDraw = true
+2204.4139999999998	EXP	test_response: anchor = center
+2205.7981000003815	DATA	Keydown: p
+2206.0311999998094	DATA	Keydown: i
+2206.3311000003814	DATA	Keydown: t
+2206.4821000003813	DATA	Keydown: t
+2206.603	DATA	Keydown: i
+2206.797199999809	DATA	Keydown: g
+2207.4645	DATA	Mouse: 0 button down, pos=(857,762)
+2207.4966000003815	EXP	test_word: autoDraw = null
+2207.4966000003815	EXP	test_response: autoDraw = null
+2207.4966000003815	EXP	test_word: image = {}
+2207.4966000003815	EXP	test_response: editable = true
+2207.4966000003815	EXP	test_word: autoDraw = true
+2207.4966000003815	EXP	test_word: anchor = center
+2207.4973999996187	DATA	Mouse: 0 button up, pos=(857,762)
+2213.478199999809	EXP	test_word: autoDraw = null
+2213.5108999996187	EXP	test_response: autoDraw = true
+2213.5108999996187	EXP	test_response: anchor = center
+2214.4483999996187	DATA	Keydown: m
+2214.5993999996185	DATA	Keydown: e
+2214.7451000003816	DATA	Keydown: k
+2215.0116000003813	DATA	Keydown: s
+2215.1116000003813	DATA	Keydown: t
+2216.0106999998093	DATA	Mouse: 0 button down, pos=(857,762)
+2216.043699999809	EXP	test_word: autoDraw = null
+2216.043699999809	EXP	test_response: autoDraw = null
+2216.043699999809	EXP	test_word: image = {}
+2216.043699999809	EXP	test_response: editable = true
+2216.043699999809	EXP	test_word: autoDraw = true
+2216.043699999809	EXP	test_word: anchor = center
+2216.0941000003813	DATA	Mouse: 0 button up, pos=(857,762)
+2222.025199999809	EXP	test_word: autoDraw = null
+2222.058	EXP	test_response: autoDraw = true
+2222.058	EXP	test_response: anchor = center
+2224.8381000003815	DATA	Keydown: d
+2224.9663999996183	DATA	Keydown: a
+2225.2618999996184	DATA	Keydown: l
+2225.3833000001905	DATA	Keydown: e
+2225.4908999996183	DATA	Keydown: n
+2225.9313000001907	DATA	Mouse: 0 button down, pos=(857,762)
+2225.9566000003815	EXP	test_word: autoDraw = null
+2225.9566000003815	EXP	test_response: autoDraw = null
+2225.9566000003815	EXP	test_word: image = {}
+2225.9566000003815	EXP	test_response: editable = true
+2225.9566000003815	EXP	test_word: autoDraw = true
+2225.9566000003815	EXP	test_word: anchor = center
+2225.9835	DATA	Mouse: 0 button up, pos=(857,762)
+2231.9384999999997	EXP	test_word: autoDraw = null
+2231.9708999996183	EXP	test_response: autoDraw = true
+2231.9708999996183	EXP	test_response: anchor = center
+2232.9053999996186	DATA	Keydown: w
+2233.2055	DATA	Keydown: a
+2233.8051999998092	DATA	Keydown: r
+2233.9101000003816	DATA	Keydown: e
+2234.205699999809	DATA	Keydown: l
+2234.760199999809	DATA	Mouse: 0 button down, pos=(857,762)
+2234.787199999809	EXP	test_word: autoDraw = null
+2234.787199999809	EXP	test_response: autoDraw = null
+2234.787199999809	EXP	test_word: image = {}
+2234.787199999809	EXP	test_response: editable = true
+2234.787199999809	EXP	test_word: autoDraw = true
+2234.787199999809	EXP	test_word: anchor = center
+2234.8213999996183	DATA	Mouse: 0 button up, pos=(857,762)
+2240.768800000191	EXP	test_word: autoDraw = null
+2240.801699999809	EXP	test_response: autoDraw = true
+2240.801699999809	EXP	test_response: anchor = center
+2241.2191000003813	DATA	Keydown: g
+2241.3081999998094	DATA	Keydown: e
+2241.419	DATA	Keydown: h
+2241.5861000003815	DATA	Keydown: a
+2241.735699999809	DATA	Keydown: i
+2242.3355	DATA	Keydown: Backspace
+2242.5193999996186	DATA	Keydown: Backspace
+2243.092800000191	DATA	Keydown: e
+2243.2518999996187	DATA	Keydown: i
+2243.4591000003816	DATA	Keydown: m
+2244.035	DATA	Mouse: 0 button down, pos=(857,762)
+2244.0676000003814	EXP	test_word: autoDraw = null
+2244.0676000003814	EXP	test_response: autoDraw = null
+2244.0676000003814	EXP	test_word: image = {}
+2244.0676000003814	EXP	test_response: editable = true
+2244.0676000003814	EXP	test_word: autoDraw = true
+2244.0676000003814	EXP	test_word: anchor = center
+2244.068300000191	DATA	Mouse: 0 button up, pos=(857,762)
+2250.0818000001905	EXP	test_word: autoDraw = null
+2250.0818000001905	EXP	test_response: autoDraw = true
+2250.0818000001905	EXP	test_response: anchor = center
+2252.3155	DATA	Keydown: h
+2254.2648999996186	DATA	Keydown: a
+2255.2028000001906	DATA	Keydown: n
+2256.1145	DATA	Keydown: d
+2258.7206999998093	DATA	Mouse: 0 button down, pos=(857,762)
+2258.7458999996184	EXP	test_word: autoDraw = null
+2258.7458999996184	EXP	test_response: autoDraw = null
+2258.7458999996184	EXP	test_word: image = {}
+2258.7458999996184	EXP	test_response: editable = true
+2258.7458999996184	EXP	test_word: autoDraw = true
+2258.7458999996184	EXP	test_word: anchor = center
+2258.803	DATA	Mouse: 0 button up, pos=(857,762)
+2264.7271999998093	EXP	test_word: autoDraw = null
+2264.760199999809	EXP	test_response: autoDraw = true
+2264.760199999809	EXP	test_response: anchor = center
+2265.0946000003814	DATA	Keydown: g
+2265.1786000003813	DATA	Keydown: r
+2265.395	DATA	Keydown: a
+2265.5196000003816	DATA	Keydown: p
+2265.6943000001907	DATA	Keydown: p
+2265.7818000001907	DATA	Keydown: e
+2265.903199999809	DATA	Keydown: n
+2266.3608999996186	DATA	Mouse: 0 button down, pos=(857,762)
+2266.3933999996184	EXP	test_word: autoDraw = null
+2266.3933999996184	EXP	test_response: autoDraw = null
+2266.3933999996184	EXP	test_word: image = {}
+2266.3933999996184	EXP	test_response: editable = true
+2266.3933999996184	EXP	test_word: autoDraw = true
+2266.3933999996184	EXP	test_word: anchor = center
+2266.399	DATA	Mouse: 0 button up, pos=(857,762)
+2272.3748999996183	EXP	test_word: autoDraw = null
+2272.4076000003815	EXP	test_response: autoDraw = true
+2272.4076000003815	EXP	test_response: anchor = center
+2273.8328999996183	DATA	Keydown: p
+2274.0483999996186	DATA	Keydown: i
+2274.1913999996186	DATA	Keydown: j
+2274.3646000003814	DATA	Keydown: n
+2274.541300000191	DATA	Keydown: l
+2274.708	DATA	Keydown: i
+2274.7986999998093	DATA	Keydown: j
+2274.940800000191	DATA	Keydown: k
+2275.4746000003815	DATA	Mouse: 0 button down, pos=(857,762)
+2275.5068000001907	EXP	test_word: autoDraw = null
+2275.5068000001907	EXP	test_response: autoDraw = null
+2275.5068000001907	EXP	test_word: image = {}
+2275.5068000001907	EXP	test_response: editable = true
+2275.5068000001907	EXP	test_word: autoDraw = true
+2275.5068000001907	EXP	test_word: anchor = center
+2275.528	DATA	Mouse: 0 button up, pos=(857,762)
+2281.4883000001905	EXP	test_word: autoDraw = null
+2281.521199999809	EXP	test_response: autoDraw = true
+2281.521199999809	EXP	test_response: anchor = center
+2283.243699999809	DATA	Keydown: z
+2283.8635	DATA	Keydown: Backspace
+2284.121	DATA	Keydown: e
+2284.3296999998092	DATA	Keydown: z
+2284.5215	DATA	Keydown: e
+2284.771199999809	DATA	Keydown: m
+2285.7426000003816	DATA	Keydown: Backspace
+2286.038	DATA	Keydown: l
+2286.5373999996186	DATA	Mouse: 0 button down, pos=(857,762)
+2286.569699999809	EXP	test_word: autoDraw = null
+2286.569699999809	EXP	test_response: autoDraw = null
+2286.569699999809	EXP	test_word: image = {}
+2286.569699999809	EXP	test_response: editable = true
+2286.569699999809	EXP	test_word: autoDraw = true
+2286.569699999809	EXP	test_word: anchor = center
+2286.587	DATA	Mouse: 0 button up, pos=(857,762)
+2292.5513999996183	EXP	test_word: autoDraw = null
+2292.5863000001905	EXP	test_response: autoDraw = true
+2292.5863000001905	EXP	test_response: anchor = center
+2292.9016999998094	DATA	Keydown: r
+2293.0203999996183	DATA	Keydown: i
+2293.1348999996185	DATA	Keydown: j
+2293.302199999809	DATA	Keydown: p
+2294.0898999996184	DATA	Mouse: 0 button down, pos=(857,762)
+2294.1171000003815	EXP	test_word: autoDraw = null
+2294.1171000003815	EXP	test_response: autoDraw = null
+2294.1171000003815	EXP	test_word: image = {}
+2294.1171000003815	EXP	test_response: editable = true
+2294.1171000003815	EXP	test_word: autoDraw = true
+2294.1171000003815	EXP	test_word: anchor = center
+2294.1343000001907	DATA	Mouse: 0 button up, pos=(857,762)
+2300.1316000003812	EXP	test_word: autoDraw = null
+2300.1316000003812	EXP	test_response: autoDraw = true
+2300.1316000003812	EXP	test_response: anchor = center
+2300.4326000003816	DATA	Keydown: s
+2300.5718999996184	DATA	Keydown: n
+2300.683	DATA	Keydown: e
+2300.8491000003814	DATA	Keydown: e
+2301.1821000003815	DATA	Mouse: 0 button down, pos=(857,762)
+2301.2148999996184	EXP	test_word: autoDraw = null
+2301.2148999996184	EXP	test_response: autoDraw = null
+2301.2148999996184	EXP	test_word: image = {}
+2301.2148999996184	EXP	test_response: editable = true
+2301.2148999996184	EXP	test_word: autoDraw = true
+2301.2148999996184	EXP	test_word: anchor = center
+2301.248800000191	DATA	Mouse: 0 button up, pos=(857,762)
+2307.1965	EXP	test_word: autoDraw = null
+2307.229199999809	EXP	test_response: autoDraw = true
+2307.229199999809	EXP	test_response: anchor = center
+2308.3791999998093	DATA	Keydown: p
+2308.4796999998093	DATA	Keydown: a
+2308.6545	DATA	Keydown: a
+2308.7298999996183	DATA	Keydown: l
+2308.979600000381	DATA	Keydown: b
+2309.146199999809	DATA	Keydown: a
+2309.2961999998092	DATA	Keydown: a
+2309.4148999996187	DATA	Keydown: k
+2311.8303000001906	DATA	Mouse: 0 button down, pos=(857,762)
+2311.8611000003816	EXP	test_word: autoDraw = null
+2311.8611000003816	EXP	test_response: autoDraw = null
+2311.8611000003816	EXP	test_word: image = {}
+2311.8611000003816	EXP	test_response: editable = true
+2311.8611000003816	EXP	test_word: autoDraw = true
+2311.8611000003816	EXP	test_word: anchor = center
+2311.8961000003815	DATA	Mouse: 0 button up, pos=(857,762)
+2317.8428999996186	EXP	test_word: autoDraw = null
+2317.8756000003814	EXP	test_response: autoDraw = true
+2317.8756000003814	EXP	test_response: anchor = center
+2318.1928999996185	DATA	Keydown: z
+2318.4494999999997	DATA	Keydown: w
+2318.7098000001906	DATA	Keydown: e
+2318.8596000003813	DATA	Keydown: k
+2319.3514999999998	DATA	Mouse: 0 button down, pos=(857,762)
+2319.3753000001907	EXP	test_word: autoDraw = null
+2319.3753000001907	EXP	test_response: autoDraw = null
+2319.3753000001907	EXP	test_word: image = {}
+2319.3753000001907	EXP	test_response: editable = true
+2319.3753000001907	EXP	test_word: autoDraw = true
+2319.3753000001907	EXP	test_word: anchor = center
+2319.3956000003814	DATA	Mouse: 0 button up, pos=(857,762)
+2325.3568000001906	EXP	test_word: autoDraw = null
+2325.389699999809	EXP	test_response: autoDraw = true
+2325.389699999809	EXP	test_response: anchor = center
+2325.6906000003814	DATA	Keydown: p
+2325.7901999998094	DATA	Keydown: r
+2326.0156999998094	DATA	Keydown: a
+2326.2238000001907	DATA	Keydown: a
+2326.3068999996185	DATA	Keydown: t
+2326.8116000003815	DATA	Mouse: 0 button down, pos=(857,762)
+2326.8395	EXP	test_word: autoDraw = null
+2326.8395	EXP	test_response: autoDraw = null
+2326.8395	EXP	test_word: image = {}
+2326.8395	EXP	test_response: editable = true
+2326.8395	EXP	test_word: autoDraw = true
+2326.8395	EXP	test_word: anchor = center
+2326.8935	DATA	Mouse: 0 button up, pos=(857,762)
+2332.821	EXP	test_word: autoDraw = null
+2332.8535	EXP	test_response: autoDraw = true
+2332.8535	EXP	test_response: anchor = center
+2333.237699999809	DATA	Keydown: o
+2333.3718999996186	DATA	Keydown: p
+2333.4429999999998	DATA	Keydown: r
+2334.9603999996184	DATA	Keydown: u
+2335.1211000003814	DATA	Keydown: i
+2335.4068000001907	DATA	Keydown: m
+2335.5876000003814	DATA	Keydown: e
+2335.7293000001905	DATA	Keydown: n
+2336.3103999996183	DATA	Mouse: 0 button down, pos=(857,762)
+2336.3363000001905	EXP	test_word: autoDraw = null
+2336.3363000001905	EXP	test_response: autoDraw = null
+2336.3363000001905	EXP	test_word: image = {}
+2336.3363000001905	EXP	test_response: editable = true
+2336.3363000001905	EXP	test_word: autoDraw = true
+2336.3363000001905	EXP	test_word: anchor = center
+2336.3698999996186	DATA	Mouse: 0 button up, pos=(857,762)
+2342.3505	EXP	test_word: autoDraw = null
+2342.3505	EXP	test_response: autoDraw = true
+2342.3505	EXP	test_response: anchor = center
+2342.685	DATA	Keydown: s
+2342.8343000001905	DATA	Keydown: t
+2343.0678999996185	DATA	Keydown: r
+2343.7013000001907	DATA	Keydown: o
+2343.8173999996184	DATA	Keydown: k
+2344.289199999809	DATA	Mouse: 0 button down, pos=(857,762)
+2344.3168999996183	EXP	test_word: autoDraw = null
+2344.3168999996183	EXP	test_response: autoDraw = null
+2344.3168999996183	EXP	test_word: image = {}
+2344.3168999996183	EXP	test_response: editable = true
+2344.3168999996183	EXP	test_word: autoDraw = true
+2344.3168999996183	EXP	test_word: anchor = center
+2344.351	DATA	Mouse: 0 button up, pos=(857,762)
+2350.2983000001905	EXP	test_word: autoDraw = null
+2350.3315	EXP	test_response: autoDraw = true
+2350.3315	EXP	test_response: anchor = center
+2351.4153000001907	DATA	Keydown: b
+2351.514699999809	DATA	Keydown: r
+2351.7028000001906	DATA	Keydown: o
+2351.8538999996185	DATA	Keydown: o
+2351.9895	DATA	Keydown: d
+2352.181699999809	DATA	Keydown: j
+2352.2815	DATA	Keydown: e
+2352.915	DATA	Mouse: 0 button down, pos=(857,762)
+2352.9473999996185	EXP	test_word: autoDraw = null
+2352.9473999996185	EXP	test_response: autoDraw = null
+2352.9473999996185	EXP	test_word: image = {}
+2352.9473999996185	EXP	test_response: editable = true
+2352.9473999996185	EXP	test_word: autoDraw = true
+2352.9473999996185	EXP	test_word: anchor = center
+2352.9815	DATA	Mouse: 0 button up, pos=(857,762)
+2358.9288000001907	EXP	test_word: autoDraw = null
+2358.9616999998093	EXP	test_response: autoDraw = true
+2358.9616999998093	EXP	test_response: anchor = center
+2359.2793999996184	DATA	Keydown: w
+2359.5848000001906	DATA	Keydown: a
+2359.8126000003813	DATA	Keydown: a
+2359.8953999996183	DATA	Keydown: r
+2360.5118999996184	DATA	Keydown: o
+2360.6453999996183	DATA	Keydown: p
+2361.1208000001907	DATA	Mouse: 0 button down, pos=(857,762)
+2361.1443000001905	EXP	test_word: autoDraw = null
+2361.1443000001905	EXP	test_response: autoDraw = null
+2361.1443000001905	EXP	test_word: image = {}
+2361.1443000001905	EXP	test_response: editable = true
+2361.1443000001905	EXP	test_word: autoDraw = true
+2361.1443000001905	EXP	test_word: anchor = center
+2361.1658000001908	DATA	Mouse: 0 button up, pos=(857,762)
+2367.126300000191	EXP	test_word: autoDraw = null
+2367.1588999996184	EXP	test_response: autoDraw = true
+2367.1588999996184	EXP	test_response: anchor = center
+2367.5095	DATA	Keydown: b
+2367.668699999809	DATA	Keydown: a
+2368.0924999999997	DATA	Keydown: r
+2368.359100000381	DATA	Keydown: o
+2368.5758999996183	DATA	Keydown: n
+2369.1001999998093	DATA	Mouse: 0 button down, pos=(857,762)
+2369.1253000001907	EXP	test_word: autoDraw = null
+2369.1253000001907	EXP	test_response: autoDraw = null
+2369.1253000001907	EXP	test_word: image = {}
+2369.1253000001907	EXP	test_response: editable = true
+2369.1253000001907	EXP	test_word: autoDraw = true
+2369.1253000001907	EXP	test_word: anchor = center
+2369.1425	DATA	Mouse: 0 button up, pos=(857,762)
+2375.1066999998093	EXP	test_word: autoDraw = null
+2375.1396000003815	EXP	test_response: autoDraw = true
+2375.1396000003815	EXP	test_response: anchor = center
+2375.5598000001905	DATA	Keydown: t
+2375.6068999996187	DATA	Keydown: o
+2376.3093999996186	DATA	Keydown: e
+2376.6256000003814	DATA	Keydown: v
+2376.8398999996184	DATA	Keydown: a
+2376.989699999809	DATA	Keydown: l
+2377.5608999996184	DATA	Mouse: 0 button down, pos=(857,762)
+2377.5888000001905	EXP	test_word: autoDraw = null
+2377.5888000001905	EXP	test_response: autoDraw = null
+2377.5888000001905	EXP	test_word: image = {}
+2377.5888000001905	EXP	test_response: editable = true
+2377.5888000001905	EXP	test_word: autoDraw = true
+2377.5888000001905	EXP	test_word: anchor = center
+2377.628	DATA	Mouse: 0 button up, pos=(857,762)
+2383.6033000001908	EXP	test_word: autoDraw = null
+2383.6033000001908	EXP	test_response: autoDraw = true
+2383.6033000001908	EXP	test_response: anchor = center
+2384.7373000001908	DATA	Keydown: n
+2384.9373999996183	DATA	Keydown: o
+2385.1036000003814	DATA	Keydown: o
+2385.379	DATA	Keydown: d
+2385.8391999998094	DATA	Keydown: z
+2386.0099999999998	DATA	Keydown: a
+2386.1565	DATA	Keydown: a
+2386.2885	DATA	Keydown: k
+2386.7886000003814	DATA	Mouse: 0 button down, pos=(857,762)
+2386.819	EXP	test_word: autoDraw = null
+2386.819	EXP	test_response: autoDraw = null
+2386.819	EXP	test_word: image = {}
+2386.819	EXP	test_response: editable = true
+2386.819	EXP	test_word: autoDraw = true
+2386.819	EXP	test_word: anchor = center
+2386.8365	DATA	Mouse: 0 button up, pos=(857,762)
+2392.8006999998092	EXP	test_word: autoDraw = null
+2392.8334999999997	EXP	test_response: autoDraw = true
+2392.8334999999997	EXP	test_response: anchor = center
+2393.6756000003816	DATA	Keydown: f
+2393.8405	DATA	Keydown: r
+2393.9673999996185	DATA	Keydown: a
+2394.1341000003813	DATA	Keydown: n
+2394.7761999998093	DATA	Mouse: 0 button down, pos=(857,762)
+2394.799699999809	EXP	test_word: autoDraw = null
+2394.799699999809	EXP	test_response: autoDraw = null
+2394.799699999809	EXP	test_word: image = {}
+2394.799699999809	EXP	test_response: editable = true
+2394.799699999809	EXP	test_word: autoDraw = true
+2394.799699999809	EXP	test_word: anchor = center
+2394.850100000381	DATA	Mouse: 0 button up, pos=(857,762)
+2400.7811999998094	EXP	test_word: autoDraw = null
+2400.8141999998093	EXP	test_response: autoDraw = true
+2400.8141999998093	EXP	test_response: anchor = center
+2403.830699999809	DATA	Keydown: b
+2404.0806000003813	DATA	Keydown: i
+2404.2311000003815	DATA	Keydown: s
+2404.4143000001905	DATA	Keydown: s
+2404.6466999998092	DATA	Keydown: c
+2404.8036000003813	DATA	Keydown: h
+2405.813300000191	DATA	Keydown: o
+2405.9313999996184	DATA	Keydown: p
+2406.6658999996184	DATA	Mouse: 0 button down, pos=(857,762)
+2406.695699999809	EXP	test_word: autoDraw = null
+2406.695699999809	EXP	test_response: autoDraw = null
+2406.695699999809	EXP	test_word: image = {}
+2406.695699999809	EXP	test_response: editable = true
+2406.695699999809	EXP	test_word: autoDraw = true
+2406.695699999809	EXP	test_word: anchor = center
+2406.746300000191	DATA	Mouse: 0 button up, pos=(857,762)
+2412.7101000003813	EXP	test_word: autoDraw = null
+2412.7101000003813	EXP	test_response: autoDraw = true
+2412.7101000003813	EXP	test_response: anchor = center
+2413.478199999809	DATA	Keydown: h
+2413.5773000001905	DATA	Keydown: e
+2413.7515	DATA	Keydown: e
+2413.994199999809	DATA	Keydown: n
+2414.627	DATA	Keydown: g
+2415.0103000001905	DATA	Keydown: a
+2415.1606000003812	DATA	Keydown: a
+2415.2446000003815	DATA	Keydown: n
+2415.7934999999998	DATA	Mouse: 0 button down, pos=(857,762)
+2415.8258999996183	EXP	test_word: autoDraw = null
+2415.8258999996183	EXP	test_response: autoDraw = null
+2415.8258999996183	EXP	test_word: image = {}
+2415.8258999996183	EXP	test_response: editable = true
+2415.8258999996183	EXP	test_word: autoDraw = true
+2415.8258999996183	EXP	test_word: anchor = center
+2415.8601000003814	DATA	Mouse: 0 button up, pos=(857,762)
+2421.8405	EXP	test_word: autoDraw = null
+2421.8405	EXP	test_response: autoDraw = true
+2421.8405	EXP	test_response: anchor = center
+2422.7458999996184	DATA	Keydown: w
+2422.9911999998094	DATA	Keydown: e
+2423.1326000003814	DATA	Keydown: i
+2423.293699999809	DATA	Keydown: g
+2423.3643000001907	DATA	Keydown: e
+2423.5573000001905	DATA	Keydown: r
+2423.7318000001906	DATA	Keydown: e
+2423.842300000191	DATA	Keydown: n
+2424.3095	DATA	Mouse: 0 button down, pos=(857,762)
+2424.3398000001907	EXP	test_word: autoDraw = null
+2424.3398000001907	EXP	test_response: autoDraw = null
+2424.3398000001907	EXP	test_word: image = {}
+2424.3398000001907	EXP	test_response: editable = true
+2424.3398000001907	EXP	test_word: autoDraw = true
+2424.3398000001907	EXP	test_word: anchor = center
+2424.3916000003815	DATA	Mouse: 0 button up, pos=(857,762)
+2430.354199999809	EXP	test_word: autoDraw = null
+2430.354199999809	EXP	test_response: autoDraw = true
+2430.354199999809	EXP	test_response: anchor = center
+2431.4548999996186	DATA	Keydown: s
+2431.6053999996184	DATA	Keydown: u
+2431.8213999996183	DATA	Keydown: l
+2432.041699999809	DATA	Keydown: b
+2432.2133999996186	DATA	Keydown: o
+2432.3743999996186	DATA	Keydown: n
+2433.7783999996186	DATA	Mouse: 0 button down, pos=(857,762)
+2433.8033999996183	EXP	test_word: autoDraw = null
+2433.8033999996183	EXP	test_response: autoDraw = null
+2433.8033999996183	EXP	test_word: image = {}
+2433.8033999996183	EXP	test_response: editable = true
+2433.8033999996183	EXP	test_word: autoDraw = true
+2433.8033999996183	EXP	test_word: anchor = center
+2433.8376000003814	DATA	Mouse: 0 button up, pos=(857,762)
+2439.7846000003815	EXP	test_word: autoDraw = null
+2439.8171999998094	EXP	test_response: autoDraw = true
+2439.8171999998094	EXP	test_response: anchor = center
+2441.3588000001905	DATA	Keydown: d
+2441.5508999996187	DATA	Keydown: r
+2441.6853999996183	DATA	Keydown: u
+2441.9378999996184	DATA	Keydown: m
+2442.1023000001906	DATA	Keydown: m
+2442.2006999998093	DATA	Keydown: e
+2442.3546999998093	DATA	Keydown: r
+2442.8853000001905	DATA	Mouse: 0 button down, pos=(857,762)
+2442.9163999996185	EXP	test_word: autoDraw = null
+2442.9163999996185	EXP	test_response: autoDraw = null
+2442.9163999996185	EXP	test_word: image = {}
+2442.9163999996185	EXP	test_response: editable = true
+2442.9163999996185	EXP	test_word: autoDraw = true
+2442.9163999996185	EXP	test_word: anchor = center
+2442.9378999996184	DATA	Mouse: 0 button up, pos=(857,762)
+2448.898300000191	EXP	test_word: autoDraw = null
+2448.933	EXP	test_response: autoDraw = true
+2448.933	EXP	test_response: anchor = center
+2449.299	DATA	Keydown: o
+2449.322300000191	DATA	Keydown: c
+2449.9018000001906	DATA	Keydown: r
+2450.748	DATA	Keydown: Backspace
+2450.8878000001905	DATA	Keydown: e
+2451.123199999809	DATA	Keydown: a
+2451.2815	DATA	Keydown: a
+2451.4978999996183	DATA	Keydown: n
+2452.0153000001906	DATA	Mouse: 0 button down, pos=(857,762)
+2452.047	EXP	test_word: autoDraw = null
+2452.047	EXP	test_response: autoDraw = null
+2452.047	EXP	test_word: image = {}
+2452.047	EXP	test_response: editable = true
+2452.047	EXP	test_word: autoDraw = true
+2452.047	EXP	test_word: anchor = center
+2452.081	DATA	Mouse: 0 button up, pos=(857,762)
+2458.0285	EXP	test_word: autoDraw = null
+2458.0615	EXP	test_response: autoDraw = true
+2458.0615	EXP	test_response: anchor = center
+2458.3753999996184	DATA	Keydown: g
+2458.5016999998093	DATA	Keydown: e
+2458.697699999809	DATA	Keydown: d
+2459.0618000001905	DATA	Keydown: i
+2459.185	DATA	Keydown: c
+2459.315800000191	DATA	Keydown: h
+2459.5171999998092	DATA	Keydown: t
+2459.9956000003813	DATA	Mouse: 0 button down, pos=(857,762)
+2460.0276000003814	EXP	test_word: autoDraw = null
+2460.0276000003814	EXP	test_response: autoDraw = null
+2460.0276000003814	EXP	test_word: image = {}
+2460.0276000003814	EXP	test_response: editable = true
+2460.0276000003814	EXP	test_word: autoDraw = true
+2460.0276000003814	EXP	test_word: anchor = center
+2460.0621999998093	DATA	Mouse: 0 button up, pos=(857,762)
+2466.0091000003813	EXP	test_word: autoDraw = null
+2466.042	EXP	test_response: autoDraw = true
+2466.042	EXP	test_response: anchor = center
+2466.3626000003815	DATA	Keydown: e
+2466.5596999998093	DATA	Keydown: e
+2466.7481000003813	DATA	Keydown: r
+2467.1621000003815	DATA	Keydown: s
+2467.3173000001907	DATA	Keydown: t
+2468.3663999996184	DATA	Mouse: 0 button down, pos=(857,762)
+2468.3914999999997	EXP	test_word: autoDraw = null
+2468.3914999999997	EXP	test_response: autoDraw = null
+2468.3914999999997	EXP	test_word: image = {}
+2468.3914999999997	EXP	test_response: editable = true
+2468.3914999999997	EXP	test_word: autoDraw = true
+2468.3914999999997	EXP	test_word: anchor = center
+2468.4258000001905	DATA	Mouse: 0 button up, pos=(857,762)
+2474.373	EXP	test_word: autoDraw = null
+2474.4058999996187	EXP	test_response: autoDraw = true
+2474.4058999996187	EXP	test_response: anchor = center
+2478.372600000381	DATA	Keydown: s
+2478.5946000003814	DATA	Keydown: e
+2479.0118999996184	DATA	Keydown: i
+2479.155199999809	DATA	Keydown: z
+2479.3089999999997	DATA	Keydown: o
+2479.5215	DATA	Keydown: o
+2481.340300000191	DATA	Keydown: Shift
+2481.6728999996185	DATA	Keydown: .
+2486.3578000001908	DATA	Mouse: 0 button down, pos=(857,762)
+2486.3853000001905	EXP	test_word: autoDraw = null
+2486.3853000001905	EXP	test_response: autoDraw = null
+2486.3853000001905	EXP	test_word: image = {}
+2486.3853000001905	EXP	test_response: editable = true
+2486.3853000001905	EXP	test_word: autoDraw = true
+2486.3853000001905	EXP	test_word: anchor = center
+2486.572699999809	DATA	Mouse: 0 button up, pos=(857,762)
+2492.366800000191	EXP	test_word: autoDraw = null
+2492.3998000001907	EXP	test_response: autoDraw = true
+2492.3998000001907	EXP	test_response: anchor = center
+2493.204300000191	DATA	Keydown: s
+2493.47	DATA	Keydown: c
+2493.6171000003815	DATA	Keydown: h
+2493.8224999999998	DATA	Keydown: o
+2494.118699999809	DATA	Keydown: t
+2494.757	DATA	Keydown: e
+2494.867300000191	DATA	Keydown: l
+2495.4738000001907	DATA	Mouse: 0 button down, pos=(857,762)
+2495.4988999996185	EXP	test_word: autoDraw = null
+2495.4988999996185	EXP	test_response: autoDraw = null
+2495.4988999996185	EXP	test_word: image = {}
+2495.4988999996185	EXP	test_response: editable = true
+2495.4988999996185	EXP	test_word: autoDraw = true
+2495.4988999996185	EXP	test_word: anchor = center
+2495.541199999809	DATA	Mouse: 0 button up, pos=(857,762)
+2501.5131999998093	EXP	test_word: autoDraw = null
+2501.5131999998093	EXP	test_response: autoDraw = true
+2501.5131999998093	EXP	test_response: anchor = center
+2501.6643999996186	DATA	Keydown: g
+2502.1498000001907	DATA	Keydown: a
+2502.347199999809	DATA	Keydown: a
+2502.4661999998093	DATA	Keydown: f
+2502.9473999996185	DATA	Mouse: 0 button down, pos=(857,762)
+2502.9796999998093	EXP	test_word: autoDraw = null
+2502.9796999998093	EXP	test_response: autoDraw = null
+2502.9796999998093	EXP	test_word: image = {}
+2502.9796999998093	EXP	test_response: editable = true
+2502.9796999998093	EXP	test_word: autoDraw = true
+2502.9796999998093	EXP	test_word: anchor = center
+2502.9968999996186	DATA	Mouse: 0 button up, pos=(857,762)
+2508.9613000001905	EXP	test_word: autoDraw = null
+2508.994199999809	EXP	test_response: autoDraw = true
+2508.994199999809	EXP	test_response: anchor = center
+2509.3118999996186	DATA	Keydown: k
+2509.6451000003813	DATA	Keydown: u
+2509.7535	DATA	Keydown: s
+2509.878199999809	DATA	Keydown: t
+2510.3791999998093	DATA	Mouse: 0 button down, pos=(857,762)
+2510.4106999998094	EXP	test_word: autoDraw = null
+2510.4106999998094	EXP	test_response: autoDraw = null
+2510.4106999998094	EXP	test_word: image = {}
+2510.4106999998094	EXP	test_response: editable = true
+2510.4106999998094	EXP	test_word: autoDraw = true
+2510.4106999998094	EXP	test_word: anchor = center
+2510.4276000003815	DATA	Mouse: 0 button up, pos=(857,762)
+2516.392	EXP	test_word: autoDraw = null
+2516.4265	EXP	test_response: autoDraw = true
+2516.4265	EXP	test_response: anchor = center
+2518.351	DATA	Keydown: s
+2518.5578999996183	DATA	Keydown: c
+2518.6301000003814	DATA	Keydown: h
+2518.778	DATA	Keydown: e
+2518.9288999996184	DATA	Keydown: n
+2519.108300000191	DATA	Keydown: d
+2519.5816000003815	DATA	Keydown: Shift
+2519.7248999996186	DATA	Keydown: .
+2519.8935	DATA	Keydown: .
+2520.0415	DATA	Keydown: .
+2520.848699999809	DATA	Mouse: 0 button down, pos=(857,762)
+2520.8738999996185	EXP	test_word: autoDraw = null
+2520.8738999996185	EXP	test_response: autoDraw = null
+2520.8738999996185	EXP	end_text: autoDraw = true
+2520.8923999996186	DATA	Mouse: 0 button up, pos=(857,762)
