@@ -30,6 +30,6 @@ opts = setvaropts(opts, "Timing", "ThousandsSeparator", ",");
 imported = readtable(filename, opts);
 
 % Manipulate the table to get organized data
-trimmed = clean_trim_log(imported, session);
+% trimmed = clean_trim_log(imported, session);
 
 end
