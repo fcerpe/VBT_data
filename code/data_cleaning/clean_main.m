@@ -29,7 +29,7 @@ opt = clean_option();
 % - import log file and extract timings
 % - save relevant files in /outputs/extracted_data/subID 
 
-[opt, csvStruct, logStruct] = clean_import(opt);
+[opt, subResults] = clean_import(opt);
 
 
 %% Make summary for JASP / R (separate function)
