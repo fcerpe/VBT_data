@@ -21,7 +21,7 @@ opt = summary_option();
 
 %% Summarize information
 
-summary_accuracyAndTiming(opt);
+summary = summary_accuracies(opt);
 
 
 

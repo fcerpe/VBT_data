@@ -13,11 +13,6 @@
 clear;
 clc;
 
-% Load bidspm for secondary subfunctions 
-addpath '../lib/bidspm'
-addpath(genpath(pwd))
-bidspm;
-
 % get option
 opt = import_option();
 

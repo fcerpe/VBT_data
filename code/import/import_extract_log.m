@@ -1,4 +1,4 @@
-function trimmed = clean_import_log(filename, session)
+function trimmed = import_extract_log(filename, session)
 % Structure of log file:
 % - timing
 % - type of event
@@ -216,14 +216,14 @@ for iEv = 1:size(appearenceIdx,1)
     whichKeys = tableIn{keys,"Description"};
 
     % Additional analysis: deal with "Keydown" events
-    keys = recordKeyboardEvents(whichKeys);
+    % keys = recordKeyboardEvents(whichKeys);
 
     % Add everything to the testLog
     % Which word is not present in the log file, will come later
     tableOut.word(iEv) = iEv;
     tableOut.readingTime(iEv) = tableIn{word,"Timing"} - tableIn{trial,"Timing"};
     tableOut.writingTime(iEv) = tableIn{mouse,"Timing"} - tableIn{word,"Timing"};
-    tableOut.attempts{iEv} = [keys];
+    % tableOut.attempts{iEv} = [keys];
 end
 
 end
@@ -276,7 +276,7 @@ for iTx = 1:size(textIdx,1)
         whichKeys = tableIn{keys,"Description"};
 
         % Additional analysis: deal with "Keydown" events
-        keys = recordKeyboardEvents(whichKeys);
+        % keys = recordKeyboardEvents(whichKeys);
 
         % Add everything to the training log
         tableOut.word{iTx} = whichWord;
@@ -284,7 +284,7 @@ for iTx = 1:size(textIdx,1)
         tableOut.checkingTime(iTx) = wordDisappears - solutionAppears;
         tableOut.tested(iTx) = 1;
         tableOut.writingTime(iTx) = solutionAppears - wordAppears;
-        tableOut.attempts{iTx} = [keys];
+        % tableOut.attempts{iTx} = [keys];
 
     else
         % Add everything to the training log
@@ -293,7 +293,7 @@ for iTx = 1:size(textIdx,1)
         tableOut.checkingTime(iTx) = wordDisappears - solutionAppears;
         tableOut.tested(iTx) = 0;
         tableOut.writingTime(iTx) = NaN;
-        tableOut.attempts{iTx} = [];
+        % tableOut.attempts{iTx} = [];
 
     end
 end
