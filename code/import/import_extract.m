@@ -1,4 +1,4 @@
-function [opt, subResults] = clean_import(opt)
+function import_extract(opt)
 %% Extract data from raw
 % For each subject:
 % - extract data from the four different days of training
@@ -6,6 +6,7 @@ function [opt, subResults] = clean_import(opt)
 % - import log file and extract timings
 % - save relevant files in /outputs/extracted_data/subID 
 
+warning('off')
 
 % Initialize struct to save subjects' results in a variable
 subResults = struct;
@@ -35,25 +36,30 @@ for iF = 1:numel(rawFolders)
         % If filenames do not correspond, stop and notify the user
         if ~strcmp(currentCsv(1:end-4), currentLog(1:end-4))
             error('Filenames do not correspond, you are trying to open two different subjects')
-        end
+        end        
 
         % Extract subject information
         sub = extractSubjectInfo(currentCsv);
+
+        % Check that data come from a real participant
+        if ~ismember(sub.subID, opt.subList)
+            error('Participant that is being procesed is not on the list. Check inputs folder')
+        end 
 
         % Notify the user
         fprintf(['Extracting sub-', sub.subID, '...\n']);
         
         % Import csv and clean it based on the day and which files are
         % needed
-        trimmedCsv = clean_import_csv(currentCsv, sub.sesID);
+        trimmedCsv = import_extract_csv(currentCsv, sub.sesID);
 
         % Import log file and clean it to get the events
-        trimmedLog = clean_import_log(currentLog, sub.sesID);
+        trimmedLog = import_extract_log(currentLog, sub.sesID);
 
         % Save files
         % create a custom bids-like name to save all the tables extracted,
         % as csv files but also within a variable
-        [opt, subResults] = clean_mergeAndSave(opt, trimmedCsv, trimmedLog, subResults, sub);
+        import_extract_mergeAndSave(opt, trimmedCsv, trimmedLog, sub);
 
     end
 

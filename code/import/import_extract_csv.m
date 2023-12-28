@@ -1,4 +1,4 @@
-function trimmed = clean_import_csv(filename, session)
+function trimmed = import_extract_csv(filename, session)
 
 % Import the data
 imported = readtable(filename);

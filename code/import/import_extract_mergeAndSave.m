@@ -1,4 +1,4 @@
-function [opt, subResults] = clean_mergeAndSave(opt, trimmedCsv, trimmedLog, subResults, subInfo)
+function import_extract_mergeAndSave(opt, trimmedCsv, trimmedLog, subInfo)
 %   SAVE FILES 
 %   - save each file as a .csv 
 %   - add current subs data to the subResults structure

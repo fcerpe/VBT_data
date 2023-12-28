@@ -1,4 +1,4 @@
-function opt = clean_option()
+function opt = import_option()
 % returns a structure that contains the options chosen by the user to run
 % Data cleaning (called through clean_main)
 
