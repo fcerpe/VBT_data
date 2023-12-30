@@ -96,6 +96,53 @@ end
 % Start and end of letters array defines the test set
 tableOut = tableIn(testIndexes(1):testIndexes(end),["nlWrd","testResp"]);
 
+% Clean the test output: keep only letters (lowercase) and punctuation 
+% Special keys (e.g. backspace, new line) break the csv readtable
+
+% Choose allowed characters - visualization 
+allowedChar = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ', ...        % Uppercase letters
+               'abcdefghijklmnopqrstuvwxyz', ...        % Lowercase letters
+               '!"#$%&()*+,-./:;<=>?@[\]^_`{|}~', ...   % Symbols
+               '0123456789'];                           % Numbers
+
+allowedNums = double(allowedChar);
+% Manually add char for " ' ", otherwise there is a small issue with chars
+allowedNums = cat(2, allowedNums, 39); 
+
+for iAns = 1:size(tableOut.testResp, 1)
+
+    % Get the current answer
+    answer = tableOut.testResp{iAns};
+
+    % Initialize new answer
+    cleanAnswer = '';
+
+    if ~isempty(answer)
+
+        % Convert char in doubles
+        answerNums = double(answer);
+
+        for iDig = 1:length(answerNums)
+    
+            % Assign the character to the cleaned answer, only if character
+            % is presented in the list of allowed ones (letters and
+            % punctuation)
+            if ismember(answerNums(iDig), allowedNums)
+                
+                cleanAnswer = cat(2, cleanAnswer, answer(iDig));
+            end    
+        end
+    else
+        % if empty, just copy it
+        cleanAnswer = answer;
+    end
+
+    % Replace test response with new / cleaned answer
+    tableOut.testResp{iAns} = cleanAnswer;
+
+end
+
+
 % Quickly assign rudimental score to the elements tested
 % 1 if strings match (using lowercase responses), 0 if they don't
 tableOut.score = strcmp(tableOut.nlWrd, lower(tableOut.testResp));
