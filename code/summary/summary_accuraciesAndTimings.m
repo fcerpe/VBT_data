@@ -1,4 +1,4 @@
-function summary = summary_accuracies(opt)
+function summary_accuraciesAndTimings(opt)
 %  MAKE SUMMARY
 %
 % Accuracies and timings in both training and testing
@@ -17,15 +17,6 @@ for iSub = 1:numel(subsFolder)
 
     % Get subject
     subName = subsFolder(iSub).name;
-
-    if strcmp(subName, 'sub-00089')
-        a = 1;
-        % CONTROLLA SUB-00089, FORSE VA A CAPO NEL TEST E QUESTO INCASINA
-        % LO SCRIPT IN IMPORT E IL CSV CHE VIENE CREATO
-        % IF VA-A-CAPO
-        %       EDIT STRING TO DELETE CHAR
-        
-    end
     
     % Notify the user
     fprintf(['\n\nWorking on ', subName '\n']);
@@ -78,6 +69,11 @@ end
 
 
 % Save table 
+if ~exist(opt.dir.summary)
+    mkdir(opt.dir.summary)
+end
+
+writetable(summary, fullfile(opt.dir.summary, 'VBT_summary_results-accuracy-timings.csv'));
 
 end
 

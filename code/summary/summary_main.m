@@ -19,9 +19,15 @@ clc;
 opt = summary_option();
 
 
-%% Summarize information
+%% Summarize accuracy and timing
 
-summary = summary_accuracies(opt);
+% For each subject, extract and save 
+% - accuracies (test and training) 
+% - timings (reading, checking, writing) 
+% Save a summary csv in
+% outputs/derivatives/summary/VBT_summary_results-accuracies-timings.csv
+
+summary_accuraciesAndTimings(opt);
 
 
 
