@@ -1,6 +1,6 @@
 import pandas as pd
 
-def import_extract_csv(filename, session):
+def preproc_extract_csv(filename, session):
 
     # Import the data
     imported = pd.read_csv(filename)
@@ -69,7 +69,7 @@ def extract_training_results(tableIn):
     # Training and test sets are defined by nlWrd variable and the 'test' variable
     # If there is a word and there is a 'test' value, it means we are in a training trial
     # Find indexes of entries that are actual letters and have a 'test' value
-    writeIdx = -tableIn['nlWrd'].isna() & tableIn['test']
+    writeIdx = -tableIn['nlWrd'].isna() & -tableIn['test'].isna()
 
     # Start and end of letters array defines the training set
     tableOut = tableIn.loc[writeIdx, ["nlWrd", "test", "testResp"]]
@@ -125,7 +125,7 @@ def clean_test_response(answer):
         answer = ''
 
     for char in answer:
-        if ord(char) in allowed_nums:
+        if ord(char) in allowedNums:
             cleanAnswer += char
 
     return cleanAnswer

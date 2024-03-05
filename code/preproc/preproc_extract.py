@@ -1,10 +1,10 @@
 import os
 from pathlib import Path
-from import_extract_csv import import_extract_csv  # assuming this function is implemented in a separate file
-from import_extract_log import import_extract_log  # assuming this function is implemented in a separate file
-from import_extract_merge_and_save import import_extract_merge_and_save
+from preproc_extract_csv import preproc_extract_csv  # assuming this function is implemented in a separate file
+from preproc_extract_log import preproc_extract_log  # assuming this function is implemented in a separate file
+from preproc_merge_and_save import preproc_merge_and_save
 
-def import_extract(opt):
+def preproc_extract(opt):
 
     # Extract data from raw
     # For each subject:
@@ -51,13 +51,13 @@ def import_extract(opt):
             print(f"Extracting sub-{sub['subID']}...")
 
             # Import csv and clean it based on the day and which files are needed
-            trimmedCsv = import_extract_csv(currentCsv, sub['sesID'])
+            trimmedCsv = preproc_extract_csv(currentCsv, sub['sesID'])
 
             # Import log file and clean it to get the events
-            trimmedLog = import_extract_log(currentLog, sub['sesID'])
+            trimmedLog = preproc_extract_log(currentLog, sub['sesID'])
 
             # Save files
-            import_extract_merge_and_save(opt, trimmedCsv, trimmedLog, sub)
+            preproc_merge_and_save(opt, trimmedCsv, trimmedLog, sub)
 
     # Notify the user
     print(f"\n\n PIPELINE DONE \nExtracted data can be found in: {opt['dir']['extracted']}")

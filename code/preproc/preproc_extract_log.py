@@ -1,6 +1,6 @@
 import pandas as pd
 
-def import_extract_log(filename, session):
+def preproc_extract_log(filename, session):
 
     # Import the data
     imported = pd.read_table(filename, names=['Timing', 'EVENT', 'Description'])

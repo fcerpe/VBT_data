@@ -1,6 +1,6 @@
 import os
 
-def import_option():
+def preproc_option():
 
     # Initialize options dictionary
     opt = {}
@@ -18,11 +18,12 @@ def import_option():
     opt['dir']['raw'] = os.path.join(opt['dir']['root'], 'inputs')
     opt['dir']['derivatives'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives')
     opt['dir']['extracted'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives', 'extracted-data')
+    opt['dir']['stats'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives', 'stats')
     opt['dir']['input'] = opt['dir']['raw']
-    opt['dir']['stats'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives', 'analyses')
+    # opt['dir']['stats'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives', 'analyses')
     
     # directory for the saved jobs
-    opt['jobsDir'] = os.path.join(opt['dir']['derivatives'], 'jobs', opt['taskName'])
+    opt['dir']['jobs'] = os.path.join(opt['dir']['derivatives'], 'jobs', opt['taskName'])
     
     # Type of pipeline
     opt['pipeline'] = {}

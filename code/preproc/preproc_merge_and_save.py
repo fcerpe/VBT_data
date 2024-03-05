@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-def import_merge_and_save(opt, trimmedCsv, trimmedLog, subInfo):
+def preproc_merge_and_save(opt, trimmedCsv, trimmedLog, subInfo):
     # SAVE FILES
     # - save each file as a .csv
     # - add current sub's data to the subResults structure
