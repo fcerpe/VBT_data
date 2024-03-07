@@ -7,8 +7,8 @@ Created on Tue Mar  5 09:24:02 2024
 """
 
 from stats_option import stats_option
-from stats_summarize_accuracy_timing import stats_summarize_accuracy_timing
-from stats_anova_accuracy_timing import stats_anova_accuracy_timing
+from stats_summarize_accuracy_timing import *
+from stats_anova_accuracy_timing import *
 
 ### VISUAL BRAILLE TRAINING - MAKE SUMMARY TABLES
 # 

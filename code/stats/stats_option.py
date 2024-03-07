@@ -21,6 +21,8 @@ def stats_option():
     opt['dir']['derivatives'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives')
     opt['dir']['extracted'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives', 'extracted-data')
     opt['dir']['stats'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives', 'stats')
+    opt['dir']['figures'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives', 'figures')
+    opt['dir']['results'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives', 'results') 
     opt['dir']['input'] = opt['dir']['raw']
     # opt['dir']['stats'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives', 'analyses')
 
