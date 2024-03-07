@@ -10,7 +10,7 @@ import os
 import pandas as pd
 import glob
 
-def stats_accuracy_and_timing(opt):
+def stats_summarize_accuracy_timing(opt):
     
     #  MAKE SUMMARY TABLE 
     # Organize infromation about accuracy and timing for each subjects and day of training
@@ -84,7 +84,7 @@ def stats_accuracy_and_timing(opt):
         os.makedirs(opt['dir']['stats'])
 
 
-    summary.to_csv(os.path.join(opt['dir']['stats'], 'VBT_summary_results-accuracy-timings.csv'), index=False)
+    summary.to_csv(os.path.join(opt['dir']['stats'], 'VBT_results-accuracy-timing.csv'), index=False)
 
 
 
