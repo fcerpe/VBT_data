@@ -22,10 +22,10 @@ def preproc_extract(opt):
     rawFolders = [folder for folder in os.listdir(opt['dir']['input']) if 'day' in folder]
 
     # Folder by folder, get all the files for a participant and extract the data
-    for rw in rawFolders[1:]:
+    for rw in rawFolders:
 
         # Notify the user
-        print(f"\n\n\nWorking on script-{rw[0:2]} ses-00{rw[-1]}")
+        print(f"\n\nWorking on script-{rw[0:2]} ses-00{rw[-1]}\n")
 
         # Get two separate lists, one for response/csv files and one for timing/log files
         csvList = list(Path(os.path.join(opt['dir']['input'], rw)).glob('sub-*.csv'))
@@ -60,7 +60,7 @@ def preproc_extract(opt):
             preproc_merge_and_save(opt, trimmedCsv, trimmedLog, sub)
 
     # Notify the user
-    print(f"\n\n PIPELINE DONE \nExtracted data can be found in: {opt['dir']['extracted']}")
+    print(f"\n\n EXTRACTED ALL THE SUBJECTS \nData can be found in: {opt['dir']['extracted']}")
 
 
 ### Subfunctions

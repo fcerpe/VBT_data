@@ -7,8 +7,7 @@ Created on Tue Mar  5 09:24:02 2024
 """
 
 from stats_option import stats_option
-from stats_summarize_accuracy_timing import *
-from stats_anova_accuracy_timing import *
+from stats_accuracy_timing import stats_accuracy_timing
 
 ### VISUAL BRAILLE TRAINING - MAKE SUMMARY TABLES
 # 
@@ -25,17 +24,6 @@ from stats_anova_accuracy_timing import *
 opt = stats_option()
 
 
-### First analyses - accuracy and timings
-
-## Summarize accuracy and timing
-#
-# for each subject, extract and save 
-# - accuracies (test and training) 
-# - timings (reading, checking, writing) 
-# Save a summary csv in
-# outputs/derivatives/summary/VBT_summary_results-accuracies-timings.csv
-stats_summarize_accuracy_timing(opt)
-
 ## Perform first anovas
 #
 # Are there differences between groups in terms of
@@ -43,5 +31,5 @@ stats_summarize_accuracy_timing(opt)
 # - accuracy across training sessions 
 # - reading time during training sessions
 # - writing times during training and test sessions
-stats_anova_accuracy_timing(opt)
+stats_accuracy_timing(opt)
 
