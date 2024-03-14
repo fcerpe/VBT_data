@@ -7,18 +7,20 @@ Function to combine the list of stimuli presented during the different days of
 the visual braille training experiment with  data about the statistics of the 
 dutch language. 
 
-The function will first try to read the lists of training and test stimuli. 
-If that is not possible, it will create them from the lists of stimuli presented 
-during each day. 
-Then, it will load the Dutch Lexicon Project (DLP2) dataset and extract relevant 
-columns before adding information about the stimuli used to training and test lists. 
-Lastly, it will save the tables in outputs/derivatives/datasets 
+The function will create a series of tables to be used in stats:
+    - lists of training and test stimuli (if not already present, otherwise 
+      will just read them) 
+    - relevant information from Dutch Lexicon Project (DLP2) dataset 
+    - statistics made based on the individual words presented (accuracy, timing)
+Then, it will merge the stimuli lists with behavioural data and statistics  
+Lastly, it will save (individual and merged) tables in outputs/derivatives/datasets 
 
 @author: Filippo Cerpelloni
 """
 
 import os
 import pandas as pd
+import glob as glob
 
 def make_stimuli_statistics(opt):
     
@@ -29,14 +31,20 @@ def make_stimuli_statistics(opt):
     # Load datasets of statistics
     dlp = get_dutch_statistics(opt)
     
+    # Compute stimuli accuracy and timings
+    letters, training, test = get_results_stimuli(opt)
+        
     # Apply the statistics to the training and test sets
     trStats = pd.merge(tr, dlp, on = 'woord', how = 'left')
     teStats = pd.merge(te, dlp, on = 'woord', how = 'left')
 
     # Save the datasets
-    trStats.to_csv(os.path.join(opt['dir']['stats'], 'datasets', 'VBT_stimuli-training_desc-stats.csv'), index = False)
-    teStats.to_csv(os.path.join(opt['dir']['stats'], 'datasets', 'VBT_stimuli-test_desc-stats.csv'), index = False)
-
+    trStats.to_csv(os.path.join(opt['dir']['stats'], 'datasets', 'VBT_stimuli-training_desc-list-with-stats.csv'), index = False)
+    teStats.to_csv(os.path.join(opt['dir']['stats'], 'datasets', 'VBT_stimuli-test_desc-list-with-stats.csv'), index = False)
+    
+    letters.to_csv(os.path.join(opt['dir']['stats'], 'datasets', 'VBT_stimuli-letters_desc-behavioural-results.csv'), index = False)
+    training.to_csv(os.path.join(opt['dir']['stats'], 'datasets', 'VBT_stimuli-training_desc-behavioural-results.csv'), index = False)
+    test.to_csv(os.path.join(opt['dir']['stats'], 'datasets', 'VBT_stimuli-test_desc-behavioural-results.csv'), index = False)
 
 
 ### Subfunctions
@@ -152,6 +160,133 @@ def get_dutch_statistics(opt):
     
     return dlp
     
+
+# Extract information about stimuli for training of letters, training of words,
+# testing of words
+def get_results_stimuli(opt):
+    
+    # For each subject
+    # import all the files
+    # extract letters: add repetition, order alphabetically, extract columns, append
+    # extract training: add sub, group, day, extract columns, append
+    # extract test: add day, type, sub, group, extract columns, append
+    
+    # Get "preproc" folder
+    # Glob is used to find specific patterns within a path (e.g. 'sub-*')
+    subjects = glob.glob(os.path.join(opt['dir']['extracted'], 'sub-*'))
+
+    # Initialize summary table
+    letters = pd.DataFrame()
+    training = pd.DataFrame()
+    test = pd.DataFrame()
+
+    # Extract data participant by participant
+    for sub in subjects:
+        
+        # Get subject path
+        subPath = sub
+
+        # Extract sub name and ID to compose the subject's entry
+        subID = subPath.split('-')[2]
+
+        # Take path of letters (day 1)
+        le = pd.read_csv(glob.glob(os.path.join(subPath, 'ses-001', '*-training.csv'))[0])
+        
+        # Take path of training (days 2-3-4)
+        tr2 = pd.read_csv(glob.glob(os.path.join(subPath, 'ses-002', '*-training.csv'))[0])
+        tr3 = pd.read_csv(glob.glob(os.path.join(subPath, 'ses-003', '*-training.csv'))[0])
+        tr4 = pd.read_csv(glob.glob(os.path.join(subPath, 'ses-004', '*-training.csv'))[0])     
+        
+        # Take path of test (days 1-2-3-4)
+        te1 = pd.read_csv(glob.glob(os.path.join(subPath, 'ses-001', '*-test.csv'))[0])
+        te2 = pd.read_csv(glob.glob(os.path.join(subPath, 'ses-002', '*-test.csv'))[0])
+        te3 = pd.read_csv(glob.glob(os.path.join(subPath, 'ses-003', '*-test.csv'))[0])
+        te4 = pd.read_csv(glob.glob(os.path.join(subPath, 'ses-004', '*-test.csv'))[0])
+
+        # Get the relevant information out of the letters
+        le = extract_letters_information(opt, subID, le)
+        
+        # Get the relevant information out of the letters
+        tr = extract_training_information(opt, subID, tr2, tr3, tr4)
+        
+        # Get the relevant information out of the letters
+        te = extract_test_information(opt, subID, te1, te2, te3, te4)
+        
+        # Add the entries to the statistics
+        letters = pd.concat([letters, le])
+        training = pd.concat([training, tr])
+        test = pd.concat([test, te])
+
+    return letters, training, test
+
+
+# From behavioural results of letters training, extract and order information of 
+# one participant
+def extract_letters_information(opt, subID, le):
+        
+    # Add important columns
+    # - repetition
+    # - subject
+    # - script (after fetching relative name)
+    le['repetition'] = le.index.map(get_stimulus_repetition)
+    le['subject'] = 'sub-' + subID
+    
+    scriptID = opt['subList'].index(subID)
+    le['script'] = opt['scriptList'][scriptID]
+    
+    # Re-arrange table and drop redundant letter column
+    letters = le[['subject','script','repetition','letter','readingTime','checkingTime']]
+    
+    return letters
+    
+
+# From behavioural results of word trainings, extract and order information of 
+# one participant
+def extract_training_information(opt, subID, tr2, tr3, tr4):
+    
+    # Add 'day' information to each file
+    tr2['session'] = '2'
+    tr3['session'] = '3'
+    tr4['session'] = '4'
+    
+    # Merge and add information about script and subject
+    tr = pd.concat([tr2, tr3, tr4])
+    tr['subject'] = 'sub-' + subID
+    
+    scriptID = opt['subList'].index(subID)
+    tr['script'] = opt['scriptList'][scriptID]
+    
+    # Re-arrange table and drop redundant letter column
+    tr = tr.rename(columns = {'nlWrd': 'woord', 'testResp': 'response'})
+    training = tr[['subject','script','session','woord','tested','response','score','readingTime','checkingTime','writingTime']]
+    
+    return training
+
+
+# From behavioural results of word test, extract and order information of 
+# one participant
+def extract_test_information(opt, subID, te1, te2, te3, te4):
+    
+    # Add 'day' information to each file
+    te1['session'] = '1'
+    te2['session'] = '2'
+    te3['session'] = '3'
+    te4['session'] = '4'
+    
+    # Merge and add information about script and subject
+    te = pd.concat([te1, te2, te3, te4])
+    te['subject'] = 'sub-' + subID
+    
+    scriptID = opt['subList'].index(subID)
+    te['script'] = opt['scriptList'][scriptID]
+    
+    # Re-arrange table and drop redundant letter column
+    te = te.rename(columns = {'nlWrd': 'woord', 'testResp': 'response', 'attempts': 'keypresses'})
+    test = te[['subject','script','session','woord','response','score','readingTime','writingTime', 'keypresses']]
+    
+    return test
+
+
 # Assign the type of test stimulus (seen words, pseudo-words, novel words)
 def get_stimulus_type(idx):
     
@@ -169,8 +304,27 @@ def get_stimulus_type(idx):
         return 'novel'
 
 
-
-
-
-
-
+# Assign a number to the repetition of letters in the letters training
+def get_stimulus_repetition(idx):
+    
+    if idx < 26:
+        return '1'
+    
+    elif idx < 52:
+        return '2'
+    
+    elif idx < 78:
+        return '3'
+    
+    elif idx < 104:
+        return '4'
+    
+    elif idx < 130:
+        return '5'
+    
+    elif idx < 156:
+        return '6'
+    
+    else:
+        return '7'
+    
