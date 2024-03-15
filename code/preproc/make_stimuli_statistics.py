@@ -21,6 +21,7 @@ Lastly, it will save (individual and merged) tables in outputs/derivatives/datas
 import os
 import pandas as pd
 import glob as glob
+import Levenshtein as lev
 
 def make_stimuli_statistics(opt):
     
@@ -33,6 +34,12 @@ def make_stimuli_statistics(opt):
     
     # Compute stimuli accuracy and timings
     letters, training, test = get_results_stimuli(opt)
+    
+    # Extract qualitative information about the test responses:
+    # - how distant were the responses from the correct answers
+    # - which letters have been omitted most and which have been mistaken 
+    # - which words have been recognized the most / the least
+    test = extract_test_responses(test)
         
     # Apply the statistics to the training and test sets
     trStats = pd.merge(tr, dlp, on = 'woord', how = 'left')
@@ -213,9 +220,10 @@ def get_results_stimuli(opt):
         te = extract_test_information(opt, subID, te1, te2, te3, te4)
         
         # Add the entries to the statistics
-        letters = pd.concat([letters, le])
-        training = pd.concat([training, tr])
-        test = pd.concat([test, te])
+        letters = pd.concat([letters, le], ignore_index = True)
+        training = pd.concat([training, tr], ignore_index = True)
+        test = pd.concat([test, te], ignore_index = True)
+        
 
     return letters, training, test
 
@@ -285,6 +293,122 @@ def extract_test_information(opt, subID, te1, te2, te3, te4):
     test = te[['subject','script','session','woord','response','score','readingTime','writingTime', 'keypresses']]
     
     return test
+
+
+# Extract information from test responses:
+# - distance (levensthein) between target and response
+# - which letters were identified, omitted, mistaken for another
+def extract_test_responses(te):
+    
+    # Initialize new columns to be added to table
+    distances = []
+    mistakes = []
+    newResponses = []
+    
+    # go entry by entry and correct them
+    for target, response, score in zip(te['woord'], te['response'], te['score']):
+        
+        # edit response to add missing dots, useful to then comupute mistakes and 
+        # distance between response and correct answer
+        response = adjust_response(response)    
+
+        # Calculate Levensthein distance between two strings
+        # (number of changes to go from one to the other)
+        distance = lev.distance(response, target)
+        
+        # In case the strings don't match, have a look at why
+        if distance > 0:
+            
+            # Check omitted letters or mistook ones
+            mistake = assess_mistakes(response, target)
+            
+        else:
+            mistake = []
+                        
+        # Save new columns to be added to table
+        distances.append(distance/len(target))
+        mistakes.append(mistake)
+        newResponses.append(response)
+        
+    # Add new columns and update answers
+    te['distance'] = distances
+    te['mistakes'] = mistakes
+    te['response'] = newResponses
+
+    return te
+
+
+# Assess which mistakes were made in the response
+def assess_mistakes(re, ta):
+    
+    mi = ''
+    
+    # If the first character of the response is not equal to the target and 
+    # it's not a '.', assume that the participant did not follow the instructions 
+    # to mark the skipped letters and do it yourself   
+    if not (re[0] == ta[0] or re[0] == '.') or len(re) > len(ta) :
+        
+        # Ask for manual check
+        return 'Requires manual assessment'
+        
+        # # compare current response with the case of adding +1 or +2 dots at the beginning
+        # rePlus1 = '.' + re
+        # rePlus2 = '..' + re
+        
+        # lev0 = lev.distance(re, ta)
+        # lev1 = lev.distance(rePlus1, ta)
+        # lev2 = lev.distance(rePlus2, ta)
+        
+        # # which is closest to answer? Assign the corresponding string and prefer 
+        # # minimal changes if dots don't improve distance
+        # closest = min([lev0, lev1, lev2])
+        # if closest == lev0: 
+        #     re = re
+        # elif closest == lev1:
+        #     re = rePlus1
+        # elif closest == lev2:
+        #     re = rePlus2
+                
+    # take the difference in length between strings and add dots to match lengths
+    if len(re) < len(ta):
+        
+        # compute number of dots to add
+        nbDots = len(ta) - len(re)
+        
+        # add at the end of the string
+        re = re + '.'*nbDots
+        
+    # Asess errors
+    for iLet in range(0, len(re)):
+        
+        # If the letter in response is different from target, store it with the 
+        # corresponding target
+        if not re[iLet] == ta[iLet]:
+            mi = mi + ta[iLet] + '-' + re[iLet] + '_'
+            
+    mi = mi[:-1]
+    
+    return mi
+    
+    mi = []
+    
+    # look up each letter against the same one in that position
+    
+    return mi
+
+
+# Fix the missing dots to have equally long strings
+def adjust_response(re):
+    
+    # First checks on the response
+    # - make sure it's not empty 
+    if pd.isna(re): 
+        re = '.'
+        
+    # - make sure it contains only lower-case letters
+    re = re.lower()
+        
+    return re
 
 
 # Assign the type of test stimulus (seen words, pseudo-words, novel words)
