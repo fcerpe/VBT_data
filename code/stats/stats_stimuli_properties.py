@@ -30,7 +30,12 @@ To operationalize, this function computes the followin statistics:
 @author: Filippo Cerpelloni
 """
 
-def stats_further_analyses():
+import os
+import pandas as pd
+import glob as glob
+
+
+def stats_further_analyses(opt):
     
     # OTHER FOLDER: 
     # - load tables with statstics 
@@ -38,11 +43,19 @@ def stats_further_analyses():
     # - save skimmed tables
     # - re-organize results summary to have something based on words and not on sessions
     
-    # Load stastics 
+    # Load stimuli results 
+    trResults = pd.read_csv(os.path.join(opt['dir']['stats'], 'datasets', 
+                                  'VBT_stimuli-training_desc-behavioural-results.csv'))
+    teResults = pd.read_csv(os.path.join(opt['dir']['stats'], 'datasets', 
+                                  'VBT_stimuli-test_desc-behavioural-results.csv'))
     
-    # Load summary
+    # Load stimuli statistics
     
-    # ???
+    # Compute letter-wise averages across repetitions
+    
+    # Compute word-wise distance averages for test
+    
+    # Correlate averages with language statistics
     
     # Save results
     
