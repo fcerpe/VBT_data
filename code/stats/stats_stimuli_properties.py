@@ -60,12 +60,18 @@ def stats_further_analyses(opt):
     ## Letters
     # Averages across repetitions and across subjects
     leRepAverages = leResults.groupby(['subject', 'script', 'letter']).agg({
-        'readingTime': 'mean', 
-        'checkingTime': 'mean'})
+        'readingTime': 'mean',  
+        'checkingTime': 'mean'}).reset_index()
     leAverages = leRepAverages.groupby(['script', 'letter']).agg({
         'readingTime': 'mean', 
-        'checkingTime': 'mean'})
-    
+        'checkingTime': 'mean'}).reset_index()
+
+    # Separate groups into different columns, to avoid having too many variables
+    leAverages = leAverages.pivot(index='letter', columns='script', values=['readingTime', 'checkingTime'])
+    leAverages.columns = ['_'.join(col) for col in leAverages.columns]
+    leAverages.reset_index(inplace = True)
+
+
     ## Training
     # Separate tested and non-tested items, to compute different averages 
     trTested = trResults[trResults['tested'] == 1]
@@ -85,6 +91,9 @@ def stats_further_analyses(opt):
         'readingTime': 'mean',
         'checkingTime': 'mean'
         }).reset_index()
+    
+    # Separate sessions and groups
+    
     
     ## Test
     # Average scores, writing time, distance from the correct answer
