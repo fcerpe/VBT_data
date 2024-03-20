@@ -7,7 +7,8 @@ Created on Tue Mar  5 09:24:02 2024
 """
 
 from stats_option import stats_option
-from stats_accuracy_timing import stats_accuracy_timing
+from stats_accuracy_timing import *
+from stats_stimuli_properties import * 
 
 ### VISUAL BRAILLE TRAINING - MAKE SUMMARY TABLES
 # 
@@ -24,7 +25,7 @@ from stats_accuracy_timing import stats_accuracy_timing
 opt = stats_option()
 
 
-## Perform first anovas
+## Analyses on overall accuracy and timings 
 #
 # Are there differences between groups in terms of
 # - accuracy across test sessions
@@ -33,3 +34,14 @@ opt = stats_option()
 # - writing times during training and test sessions
 stats_accuracy_timing(opt)
 
+
+## Analyses on stimuli scores: accuracy and timings related to language statistics
+#
+# Correlation between 
+# - test sessions accuracy, writing time, distance from answer
+# - training sessions reading and writing time, accuracy in tested items
+# - letter session reading time
+# and
+# - word length, number of syllables, frequency, orthographic and phonological neighbours
+# - letter frrequency 
+stats_stimuli_properties(opt)
