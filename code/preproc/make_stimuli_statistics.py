@@ -68,6 +68,7 @@ def get_stimuli_lists(opt):
         
         # Create list of stimuli post-hoc
         # Extract training set from ses-002 and test sets from each session
+        # Participant is not important, they all saw the same stimuli
         tr2 = pd.read_csv(os.path.join(opt['dir']['extracted'], 'sub-00004', 'ses-002', 
                                       'sub-00004_ses-002_task-alphabetLearning_script-cb_beh-training.csv'))
         tr3 = pd.read_csv(os.path.join(opt['dir']['extracted'], 'sub-00004', 'ses-003', 
@@ -126,6 +127,9 @@ def get_stimuli_lists(opt):
         teSeen = te[te['stimulus'] == 'seen']
         tePseudo = te[te['stimulus'] == 'pseudo']
         teNovel = te[te['stimulus'] == 'novel']
+        
+        # If it's session one, there are no 'seen' words. All are novel
+        teSeen.loc[(teSeen['session'] == 1) & (teSeen['stimulus'] == 'seen'), 'stimulus'] = 'novel'
         
         # Save test lists: both full and single types
         te.to_csv(os.path.join(opt['dir']['stats'], 'datasets', 'VBT_stimuli-test_desc-list.csv'), index = False)
