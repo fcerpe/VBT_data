@@ -32,7 +32,7 @@ opt = stats_option()
 # - accuracy across training sessions 
 # - reading time during training sessions
 # - writing times during training and test sessions
-stats_accuracy_timing(opt)
+# stats_accuracy_timing(opt)
 
 
 ## Analyses on stimuli scores: accuracy and timings related to language statistics

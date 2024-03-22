@@ -14,9 +14,7 @@ Questions:
         * word frequency
         * word length
         * word orthographic neighbours
-        * word phonologic neighbours
         * letter frequency
-        * letter neighbours (shape-based) TBD
         
     - are there differences in testing due to the nature of the stimulus seen?
         * seen words
@@ -24,8 +22,8 @@ Questions:
         * pseudo-words
 
 
-To operationalize, this function computes the followin statistics: 
-    - TBD
+To operationalize, this function computes the following statistics: 
+    - correlations
 
 @author: Filippo Cerpelloni
 """
@@ -58,6 +56,16 @@ def stats_stimuli_properties(opt):
     teStats = pd.read_csv(os.path.join(opt['dir']['stats'], 'datasets', 
                                        'VBT_stimuli-test_desc-list-with-stats.csv'))
     
+    
+    # Calculate lenght for all stimuli, including pseudo-words
+    trStats['length'] = trStats['woord'].apply(lambda x: len(x))
+    teStats['length'] = teStats['woord'].apply(lambda x: len(x))
+    
+    # Convert scores from T/F to 1/0
+    trResults['score'] = trResults['score'].astype(int)
+    teResults['score'] = teResults['score'].astype(int)
+
+    
     ## Letters
     # Averages across repetitions and across subjects
     leRepAverages = leResults.groupby(['subject', 'script', 'letter']).agg({
@@ -74,222 +82,319 @@ def stats_stimuli_properties(opt):
 
 
     ## Training
-    # Separate tested and non-tested items, to compute different averages 
-    trTested = trResults[trResults['tested'] == 1]
-    trTested = trTested[['subject', 'script', 'session', 'woord', 'response', 
-                         'score', 'writingTime', 'checkingTime']]
-    
-    trTestedAverages = trTested.groupby(['script', 'session', 'woord']).agg({
-        'score': 'mean',
-        'writingTime': 'mean',
-        'checkingTime': 'mean'
-        }).reset_index()
-    
-    trNotTested = trResults[trResults['tested'] == 0]
-    trNotTested = trNotTested[['subject', 'script', 'session', 'woord', 'readingTime', 'checkingTime']]
-    
-    trNotTestedAverages = trNotTested.groupby(['script', 'session', 'woord']).agg({
-        'readingTime': 'mean',
-        'checkingTime': 'mean'
-        }).reset_index()
-    
-    # Separate sessions and groups
-    
-    
-    ## Test
-    # Average scores, writing time, distance from the correct answer
-    teAverages = teResults.groupby(['script', 'session', 'woord']).agg({
-        'score': 'mean',
-        'writingTime': 'mean',
-        'distance': 'mean'
-        }).reset_index()
-    
-    # Separate groups in different columns (BR v. CB)
-    teAverages = teAverages.pivot(index = 'woord', columns = 'script', values=['score', 'writingTime', 'distance'])
-    teAverages.columns = ['_'.join(col) for col in teAverages.columns]
-    teAverages.reset_index(inplace = True)
-    
-    # Add information about stimulus type, to avoid correlations with pseudo-words (there's no stats for that)
-    teAverages['type'] = teStats[['stimulus']]
+    # Extract average and individual tables for tested and non-tested items
+    trTInds, trTAvgs, trNTInds, trNTAvgs = merge_results_stats(trResults, trStats, 'training')
 
-    # Merge tables into one
-    test = pd.concat([teStats, teAverages.iloc[:, 1:-1]], axis = 1)
-    
-    # Add woord length to pseudo-words
-    test['length'] = test['woord'].apply(lambda x: len(x))  
-    
-    # Correlate results and stats averages with language statistics
-    # - exclude pseudo-words because we don't have stats for that (we could have length)
-    # - use stats length, nb syllables, frequency, nb phonemes, ortho and phon neighbours 
+    # Correlate results averages with language statistics
+    # - use stats length, frequency, orthographic neighbours 
     # - use results score, writing time, distance 
-    corrTestSes1 = correlate_test_results(test[test['session'] == 1])
-    corrTestSes2 = test[(test['session'] == 2) & (test['stimulus'] != 'pseudo')].drop(columns=['woord', 'stimulus','session']).corr()
-    corrTestSes3 = test[(test['session'] == 3) & (test['stimulus'] != 'pseudo')].drop(columns=['woord', 'stimulus','session']).corr()
-    corrTestSes4 = test[(test['session'] == 4) & (test['stimulus'] != 'pseudo')].drop(columns=['woord', 'stimulus','session']).corr()
-    
-    
-    # Save all the results
-    corrTestSes1.to_csv(os.path.join(opt['dir']['results'], 
-                                     'VBT_data-test_variable-linguistic-stats_analysis-correlation_desc-ses-1.csv'), index = False)
-    corrTestSes2.to_csv(os.path.join(opt['dir']['results'], 
-                                     'VBT_data-test_variable-linguistic-stats_analysis-correlation_desc-ses-2.csv'), index = False)
-    corrTestSes3.to_csv(os.path.join(opt['dir']['results'], 
-                                     'VBT_data-test_variable-linguistic-stats_analysis-correlation_desc-ses-3.csv'), index = False)
-    corrTestSes4.to_csv(os.path.join(opt['dir']['results'], 
-                                     'VBT_data-test_variable-linguistic-stats_analysis-correlation_desc-ses-4.csv'), index = False)
+    trTCorrAvgs = pd.concat([correlate_trainings(trTAvgs[trTAvgs['session_x'] == 2]),
+                             correlate_trainings(trTAvgs[trTAvgs['session_x'] == 3]),
+                             correlate_trainings(trTAvgs[trTAvgs['session_x'] == 4])], axis = 0)
+    trNTCorrAvgs = pd.concat([correlate_trainings(trNTAvgs[trNTAvgs['session_x'] == 2]),
+                              correlate_trainings(trNTAvgs[trNTAvgs['session_x'] == 3]),
+                              correlate_trainings(trNTAvgs[trNTAvgs['session_x'] == 4])], axis = 0)
+        
+    # Make the same correlations on individual subjects, to create cloud of variance
+    # A lot of warnings will pop-up, they indicate that 'score' is a constant (participant performed 0 in that session)
+    # and that therefore there won't be a correlation 
+    trTCorrInds = pd.DataFrame()
+    trNTCorrInds = pd.DataFrame()
+        
+    for sub in trTInds['subject'].unique():
+   
+        trTCorrInds = pd.concat([trTCorrInds, 
+                                correlate_trainings(trTInds[(trTInds['subject'] == sub) & (trTInds['session_x'] == 2)]), 
+                                correlate_trainings(trTInds[(trTInds['subject'] == sub) & (trTInds['session_x'] == 3)]), 
+                                correlate_trainings(trTInds[(trTInds['subject'] == sub) & (trTInds['session_x'] == 4)])], axis = 0)
+        
+        trNTCorrInds = pd.concat([trNTCorrInds, 
+                                correlate_trainings(trNTInds[(trNTInds['subject'] == sub) & (trNTInds['session_x'] == 2)]), 
+                                correlate_trainings(trNTInds[(trNTInds['subject'] == sub) & (trNTInds['session_x'] == 3)]), 
+                                correlate_trainings(trNTInds[(trNTInds['subject'] == sub) & (trNTInds['session_x'] == 4)])], axis = 0)
+        
 
+    ## Test
+    # Extract average and individual tables
+    teInds, teAvgs = merge_results_stats(teResults, teStats, 'test')
     
+    # Correlate results averages with language statistics
+    # - use stats length, frequency, orthographic neighbours 
+    # - use results score, writing time, distance 
+    teCorrAvgs = pd.concat([correlate_tests(teAvgs[teAvgs['session'] == 1]), 
+                            correlate_tests(teAvgs[teAvgs['session'] == 2]),
+                            correlate_tests(teAvgs[teAvgs['session'] == 3]),
+                            correlate_tests(teAvgs[teAvgs['session'] == 4])], axis = 0)
+        
+    # Make the same correlations on individual subjects, to create cloud of variance
+    # A lot of warnings will pop-up, they indicate that 'score' is a constant (participant performed 0 in that session)
+    # and that therefore there won't be a correlation 
+    teCorrInds = pd.DataFrame()
+    
+    for sub in teInds['subject'].unique():
+   
+        teCorrInds = pd.concat([teCorrInds, 
+                                correlate_tests(teInds[(teInds['subject'] == sub) & (teInds['session_x'] == 1)]), 
+                                correlate_tests(teInds[(teInds['subject'] == sub) & (teInds['session_x'] == 2)]), 
+                                correlate_tests(teInds[(teInds['subject'] == sub) & (teInds['session_x'] == 3)]), 
+                                correlate_tests(teInds[(teInds['subject'] == sub) & (teInds['session_x'] == 4)])], axis = 0)
+        
+        
+    # Save all the correlations
+    trTCorrAvgs.to_csv(os.path.join(opt['dir']['results'], 
+                                   'VBT_data-training_variable-linguistic-stats_analysis-correlations_desc-tested-items-average.csv'), 
+                       index = False)
+    trNTCorrAvgs.to_csv(os.path.join(opt['dir']['results'], 
+                                   'VBT_data-training_variable-linguistic-stats_analysis-correlations_desc-nontested-items-average.csv'), 
+                        index = False)
+    trTCorrInds.to_csv(os.path.join(opt['dir']['results'], 
+                                   'VBT_data-training_variable-linguistic-stats_analysis-correlations_desc-tested-items-individual.csv'), 
+                       index = False)
+    trNTCorrInds.to_csv(os.path.join(opt['dir']['results'], 
+                                   'VBT_data-training_variable-linguistic-stats_analysis-correlations_desc-nontested-items-individual.csv'), 
+                        index = False)
+    teCorrAvgs.to_csv(os.path.join(opt['dir']['results'], 
+                                   'VBT_data-test_variable-linguistic-stats_analysis-correlations_desc-average.csv'), index = False)
+    teCorrInds.to_csv(os.path.join(opt['dir']['results'], 
+                                   'VBT_data-test_variable-linguistic-stats_analysis-correlations_desc-individual.csv'), index = False)
+    
+
    
 ### Subfunctions
 
-# Correlate each column to all the other ones and produce clean output with stats
-def correlate_test_results(tab):
+# From test behvioural results, extract averages and subject tables
+def merge_results_stats(tab, stats, flag):
     
-    # Define columns for correlation
-    validColumns = list(tab.columns[3:])
-    fullColumns = ['length', 'score_br', 'score_cb', 'distance_br', 'distance_cb', 'writingTime_br', 'writingTime_cb']
+    # TEST DATA
+    if flag == 'test':
+        
+        # Extract individual scores, writing times, distances for variance purposes
+        inds = tab[['subject', 'script', 'session', 'woord', 'score', 'writingTime', 'distance']].sort_values(['subject','session','woord'])
+        inds.reset_index(drop = True)
+        
+        # Average scores, writing time, distance from the correct answer
+        avgs = tab.groupby(['script', 'session', 'woord']).agg({'score': 'mean','writingTime': 'mean','distance': 'mean'}).reset_index()
+    
+        # In the averages, separate groups in different columns (BR v. CB)
+        avgs = avgs.pivot(index = 'woord', columns = 'script', values=['score', 'writingTime', 'distance'])
+        avgs.columns = ['_'.join(col) for col in avgs.columns]
+        avgs.reset_index(inplace = True)
+        
+        # Merge tables into one
+        avgs = pd.concat([stats, avgs.iloc[:, 1:]], axis = 1)
+        inds = pd.merge(inds, stats, on = 'woord', how = 'left')
+        
+        return inds, avgs
+    
+    
+    # TRAINING DATA
+    elif flag == 'training':
+        
+        # Separate tested items
+        t = tab[tab['tested'] == 1]
+        t = t[['subject', 'script', 'session', 'woord', 'response', 'score', 'writingTime', 'checkingTime']]
+        nt = tab[tab['tested'] == 0]
+        nt = nt[['subject', 'script', 'session', 'woord', 'readingTime', 'checkingTime']]
+        
+        
+        # Extract individual scores, writing times, distances for variance purposes
+        tInds = t[['subject', 'script', 'session', 'woord', 'score', 'writingTime']].sort_values(['subject','session','woord'])
+        tInds.reset_index(drop = True)
+        ntInds = nt[['subject', 'script', 'session', 'woord', 'readingTime']].sort_values(['subject','session','woord'])
+        ntInds.reset_index(drop = True)
+        
+        # Exclude outliers in time, maybe participant took a break
+        
+        # Merge with stats
+        tInds = pd.merge(tInds, stats, on = 'woord', how = 'left') 
+        ntInds = pd.merge(ntInds, stats, on = 'woord', how = 'left')
+        
+        
+        # Compute averages
+        tAvgs = t.groupby(['script', 'session', 'woord']).agg({'score': 'mean', 'writingTime': 'mean'}).reset_index()
+        ntAvgs = nt.groupby(['script','session','woord']).agg({'readingTime': 'mean','checkingTime': 'mean'}).reset_index()
+        
+        # In the averages, separate groups in different columns (BR v. CB)
+        tAvgs = tAvgs.pivot_table(index = ['session', 'woord'], columns = 'script', values = ['score', 'writingTime'], aggfunc = 'first')
+        tAvgs.columns = ['_'.join(map(str, col)).strip() for col in tAvgs.columns.values]
+        tAvgs.reset_index(inplace=True)
+        
+        ntAvgs = ntAvgs.pivot(index = ['session','woord'], columns = 'script', values = ['readingTime'])
+        ntAvgs.columns = ['_'.join(col) for col in ntAvgs.columns]
+        ntAvgs.reset_index(inplace = True)
+       
+        # Merge tables into one
+        tAvgs = pd.merge(tAvgs, stats, on = 'woord', how = 'left')
+        ntAvgs = pd.merge(ntAvgs, stats, on = 'woord', how = 'left')
+        
+        return tInds, tAvgs, ntInds, ntAvgs
+    
+    
+    # NO INFO PROVIDED
+    else:
+        
+        return []
+                
+
+# Correlate each column to all the other ones and produce clean output with stats
+def correlate_trainings(tab):
+    
+    tab.reset_index(inplace = True)
+    
+    # Define valid columns based on individual correlation of average ones 
+    if 'subject' in tab.columns: 
+        
+        # Individual correlations 
+        # * session is different variable 
+        # * correlation table has more information, more columns
+        session = tab['session_x'][0]
+        correlationColumns = ['subject', 'script', 'column1', 'column2', 'stimuli', 'session', 
+                              'correlation', 'p_value', 'degrees_of_freedom']
+        
+        # Define which variable will be correlated based on tested or not tested
+        if 'score' in tab.columns:
+            
+            # Tested items - multiple scores and times
+            resultColumns = ['score', 'writingTime']
+            
+        else:
+            # Not tested - only one score, time
+            resultColumns = ['readingTime']
+            
+        
+    else:
+        # Average scores - duplicate scores, distances, times, and restriced info in correlation table
+        session = tab['session_x'][0]
+        correlationColumns = ['column1', 'column2', 'stimuli', 'session', 'correlation', 'p_value', 'degrees_of_freedom']
+
+        # Define which variable will be correlated based on tested or not tested
+        if 'score_br' in tab.columns:
+            
+            # Tested items - multiple scores
+            resultColumns = ['score_br', 'score_cb', 'writingTime_br', 'writingTime_cb']
+            
+        else:
+            # Not tested - only one score, distance, time
+            resultColumns = ['readingTime_br', 'readingTime_cb']
+
+            
+    # stats are always the same
+    statsColumns = ['length', 'frequency', 'old20']
 
     # Initialize list to store correlation results
     correlations = []
 
-    ## Compute correlations
-
-    # Keep track of which correlations have already been computed, to avoid doubles
-    computed = set()   
+    ## Compute correlations  
      
     # Look at al the comparisons
-    for i, col1 in enumerate(tab.columns):
+    for i, col1 in enumerate(resultColumns):
         
-        for j, col2 in enumerate(tab.columns):
+        for j, col2 in enumerate(statsColumns):
+                
+            correlations = add_correlations(tab, col1, col2, correlations, 'all', session) 
+                
+                            
+    # Cast correlations as dataframe
+    correlations = pd.DataFrame(correlations, columns = correlationColumns)
+    
+    return correlations
+
+
+# Correlate each column to all the other ones and produce clean output with stats
+def correlate_tests(tab):
+    
+    tab.reset_index(inplace = True)
+    
+    # Define valid columns based on individual correlation of average ones 
+    if 'subject' in tab.columns: 
+        
+        # Individual correlations 
+        # * session is different variable 
+        # * only one score, distance, time
+        # * correlation table has more information, more columns
+        resultColumns = ['score', 'writingTime', 'distance']
+        statsColumns = ['length', 'frequency', 'old20']
+        fullColumns = ['score', 'writingTime', 'distance', 'length']
+        session = tab['session_x'][0]
+        correlationColumns = ['subject', 'script', 'column1', 'column2', 'stimuli', 'session', 
+                              'correlation', 'p_value', 'degrees_of_freedom']
+        
+    else:
+        # Average scores - duplicate scores, distances, times, and restriced info in correlation table
+        resultColumns = ['score_br', 'score_cb', 'distance_br', 'distance_cb', 'writingTime_br', 'writingTime_cb']
+        statsColumns = ['length', 'frequency', 'old20']
+        fullColumns = ['score_br', 'score_cb', 'distance_br', 'distance_cb', 'writingTime_br', 'writingTime_cb', 'length']
+        session = tab['session'][0]
+        correlationColumns = ['column1', 'column2', 'stimuli', 'session', 'correlation', 'p_value', 'degrees_of_freedom']
+
+
+    # Initialize list to store correlation results
+    correlations = []
+
+    ## Compute correlations  
+     
+    # Look at al the comparisons
+    for i, col1 in enumerate(resultColumns):
+        
+        for j, col2 in enumerate(statsColumns):
+                
+            # If we know it contains values for all the stimulus types, correlate the whole set
+            if (col1 in fullColumns) and (col2 in fullColumns):
+                # do overall correlation
+                correlations = add_correlations(tab, col1, col2, correlations, 'all', session) 
+                
+                # isolate pseudowords
+                correlations = add_correlations(tab, col1, col2, correlations, 'pseudo', session) 
+              
+            # Otherwise, only correlate real words instead of all stimuli
+            else:
+                # non-pseudo words
+                correlations = add_correlations(tab, col1, col2, correlations, 'real', session) 
+                
+            # novel words
+            correlations = add_correlations(tab, col1, col2, correlations, 'novel', session) 
           
-            # Computeif (col1 in fullColumns) and (col2 in fullColumns): correlations only if it's a column with numerical values
-            # i.e., skip 'woord', 'session', 'stimulus' and correlations between the same columns
-            if (col1 in validColumns) and (col2 in validColumns) and (col1 != col2):
-          
-                # If the correlations haven't been computed yet
-                if (col1, col2) not in computed and (col2, col1) not in computed:
-                  
-                    # Add session loop here
-                  
-                    # If we know it contains values for all the stimulus types,
-                    # correlate the whole set
-                    if (col1 in fullColumns) and (col2 in fullColumns):
-                        # do overall correlation
-                        corr_coef, p_value = pearsonr(tab[col1], tab[col2])
-                        correlations.append([col1, col2, 'overall', corr_coef, p_value, len(tab) - 2])
-                        
-                        # isolate pseudowords
-                        pseudo = tab[tab['stimulus'] == 'pseudo']               
-        
-                        # do pseudo correlation
-                        corr_coef, p_value = pearsonr(pseudo[col1], pseudo[col2])
-                        correlations.append([col1, col2, 'pseudo words', corr_coef, p_value, len(pseudo) - 2])
-                      
-                    # Otherwise, only correlate real words instead of all stimuli
-                    else:
-                        # isolate non-pseudo words
-                        real = tab[tab['stimulus'] != 'pseudo']               
-                        
-                        # do non-pseudo correlation
-                        corr_coef, p_value = pearsonr(real[col1], real[col2])
-                        correlations.append([col1, col2, 'real words', corr_coef, p_value, len(real) - 2])
-                        
-                    # isolate novel words
-                    novel = tab[tab['stimulus'] == 'novel']               
-        
-                    # do novel correlation
-                    corr_coef, p_value = pearsonr(novel[col1], novel[col2])
-                    correlations.append([col1, col2, 'novel words', corr_coef, p_value, len(novel) - 2])
-                  
-                    # isolate seen words
-                    seen = tab[tab['stimulus'] == 'seen']               
-        
-                    # do seen correlation
-                    corr_coef, p_value = pearsonr(seen[col1], seen[col2])
-                    correlations.append([col1, col2, 'seen words', corr_coef, p_value, len(seen) - 2])
-                  
-                  
-                    # Add this correlation to the list of already computed ones
-                    computed.add((col1, col2))
+            # In session one there are no seen words
+            if not session == 1:
+                
+                # seen words
+                correlations = add_correlations(tab, col1, col2, correlations, 'seen', session)               
 
     # Cast correlations as dataframe
-    correlations = pd.DataFrame(correlations, columns = ['column1', 'column2', 'stimuli', 'session', 
-                                                         'correlation', 'p_value', 'degrees_of_freedom'])
+    correlations = pd.DataFrame(correlations, columns = correlationColumns)
+    
+    return correlations
 
+
+
+# Compute correlations for one set of stimuli
+def add_correlations(tab, col1, col2, corrs, stimulus, session):
     
-    
-    
-    
-    
-    # Initialize correlation matrix 
-    correlations = []
-    
-    # Create all the subgroups to be correlated 
-    
-    # different session (4) * different stimuli (3+overall)
-    ses1 = tab[tab['session'] == 1]
-    ses2 = tab[tab['session'] == 2]
-    ses3 = tab[tab['session'] == 3]
-    ses4 = tab[tab['session'] == 4]
+    # Based on stimulus type:
+    # - all the stimuli, select everything
+    # - real words, select not pseudo
+    # - pseudo, novel, seen; select specific 
+    if stimulus == 'all':
+        selection = tab
         
-    # Correlate all the results score with woord length AND with themselves
-    for i, col1 in enumerate(tabNoPseudo.columns):
-        for j, col2 in enumerate(tabNoPseudo.columns):
-            if i < j:
-                corr_coef, p_value = pearsonr(tabNoPseudo[col1], tabNoPseudo[col2])
-                correlations.append([col1, col2, corr_coef, p_value, len(tab)-2])
+    elif stimulus == 'real':
+        selection = tab[tab['stimulus'] != 'pseudo']   
+        
+    else:
+        selection = tab[tab['stimulus'] == stimulus]               
+
+
+    # compute correlation
+    corr_coef, p_value = pearsonr(selection[col1], selection[col2])
+    
+    # add it to the list
+    # If there is a subject columns, we are working on individual correlations. 
+    # Otherwise it's average and we don't need extra columnd
+    if 'subject' in tab.columns:
+        corrs.append([tab['subject'][0], tab['script'][0], col1, col2, stimulus, session, corr_coef, p_value, len(selection) - 2])
+        
+    else:
+        corrs.append([col1, col2, stimulus, session, corr_coef, p_value, len(selection) - 2])
     
     
-    
-    
-    # Separate pseudo-words from the rest
-    tabNoPseudo = tab[tab['stimulus'] != 'pseudo']
-    
-    # Remove unnecessary columns to ease correlations 
-    tab = tab.drop(columns=['woord', 'stimulus','session', 'syllables', 'phonemes', 'frequency', 'old20', 'pld30'])
-    tabNoPseudo = tabNoPseudo.drop(columns=['woord', 'stimulus','session'])
-
-    
-    
-                
-    # Correlate all the WORDS scores with other linguistic properties
-    for i, col1 in enumerate(tabNoPseudo.columns):
-        for j, col2 in enumerate(tabNoPseudo.columns):
-            if i < j:
-                corr_coef, p_value = pearsonr(tabNoPseudo[col1], tabNoPseudo[col2])
-                correlations.append([col1, col2, corr_coef, p_value, len(tab)-2])
-
-    # Create a new DataFrame with the desired columns
-    corrTable = pd.DataFrame(correlations, columns=['column1', 'column2', 'correlation', 'pValue', 'DoF'])
-
-    
-    return corrTable
-
-
-    
-import pandas as pd
-from scipy.stats import pearsonr
-
-# Sample DataFrame
-data = {
-    'column1': [1, 2, 3, 4, 5],
-    'column2': [6, 7, 8, 9, 10],
-    'column3': [11, 12, 13, 14, 15],
-    'column4': [16, 17, 18, 19, 20],
-}
-
-df = pd.DataFrame(data)
-
-# Compute correlation coefficients and p-values for each pair of columns
-correlation_values = []
-for i, col1 in enumerate(df.columns):
-    for j, col2 in enumerate(df.columns):
-        if i < j:
-            corr_coef, p_value = pearsonr(df[col1], df[col2])
-            correlation_values.append([col1, col2, corr_coef, p_value, len(df)-2])
-
-# Create a new DataFrame with the desired columns
-correlation_df = pd.DataFrame(correlation_values, columns=['column1', 'column2', 'correlation', 'p_value', 'degrees_of_freedom'])
-
-print(correlation_df)
-
+    return corrs
