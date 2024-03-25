@@ -1,41 +1,55 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Mon Mar 25 11:18:54 2024
+Created on Mon Mar 25 15:16:02 2024
 
-@author: Filippo Cerpelloni
+@author: cerpelloni
 """
 
 
-from stats_option import stats_option
-from stats_accuracy_timing import *
-from stats_stimuli_properties import * 
+import os
 
-### VISUAL BRAILLE TRAINING - VISUALIZATION
-# 
-# Main script to make plots 
+def viz_option():
+    
+    # Initialize options dictionary
+    opt = {}
 
-# Get options
-opt = viz_option()
+    # I like chatty outputs
+    opt['verbosity'] = 2
 
-
-## Analyses on overall accuracy and timings 
-#
-# Are there differences between groups in terms of
-# - accuracy across test sessions
-# - accuracy across training sessions 
-# - reading time during training sessions
-# - writing times during training and test sessions
-viz_accuracy_timing(opt)
+    # task to analyze
+    opt['taskName'] = 'alphabetLearning'
 
 
-## Analyses on stimuli scores: accuracy and timings related to language statistics
-#
-# Correlation between 
-# - test sessions accuracy, writing time, distance from answer
-# - training sessions reading and writing time, accuracy in tested items
-# - letter session reading time
-# and
-# - word length, number of syllables, frequency, orthographic and phonological neighbours
-# - letter frrequency 
-viz_stimuli_properties(opt)
+    ## PATHS
+    # The directory where the data are located
+    opt['dir'] = {}
+    opt['dir']['root'] = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', '..')
+    opt['dir']['raw'] = os.path.join(opt['dir']['root'], 'inputs')
+    opt['dir']['derivatives'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives')
+    opt['dir']['extracted'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives', 'extracted-data')
+    opt['dir']['stats'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives', 'stats')
+    opt['dir']['figures'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives', 'figures')
+    opt['dir']['results'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives', 'results') 
+    opt['dir']['input'] = opt['dir']['raw']
+    # opt['dir']['stats'] = os.path.join(opt['dir']['root'], 'outputs', 'derivatives', 'analyses')
+
+    # directory for the saved jobs
+    opt['dir']['jobs'] = os.path.join(opt['dir']['derivatives'], 'jobs', opt['taskName'])
+
+    # Type of pipeline
+    opt['pipeline'] = {}
+    opt['pipeline']['type'] = 'stats'
+
+
+    ## ASSIGN SUBJECTS AND SCRIPTS
+    # Load from participants.tsv 
+    with open(os.path.join(opt['dir']['raw'], 'participants.tsv'), 'r') as f:
+        
+        lines = f.readlines()
+
+        # Extract subjects and scripts
+        opt['subList'] = [line.split('\t')[0].strip() for line in lines[1:]]
+        opt['scriptList'] = [line.split('\t')[1].strip() for line in lines[1:]]
+
+    return opt
