@@ -1,28 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Mar  5 09:24:02 2024
+Created on Mon Mar 25 11:18:54 2024
 
 @author: Filippo Cerpelloni
 """
+
 
 from stats_option import stats_option
 from stats_accuracy_timing import *
 from stats_stimuli_properties import * 
 
-### VISUAL BRAILLE TRAINING - MAKE SUMMARY TABLES
+### VISUAL BRAILLE TRAINING - VISUALIZATION
 # 
-# Main script to create different summary tables 
-# 
-# From pre-processed data, take each subject and extract values for the 
-# following parameters: 
-# - accuracies
-# - timings
-# - qualitative analyses (type of mistakes)
-
+# Main script to make plots 
 
 # Get options
-opt = stats_option()
+opt = viz_option()
 
 
 ## Analyses on overall accuracy and timings 
@@ -32,7 +26,7 @@ opt = stats_option()
 # - accuracy across training sessions 
 # - reading time during training sessions
 # - writing times during training and test sessions
-stats_accuracy_timing(opt)
+viz_accuracy_timing(opt)
 
 
 ## Analyses on stimuli scores: accuracy and timings related to language statistics
@@ -44,10 +38,4 @@ stats_accuracy_timing(opt)
 # and
 # - word length, number of syllables, frequency, orthographic and phonological neighbours
 # - letter frrequency 
-stats_stimuli_properties(opt)
-
-
-## Statistical tests on stimuli properties
-#
-# TBD
-#
+viz_stimuli_properties(opt)

@@ -51,6 +51,8 @@ def stats_stimuli_properties(opt):
                                          'VBT_stimuli-test_desc-behavioural-results.csv'))
     
     # Load stimuli statistics
+    leStats = pd.read_csv(os.path.join(opt['dir']['stats'], 'datasets', 
+                                       'VBT_stimuli-letters_desc-list-with-stats.csv'))
     trStats = pd.read_csv(os.path.join(opt['dir']['stats'], 'datasets', 
                                        'VBT_stimuli-training_desc-list-with-stats.csv'))
     teStats = pd.read_csv(os.path.join(opt['dir']['stats'], 'datasets', 
@@ -68,18 +70,29 @@ def stats_stimuli_properties(opt):
     
     ## Letters
     # Averages across repetitions and across subjects
-    leRepAverages = leResults.groupby(['subject', 'script', 'letter']).agg({
-        'readingTime': 'mean',  
-        'checkingTime': 'mean'}).reset_index()
-    leAverages = leRepAverages.groupby(['script', 'letter']).agg({
-        'readingTime': 'mean', 
-        'checkingTime': 'mean'}).reset_index()
+    leInds, leAvgs = merge_results_stats(leResults, leStats, 'letters')
 
-    # Separate groups into different columns, to avoid having too many variables
-    leAverages = leAverages.pivot(index='letter', columns='script', values=['readingTime', 'checkingTime'])
-    leAverages.columns = ['_'.join(col) for col in leAverages.columns]
-    leAverages.reset_index(inplace = True)
-
+    # Correlate results averages with language statistics
+    # - use stats length, frequency, orthographic neighbours 
+    # - use results score, writing time, distance 
+    leCorrAvgs = correlate_letters(leAvgs)
+    
+    # Make the same correlations on individual subjects, to create cloud of variance
+    # A lot of warnings will pop-up, they indicate that 'score' is a constant (participant performed 0 in that session)
+    # and that therefore there won't be a correlation 
+    leCorrInds = pd.DataFrame()
+        
+    for sub in leInds['subject'].unique():
+        
+        leCorrInds = pd.concat([leCorrInds, 
+                                correlate_letters(leInds[(leInds['subject'] == sub) & (leInds['repetition'] == 1)]), 
+                                correlate_letters(leInds[(leInds['subject'] == sub) & (leInds['repetition'] == 2)]), 
+                                correlate_letters(leInds[(leInds['subject'] == sub) & (leInds['repetition'] == 3)]), 
+                                correlate_letters(leInds[(leInds['subject'] == sub) & (leInds['repetition'] == 4)]), 
+                                correlate_letters(leInds[(leInds['subject'] == sub) & (leInds['repetition'] == 5)]), 
+                                correlate_letters(leInds[(leInds['subject'] == sub) & (leInds['repetition'] == 6)]), 
+                                correlate_letters(leInds[(leInds['subject'] == sub) & (leInds['repetition'] == 7)])], axis = 0)
+        
 
     ## Training
     # Extract average and individual tables for tested and non-tested items
@@ -141,6 +154,11 @@ def stats_stimuli_properties(opt):
         
         
     # Save all the correlations
+    leCorrAvgs.to_csv(os.path.join(opt['dir']['results'], 
+                                   'VBT_data-letters_variable-linguistic-stats_analysis-correlations_desc-average.csv'), index = False)
+    leCorrInds.to_csv(os.path.join(opt['dir']['results'], 
+                                   'VBT_data-letters_variable-linguistic-stats_analysis-correlations_desc-individual.csv'), index = False)
+    
     trTCorrAvgs.to_csv(os.path.join(opt['dir']['results'], 
                                    'VBT_data-training_variable-linguistic-stats_analysis-correlations_desc-tested-items-average.csv'), 
                        index = False)
@@ -153,6 +171,7 @@ def stats_stimuli_properties(opt):
     trNTCorrInds.to_csv(os.path.join(opt['dir']['results'], 
                                    'VBT_data-training_variable-linguistic-stats_analysis-correlations_desc-nontested-items-individual.csv'), 
                         index = False)
+    
     teCorrAvgs.to_csv(os.path.join(opt['dir']['results'], 
                                    'VBT_data-test_variable-linguistic-stats_analysis-correlations_desc-average.csv'), index = False)
     teCorrInds.to_csv(os.path.join(opt['dir']['results'], 
@@ -230,11 +249,84 @@ def merge_results_stats(tab, stats, flag):
         return tInds, tAvgs, ntInds, ntAvgs
     
     
-    # NO INFO PROVIDED
-    else:
+    # LETTERS DATA
+    elif flag == 'letters':
         
+        # Extract individual times (reading and checking), averaging the repetitions for each subject
+        inds = tab.groupby(['subject', 'script', 'repetition', 'letter']).agg({'readingTime': 'mean', 'checkingTime': 'mean'}).reset_index()
+        
+        # Merge with stats
+        inds = pd.merge(inds, stats, on = 'letter', how = 'left') 
+
+        # Compute averages
+        avgs = tab.groupby(['script', 'letter']).agg({'readingTime': 'mean', 'checkingTime': 'mean'}).reset_index()
+    
+        # Separate groups into different columns, to avoid having too many variables
+        avgs = avgs.pivot(index = 'letter', columns = 'script', values = ['readingTime', 'checkingTime'])
+        avgs.columns = ['_'.join(col) for col in avgs.columns]
+        avgs.reset_index(inplace = True)
+        
+        # Merge tables into one
+        avgs = pd.merge(avgs, stats, on = 'letter', how = 'left')
+            
+        return inds, avgs
+    
+    # NO INFO PROVIDED
+    else: 
         return []
                 
+
+# Correlate each column to all the other ones and produce clean output with stats
+def correlate_letters(tab):
+    
+    tab.reset_index(inplace = True)
+
+    # Different structures fro individual and averages
+    if 'subject' in tab.columns: 
+        
+        # Individual correlations 
+        # * session is repetition 
+        # * correlation table has more information, more columns
+        # * results don't indicate the script
+        session = tab['repetition'][0]
+        correlationColumns = ['subject', 'script', 'column1', 'column2', 'stimuli', 'repetition', 
+                              'correlation', 'p_value', 'degrees_of_freedom']
+        resultColumns = ['readingTime', 'checkingTime']
+
+    else:
+        # Average correlations 
+        # * session is cast as 0, not relevant here
+        # * correlation table has less information
+        # * results indicate the script
+        session = 0
+        correlationColumns = ['column1', 'column2', 'correlation', 'p_value', 'degrees_of_freedom']
+        resultColumns = ['readingTime_br', 'checkingTime_br', 'readingTime_cb', 'checkingTime_cb']
+
+    # Stats is constant and it's only one
+    statsColumns = ['frequency']
+
+    # Initialize list to store correlation results
+    correlations = []
+
+    ## Compute correlations  
+     
+    # Look at al the comparisons
+    for i, col1 in enumerate(resultColumns):
+        for j, col2 in enumerate(statsColumns):
+                
+            correlations = add_correlations(tab, col1, col2, correlations, 'all', session) 
+                
+                            
+    # if we're dealing with averages, we don't need repetituon information
+    if session == 0:
+        correlations = [[sublist[0], sublist[1], *sublist[4:]] for sublist in correlations]
+    
+    # Cast correlations as dataframe
+    correlations = pd.DataFrame(correlations, columns = correlationColumns)
+    
+    return correlations
+
+
 
 # Correlate each column to all the other ones and produce clean output with stats
 def correlate_trainings(tab):
