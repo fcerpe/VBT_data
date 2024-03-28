@@ -47,9 +47,6 @@ def viz_accuracy_timing(opt):
 
 
 
-
-
-
 ### Subfunctions
 
 # Main plotting function for ANOVA results (no data cloud so far)
