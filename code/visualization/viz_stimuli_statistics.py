@@ -50,6 +50,8 @@ def viz_stimuli_statistics(opt):
     teInfo = {'xlab': 'Days of testing', 'ylab': 'Correlation', 'legend position': 'lower right'}
     viz_plot_test_correlations(opt, teCorrAvgs, teInfo)
     
+    viz_plot_square_legend(opt)
+    
     
 
 
@@ -118,7 +120,7 @@ def viz_plot_correlations(opt, subset, params):
     # Adjust
     # - x axis
     plt.xlabel(params['xlab'])
-    plt.xticks([pos + width/2 for pos in x_pos], subset['session'].unique())
+    plt.xticks([pos for pos in x_pos], subset['session'].unique())
 
     # - y-axis
     plt.ylabel(params['ylab'])
@@ -152,10 +154,6 @@ def viz_plot_correlations(opt, subset, params):
     #         plt.text(i + width/2, height - 0.5, '**', ha = 'center')
     #     else:
     #         plt.text(i + width/2, height - 0.5, '***', ha = 'center')
-
-
-    # Adding legend
-    plt.legend()
     
     # Save plot
     savename = ('VBT_data-test_variable-' + params['behavioural variable'] + 
@@ -163,6 +161,33 @@ def viz_plot_correlations(opt, subset, params):
                 '_plot-correlation-' + params['statistic'] + '.png')
     savepath = os.path.join(opt['dir']['figures'], savename)
     plt.savefig(savepath, dpi = 600)
+    
+    # Display the plot
+    plt.show()
+    
+    
+# Make legend with squares
+# Plot a big legend with only dots
+def viz_plot_square_legend(opt):
+    
+    # Create a figure with a specific size
+    plt.figure(figsize=(10, 6))  
+    
+    # Custom legend handles
+    legend_handles = [plt.Line2D([], [], marker = 's', color = 'w', markersize = 40, markerfacecolor = '#69B5A2'),
+                      plt.Line2D([], [], marker = 's', color = 'w', markersize = 40, markerfacecolor = '#FF9E4A')]
+    legend_labels = ['Braille', 'Connected Braille']
+    
+    
+    # Move the legend to the bottom-right corner
+    plt.legend(legend_handles, legend_labels, loc = 'best', fontsize = 40, handlelength = .5)
+    
+    # Hide the axes
+    plt.axis('off')
+    
+    # Save plot
+    filename = os.path.join(opt['dir']['figures'], 'VBT_legend-squares.png')
+    plt.savefig(filename, dpi = 600, bbox_inches = 'tight')
     
     # Display the plot
     plt.show()

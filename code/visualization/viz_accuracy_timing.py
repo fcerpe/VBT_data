@@ -30,20 +30,23 @@ def viz_accuracy_timing(opt):
     # - training assessment accuracy
     # - training reading time
     teAccuInfo = {'xlab': 'Days of testing', 'ylab': 'Accuracy', 'title': 'Accuracy during testing', 
-                  'legend position': 'lower right', 'output name': 'VBT_data-test_variable-accuracy_plot-descriptive.png'}
+                  'output name': 'VBT_data-test_variable-accuracy_plot-rmANOVA.png'}
     viz_plot_rmanova(opt, teAccuracy, teAccuInfo)
 
     teWriteInfo = {'xlab': 'Days of testing', 'ylab': 'Writing time', 'title': 'Writing time during testing', 
-                  'legend position': 'lower right', 'output name': 'VBT_data-test_variable-writing-time_plot-descriptive.png'}
+                  'output name': 'VBT_data-test_variable-writing-time_plot-rmANOVA.png'}
     viz_plot_rmanova(opt, teWritingTime, teWriteInfo)
     
     trAccuInfo = {'xlab': 'Days of training', 'ylab': 'Accuracy', 'title': 'Accuracy during training assessment', 
-                  'legend position': 'lower right', 'output name': 'VBT_data-training_variable-accuracy_plot-descriptive.png'}
+                  'output name': 'VBT_data-training_variable-accuracy_plot-rmANOVA.png'}
     viz_plot_rmanova(opt, trAccuracy, trAccuInfo)
     
     trReadInfo = {'xlab': 'Days of traning', 'ylab': 'Reading time', 'title': 'Reading time during training', 
-                  'legend position': 'lower right', 'output name': 'VBT_data-training_variable-reading-time_plot-descriptive.png'}
+                  'output name': 'VBT_data-training_variable-reading-time_plot-rmANOVA.png'}
     viz_plot_rmanova(opt, trReadingTime, trReadInfo)
+    
+    # Plot a big legend
+    viz_plot_circle_legend(opt)
 
 
 
@@ -77,12 +80,46 @@ def viz_plot_rmanova(opt, res, information):
     # Customize x-axis ticks, accoid half-days
     plt.xticks(res['day'].unique())
     
-    # Move the legend to the bottom-right corner
-    plt.legend(loc = information['legend position'])
-    
     # Save plot
     filename = os.path.join(opt['dir']['figures'], information['output name'])
     plt.savefig(filename, dpi = 600)
     
     # Display the plot
     plt.show()
+    
+
+# Plot a big legend with only dots
+def viz_plot_circle_legend(opt):
+    
+    # Create a figure with a specific size
+    plt.figure(figsize=(10, 6))  
+    
+    # Custom legend handles
+    legend_handles = [plt.Line2D([], [], marker='o', color='w', markersize = 40, markerfacecolor='#69B5A2'),
+                      plt.Line2D([], [], marker='o', color='w', markersize = 40, markerfacecolor='#FF9E4A')]
+    legend_labels = ['Braille', 'Connected Braille']
+    
+    
+    # Move the legend to the bottom-right corner
+    plt.legend(legend_handles, legend_labels, loc = 'best', fontsize = 40, handlelength = .5)
+    
+    # Hide the axes
+    plt.axis('off')
+    
+    # Save plot
+    filename = os.path.join(opt['dir']['figures'], 'VBT_legend-circles.png')
+    plt.savefig(filename, dpi = 600, bbox_inches = 'tight')
+    
+    # Display the plot
+    plt.show()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
