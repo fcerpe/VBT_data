@@ -69,8 +69,8 @@ def viz_plot_rmanova(opt, res, information):
     # BR: green
     # CB: orange
     # Errorbars: standard deviation
-    plt.errorbar(br['day'] - offset, br['mean'], yerr = br['std'], label = 'br', fmt = '-o', color = '#69B5A2')
-    plt.errorbar(cb['day'] + offset, cb['mean'], yerr = cb['std'], label = 'cb', fmt = '-o', color = '#FF9E4A')
+    plt.errorbar(br['day'] - offset, br['mean'], yerr = br['std'], label = 'br', fmt = '-o', color = '#FF9E4A')
+    plt.errorbar(cb['day'] + offset, cb['mean'], yerr = cb['std'], label = 'cb', fmt = '-o', color = '#69B5A2')
     
     # Add axes labels and title
     plt.xlabel(information['xlab'])
@@ -95,8 +95,8 @@ def viz_plot_circle_legend(opt):
     plt.figure(figsize=(10, 6))  
     
     # Custom legend handles
-    legend_handles = [plt.Line2D([], [], marker='o', color='w', markersize = 40, markerfacecolor='#69B5A2'),
-                      plt.Line2D([], [], marker='o', color='w', markersize = 40, markerfacecolor='#FF9E4A')]
+    legend_handles = [plt.Line2D([], [], marker='o', color='w', markersize = 40, markerfacecolor='#FF9E4A'),
+                      plt.Line2D([], [], marker='o', color='w', markersize = 40, markerfacecolor='#69B5A2')]
     legend_labels = ['Braille', 'Connected Braille']
     
     

@@ -32,15 +32,13 @@ import os
 import pandas as pd
 import glob as glob
 from scipy.stats import pearsonr
+import pingouin as pg
+from dfply import group_by, summarize
+import matplotlib.pyplot as plt
+
 
 
 def stats_stimuli_properties(opt):
-    
-    # OTHER FOLDER: 
-    # - load tables with statstics 
-    # - extract statistics for stimuli used
-    # - save skimmed tables
-    # - re-organize results summary to have something based on words and not on sessions
     
     # Load stimuli results 
     leResults = pd.read_csv(os.path.join(opt['dir']['stats'], 'datasets', 
@@ -93,6 +91,12 @@ def stats_stimuli_properties(opt):
                                 correlate_letters(leInds[(leInds['subject'] == sub) & (leInds['repetition'] == 6)]), 
                                 correlate_letters(leInds[(leInds['subject'] == sub) & (leInds['repetition'] == 7)])], axis = 0)
         
+    # Save all the correlations
+    leCorrAvgs.to_csv(os.path.join(opt['dir']['results'], 
+                                   'VBT_data-letters_variable-linguistic-stats_analysis-correlations_desc-average.csv'), index = False)
+    leCorrInds.to_csv(os.path.join(opt['dir']['results'], 
+                                   'VBT_data-letters_variable-linguistic-stats_analysis-correlations_desc-individual.csv'), index = False)
+    
 
     ## Training
     # Extract average and individual tables for tested and non-tested items
@@ -125,7 +129,21 @@ def stats_stimuli_properties(opt):
                                 correlate_trainings(trNTInds[(trNTInds['subject'] == sub) & (trNTInds['session_x'] == 2)]), 
                                 correlate_trainings(trNTInds[(trNTInds['subject'] == sub) & (trNTInds['session_x'] == 3)]), 
                                 correlate_trainings(trNTInds[(trNTInds['subject'] == sub) & (trNTInds['session_x'] == 4)])], axis = 0)
-        
+    
+    # Save all the correlations
+    trTCorrAvgs.to_csv(os.path.join(opt['dir']['results'], 
+                                   'VBT_data-training_variable-linguistic-stats_analysis-correlations_desc-tested-items-average.csv'), 
+                       index = False)
+    trNTCorrAvgs.to_csv(os.path.join(opt['dir']['results'], 
+                                   'VBT_data-training_variable-linguistic-stats_analysis-correlations_desc-nontested-items-average.csv'), 
+                        index = False)
+    trTCorrInds.to_csv(os.path.join(opt['dir']['results'], 
+                                   'VBT_data-training_variable-linguistic-stats_analysis-correlations_desc-tested-items-individual.csv'), 
+                       index = False)
+    trNTCorrInds.to_csv(os.path.join(opt['dir']['results'], 
+                                   'VBT_data-training_variable-linguistic-stats_analysis-correlations_desc-nontested-items-individual.csv'), 
+                        index = False)  
+
 
     ## Test
     # Extract average and individual tables
@@ -152,32 +170,65 @@ def stats_stimuli_properties(opt):
                                 correlate_tests(teInds[(teInds['subject'] == sub) & (teInds['session_x'] == 3)]), 
                                 correlate_tests(teInds[(teInds['subject'] == sub) & (teInds['session_x'] == 4)])], axis = 0)
         
-        
     # Save all the correlations
-    leCorrAvgs.to_csv(os.path.join(opt['dir']['results'], 
-                                   'VBT_data-letters_variable-linguistic-stats_analysis-correlations_desc-average.csv'), index = False)
-    leCorrInds.to_csv(os.path.join(opt['dir']['results'], 
-                                   'VBT_data-letters_variable-linguistic-stats_analysis-correlations_desc-individual.csv'), index = False)
-    
-    trTCorrAvgs.to_csv(os.path.join(opt['dir']['results'], 
-                                   'VBT_data-training_variable-linguistic-stats_analysis-correlations_desc-tested-items-average.csv'), 
-                       index = False)
-    trNTCorrAvgs.to_csv(os.path.join(opt['dir']['results'], 
-                                   'VBT_data-training_variable-linguistic-stats_analysis-correlations_desc-nontested-items-average.csv'), 
-                        index = False)
-    trTCorrInds.to_csv(os.path.join(opt['dir']['results'], 
-                                   'VBT_data-training_variable-linguistic-stats_analysis-correlations_desc-tested-items-individual.csv'), 
-                       index = False)
-    trNTCorrInds.to_csv(os.path.join(opt['dir']['results'], 
-                                   'VBT_data-training_variable-linguistic-stats_analysis-correlations_desc-nontested-items-individual.csv'), 
-                        index = False)
-    
     teCorrAvgs.to_csv(os.path.join(opt['dir']['results'], 
                                    'VBT_data-test_variable-linguistic-stats_analysis-correlations_desc-average.csv'), index = False)
     teCorrInds.to_csv(os.path.join(opt['dir']['results'], 
                                    'VBT_data-test_variable-linguistic-stats_analysis-correlations_desc-individual.csv'), index = False)
     
+    ## Use correlations to compare groups
+    # (rmANOVAs on individual correlations)
+    
+    # Split the main correlation tables to extract single variable correlations 
+    # (e.g. corr score-length across individuals and sessions)
+    teCorrInds = teCorrInds[(teCorrInds['stimuli'] == 'all') | (teCorrInds['stimuli'] == 'real')]
+    teCorrInds.reset_index(inplace = False)
+    teCorrGroup = teCorrInds.groupby(['column1', 'column2'])
+    
+    # CDictionary to hold all the sub-datasets
+    dictCorr = {}
+    dictStatsDesc = {}
+    dictANOVA = {}
+    
+    # For each group:
+    # - extract relative information
+    # - store it as a separate dataframe
+    # - compute rmANOVA between the variables 
+    # - save everything
+    
+    for (col1, col2), group in teCorrGroup:
 
+        corrName = f"corr_{col1}_{col2}"
+        filename = f"corr-{col1}-{col2}"
+        filecorr = f"{col1}-{col2}"
+        dictCorr[corrName] = group.reset_index(drop = True)
+        
+        # Pivot the table and save it twice to have a visual check on Jasp
+        pivoted = dictCorr[corrName].pivot_table(index=['subject', 'script', 'column1', 'column2', 'stimuli'], 
+                          columns='session', 
+                          values=['correlation', 'p_value', 'degrees_of_freedom'])
+
+        # Flatten the hierarchical column index
+        pivoted.columns = [f'{col[0]}_{col[1]}' for col in pivoted.columns]
+
+        # Reset the index to make 'subject' and 'script' columns
+        pivoted.reset_index(inplace = True)
+        
+        
+        # ANOVA the correlations
+        # use 'get_stats' from stats_accuracy_timing.py
+        dictStatsDesc[corrName], dictANOVA[corrName] = get_stats(opt, dictCorr[corrName], filename)
+
+        # Save results
+        dictCorr[corrName].to_csv(os.path.join(opt['dir']['results'], 
+                                                'VBT_data-test_variable-' + filecorr + '_analysis-correlation.csv'), index = False)
+        pivoted.to_csv(os.path.join(opt['dir']['results'], 
+                                    'VBT_data-test_variable-' + filecorr + '_analysis-correlation_tocheck.csv'), index = False)
+        dictStatsDesc[corrName].to_csv(os.path.join(opt['dir']['results'], 
+                                                    'VBT_data-test_variable-' + filename + '_analysis-descriptive.csv'), index = False)
+        dictANOVA[corrName].to_csv(os.path.join(opt['dir']['results'], 
+                                                'VBT_data-test_variable-' + filename + '_analysis-rmANOVA.csv'), index = False)
+    
    
 ### Subfunctions
 
@@ -327,7 +378,6 @@ def correlate_letters(tab):
     return correlations
 
 
-
 # Correlate each column to all the other ones and produce clean output with stats
 def correlate_trainings(tab):
     
@@ -458,7 +508,6 @@ def correlate_tests(tab):
     return correlations
 
 
-
 # Compute correlations for one set of stimuli
 def add_correlations(tab, col1, col2, corrs, stimulus, session):
     
@@ -490,3 +539,60 @@ def add_correlations(tab, col1, col2, corrs, stimulus, session):
     
     
     return corrs
+
+
+# From a (supposedly correct) table
+# - extract descriptive statistics for group * day
+# - perform repeated measures / mixed ANOVA
+def get_stats(opt, tableIn, name):
+    
+    # Descriptive statistics
+    desc = tableIn.groupby(['script', 'session']).agg(n = ('correlation', 'count'),
+                                                      mean = ('correlation', 'mean'),
+                                                      std = ('correlation', 'std')).reset_index()
+    
+    # rmANOVA
+    anova = pg.mixed_anova(dv = 'correlation', 
+                           within = 'session', 
+                           between = 'script', 
+                           subject = 'subject',
+                           data = tableIn)
+    
+    anovaToPrint = anova[['Source', 'F', 'p-unc']].round(4)
+    
+    
+    
+    # Plot ANOVA results as table
+    fig, ax = plt.subplots(figsize=(10, 4))  # Adjust figsize to fit the table
+    ax.axis('tight')
+    ax.axis('off')
+    
+    # Create the table
+    mpl_table = ax.table(cellText = anovaToPrint.values, 
+                         colLabels = anovaToPrint.columns, 
+                         loc = 'center', 
+                         cellLoc = 'center')
+    
+    # Set table
+    mpl_table.auto_set_font_size(False)
+    mpl_table.set_fontsize(12)  # Adjust the font size here
+    mpl_table.scale(0.4, 1.2)  # Scale width and height of cells
+    # mpl_table.set_text_props(fontweight = 'bold') # Make columns bold
+        
+    # Adjust figure size based on table size
+    fig.tight_layout()
+    fig.patch.set_visible(False)
+
+    # Save table PNG
+    filename = os.path.join(opt['dir']['figures'], 
+                            'ANOVA-results', 
+                            'VBT_data-test_variable-' + name + '_analysis-rmANOVA.png')
+    plt.savefig(filename, 
+                dpi = 600, 
+                bbox_inches = 'tight',
+                pad_inches = 0.05)
+    plt.close()
+
+    
+    # Return values
+    return desc, anova

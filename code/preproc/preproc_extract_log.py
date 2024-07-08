@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def preproc_extract_log(filename, session):
 
@@ -114,7 +115,7 @@ def extract_letters_timings(tableIn):
 def extract_test_timings(tableIn):
 
     # Initialize DataFrame to contain test timings
-    tableOut = pd.DataFrame(columns = ['word', 'readingTime', 'writingTime', 'attempts'])
+    tableOut = pd.DataFrame(columns = ['word', 'readingTime', 'writingTime', 'breaks', 'check', 'attempts'])
 
     # Extract order of events
     # look for [t]est_word autodraw = tru[e]
@@ -134,20 +135,51 @@ def extract_test_timings(tableIn):
         # look for [t]est_word autodraw = nul[l]
         wordEnd = tableIn.loc[trialStart:rangeEnd][tableIn['Description'].str.startswith('t') & 
                                                    tableIn['Description'].str.endswith('l')].index.min()
-
+        
         # Where does the answer stop?
         # look for [M]ouse
         mouseEvent = tableIn.loc[trialStart:rangeEnd][tableIn['Description'].str.startswith('M')].index.max()
+        
+        # Create a range of keypresses
+        keyRangeStart = wordEnd
+        keyRangeEnd = mouseEvent
 
         # Which keys were pressed during the answer?
         # look for [K]eyboard
-        keys = tableIn.loc[trialStart:rangeEnd][tableIn['Description'].str.startswith('K')]['Description'].tolist()
+        keyPresses = tableIn.loc[keyRangeStart:keyRangeEnd][tableIn['Description'].str.startswith('K')]['Description'].tolist()
+        
+        # List of timings for each key pressed, to compute difference / uncertainty
+        keyTimings = tableIn.loc[keyRangeStart:keyRangeEnd]['Timing'].tolist()
+        
+        # Last key pressed (if any press at all), to have more accurate 'writing time'
+        lastKey = tableIn.loc[keyRangeStart:keyRangeEnd][tableIn['Description'].str.startswith('K')].index.max()
+        
+        # If there was a keypress, assign it as last event to calc writing time
+        if not np.isnan(lastKey):
+            
+            # Save key press
+            lastEvent = lastKey
+            checkTime = float(tableIn.loc[mouseEvent]['Timing']) - float(tableIn.loc[lastKey]['Timing'])
+            
+            # Calculate the time delta between key presses, to measure uncertainty or breaks
+            keyTimings = list(map(float, keyTimings))
+            keyDiff = [second - first for first, second in zip(keyTimings[:-1], keyTimings[1:])]
+            maxInterval = max(keyDiff)
+            
+        # Otherwise use mouse press
+        else:
+            lastEvent = mouseEvent
+            maxInterval = float(tableIn.loc[mouseEvent]['Timing']) - float(tableIn.loc[wordEnd]['Timing'])
+            checkTime = 0
+            
 
         # Add data to the DataFrame
         tableOut.loc[iEv, 'word'] = iEv
         tableOut.loc[iEv, 'readingTime'] = float(tableIn.loc[wordEnd, 'Timing']) - float(tableIn.loc[trialStart, 'Timing'])
-        tableOut.loc[iEv, 'writingTime'] = float(tableIn.loc[mouseEvent, 'Timing']) - float(tableIn.loc[wordEnd, 'Timing'])
-        tableOut.loc[iEv, 'attempts'] = keys
+        tableOut.loc[iEv, 'writingTime'] = float(tableIn.loc[lastEvent, 'Timing']) - float(tableIn.loc[wordEnd, 'Timing'])
+        tableOut.loc[iEv, 'breaks'] = maxInterval
+        tableOut.loc[iEv, 'check'] = checkTime
+        tableOut.loc[iEv, 'attempts'] = keyPresses
 
     return tableOut
 

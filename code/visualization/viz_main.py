@@ -9,6 +9,7 @@ Created on Mon Mar 25 11:18:54 2024
 
 from viz_option import viz_option
 from viz_accuracy_timing import * 
+from viz_stimuli_statistics import *
 
 ### VISUAL BRAILLE TRAINING - VISUALIZATION
 # 
@@ -25,7 +26,7 @@ opt = viz_option()
 # - accuracy across training sessions 
 # - reading time during training sessions
 # - writing times during training and test sessions
-viz_accuracy_timing(opt)
+#viz_accuracy_timing(opt)
 
 
 ## Analyses on stimuli scores: accuracy and timings related to language statistics
@@ -37,4 +38,7 @@ viz_accuracy_timing(opt)
 # and
 # - word length, number of syllables, frequency, orthographic and phonological neighbours
 # - letter frrequency 
-# viz_stimuli_properties(opt)
+viz_stimuli_statistics(opt)
+
+
+# viz_scatter(opt)

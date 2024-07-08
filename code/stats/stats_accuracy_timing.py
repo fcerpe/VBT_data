@@ -35,7 +35,6 @@ def stats_accuracy_timing(opt):
     summary = pd.DataFrame()
     summary = pd.read_csv(os.path.join(opt['dir']['stats'], 'VBT_results-accuracy-timing.csv'))
     
-    
     ### ACCURACIES
     
     ## TEST
@@ -61,9 +60,9 @@ def stats_accuracy_timing(opt):
     # works as control, presentation is fixed at 6s
     # only perform descriptives
     teRead = reshape_table(summary, ['ses-1_test-reading','ses-2_test-reading','ses-3_test-reading','ses-4_test-reading'])
-    teReadDesc = teRead >> group_by(teRead.script, teRead.day) >> summarize(n = teRead.script.count(), 
-                                                                            mean = teRead.target.mean(), 
-                                                                            std = teRead.target.std())
+    teReadDesc = teRead.groupby(['script', 'day']).agg(n = ('target', 'count'),
+                                                       mean = ('target', 'mean'),
+                                                       std = ('target', 'std')).reset_index()
     save_stats(opt, teReadDesc, 'timing', 'VBT_data-test_variable-reading-time_analysis-descriptive')
 
     
@@ -80,14 +79,7 @@ def stats_accuracy_timing(opt):
     save_stats(opt, trReadDesc, 'timing', 'VBT_data-training_variable-reading-time_analysis-descriptive')
     save_stats(opt, trReadAnova, 'timing', 'VBT_data-training_variable-reading-time_analysis-rmanova')
 
-    
-    
-    ### Plot results - coming soon
-    
-    
-    
-    
-    
+
     
 ### Subfunctions
 
@@ -117,9 +109,9 @@ def reshape_table(tableIn, relevantCols):
 def get_stats(tableIn):
     
     # Descriptive statistics
-    desc = tableIn >> group_by(tableIn.script, tableIn.day) >> summarize(n = tableIn.script.count(), 
-                                                                         mean = tableIn.target.mean(), 
-                                                                         std = tableIn.target.std())
+    desc = tableIn.groupby(['script', 'day']).agg(n = ('target', 'count'),
+                                                  mean = ('target', 'mean'),
+                                                  std = ('target', 'std')).reset_index()
     
     # rmANOVA
     anova = pg.mixed_anova(dv = 'target', 

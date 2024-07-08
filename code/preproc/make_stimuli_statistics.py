@@ -40,6 +40,9 @@ def make_stimuli_statistics(opt):
     # - which letters have been omitted most and which have been mistaken 
     # - which words have been recognized the most / the least
     test = extract_test_responses(test)
+    
+    # Exclude outliers
+    training, test = exclude_outliers(training, test)
         
     # Apply the statistics to the training and test sets
     trStats = pd.merge(tr, dlp, on = 'woord', how = 'left')
@@ -222,6 +225,9 @@ def get_results_stimuli(opt):
         
         # Get the relevant information out of the letters
         te = extract_test_information(opt, subID, te1, te2, te3, te4)
+        
+        # Exclude outliers
+        tr, te = exclude_outliers(tr, te)
         
         # Add the entries to the statistics
         letters = pd.concat([letters, le], ignore_index = True)
@@ -456,3 +462,18 @@ def get_stimulus_repetition(idx):
     else:
         return '7'
     
+
+# Exclude outliers form each subject
+def exclude_outliers(train, test):
+    
+    # Training reading time, max 60 seconds. Then considered outlier
+    train = train[(train['readingTime'] <= 60) | train['readingTime'].isna()]
+    
+    # Test writing time
+    # - exclude cases where no key was pressed if the time is shorter than 1s or longer than 30s
+    selection = test[((test['writingTime'] > 30)) | 
+                      (test['writingTime'] > 60)]
+    
+    test = test.drop(selection.index)
+    
+    return train, test

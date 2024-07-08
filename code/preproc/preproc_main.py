@@ -18,7 +18,7 @@ From raw data for results (.csv) and timings (.log), will extract:
 
 from preproc_option import preproc_option
 from preproc_extract import preproc_extract
-from make_accuracy_timing import make_accuracy_timing
+from make_accuracy_timing import *
 from make_stimuli_statistics import *
 
 

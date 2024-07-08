@@ -23,6 +23,9 @@ def make_accuracy_timing(opt):
 
     # Initialize summary table
     summary = pd.DataFrame()
+    
+    outliersWR = pd.DataFrame(columns = ['sub', 'ses', 'nlWrd', 'writingTime', 'score'])
+    outliersRD = pd.DataFrame(columns = ['sub', 'ses', 'nlWrd', 'readingTime'])
 
     # Extract data participant by participant
     for sub in subjects:
@@ -59,12 +62,21 @@ def make_accuracy_timing(opt):
 
             # Find elements in the folder
             sesFiles = glob.glob(os.path.join(opt['dir']['extracted'], subName, sesName, '*'))
+            
+            scriptID = sesFiles[0].split('-')[7][:2]
+        
 
             # Based on session, distinguish which routines were presented
             if sesName in ['ses-001', 'ses-003', 'ses-004']:
                 # Load the tables from the folder
                 train, test, _ = load_results(sesFiles)
-
+                
+                # Save timings to investigate outliers
+                outliersWR, outliersRD = add_outliers(train, test, outliersWR, outliersRD, subID, sesID, scriptID)
+                
+                # Exclude outliers based on sperate investigation from previous line
+                train, test = exclude_outliers(train, test)
+                
                 # Process the results (e.g. compute means) and add them to the
                 # right columns of the entry
                 entry = add_results_to_entry(entry, sesName, train, test, [])
@@ -72,19 +84,31 @@ def make_accuracy_timing(opt):
             elif sesName == 'ses-002':
                 # Load the tables from the folder
                 train, test, ref = load_results(sesFiles)
+                
+                # Save timings to investigate outliers
+                outliersWR, outliersRD = add_outliers(train, test, outliersWR, outliersRD, subID, sesID, scriptID)
+                
+                # Exclude outliers based on sperate investigation from previous line
+                train, test = exclude_outliers(train, test)
 
                 entry = add_results_to_entry(entry, sesName, train, test, ref)
+                
+
+            
 
         # Add the entry to the summary
         summary = pd.concat([summary, entry])
-
-
+        
+    
     # Save table
     if not os.path.exists(opt['dir']['stats']):
         os.makedirs(opt['dir']['stats'])
 
 
-    summary.to_csv(os.path.join(opt['dir']['stats'], 'VBT_results-accuracy-timing.csv'), index=False)
+    summary.to_csv(os.path.join(opt['dir']['stats'], 'VBT_results-accuracy-timing.csv'), index = False)
+    outliersWR.to_csv(os.path.join(opt['dir']['stats'], 'VBT_investigation-outliers-writing.csv'), index = False)
+    outliersRD.to_csv(os.path.join(opt['dir']['stats'], 'VBT_investigation-outliers-reading.csv'), index = False)
+    
 
     # Notify the user
     print(f"\n\nCREATED TABLE FOR ACCURACY AND TIMING \nResults are stored in: {os.path.join(opt['dir']['stats'], 'VBT_results-accuracy-timing.csv')}")
@@ -151,14 +175,17 @@ def add_results_to_entry(tableIn, sesName, tr, te, re):
         # - 'ses-1_test-writing'
         # - 'ses-1_train-reading'
         # - 'ses-1_train-checking'
-        tableOut.loc[0, "ses-1_test-accuracy"] = sum(te['score']) / 60
-        tableOut.loc[0, "ses-1_test-reading"] = te['readingTime'].mean(skipna=True)
-        tableOut.loc[0, "ses-1_test-writing"] = te['writingTime'].mean(skipna=True)
+        tableOut.loc[0, "ses-1_test-accuracy"] = sum(te['score']) / len(te)
+        tableOut.loc[0, "ses-1_test-reading"] = te['readingTime'].mean(skipna = True)
+        tableOut.loc[0, "ses-1_test-writing"] = te['writingTime'].mean(skipna = True)
 
-        tableOut.loc[0, "ses-1_train-reading"] = tr['readingTime'].mean(skipna=True)
-        tableOut.loc[0, "ses-1_train-checking"] = tr['checkingTime'].mean(skipna=True)
+        tableOut.loc[0, "ses-1_train-reading"] = tr['readingTime'].mean(skipna = True)
+        tableOut.loc[0, "ses-1_train-checking"] = tr['checkingTime'].mean(skipna = True)
 
     elif sesName == 'ses-002':
+        
+        # Cut possible outliers in the train-reading and in test-writing
+        
         
         # Need to assign the following variables
         # - 'ses-2_test-accuracy'
@@ -170,17 +197,17 @@ def add_results_to_entry(tableIn, sesName, tr, te, re):
         # - 'ses-2_train-writing'
         # - 'ses-2_ref-reading'
         # - 'ses-2_ref-checking'
-        tableOut.loc[0, "ses-2_test-accuracy"] = sum(te['score']) / 60
-        tableOut.loc[0, "ses-2_test-reading"] = te['readingTime'].mean(skipna=True)
-        tableOut.loc[0, "ses-2_test-writing"] = te['writingTime'].mean(skipna=True)
+        tableOut.loc[0, "ses-2_test-accuracy"] = sum(te['score']) / len(te)
+        tableOut.loc[0, "ses-2_test-reading"] = te['readingTime'].mean(skipna = True)
+        tableOut.loc[0, "ses-2_test-writing"] = te['writingTime'].mean(skipna = True)
 
         tableOut.loc[0, "ses-2_train-accuracy"] = sum(tr['score']) / 20
-        tableOut.loc[0, "ses-2_train-reading"] = tr['readingTime'].mean(skipna=True)
-        tableOut.loc[0, "ses-2_train-checking"] = tr['checkingTime'].mean(skipna=True)
-        tableOut.loc[0, "ses-2_train-writing"] = tr['writingTime'].mean(skipna=True)
+        tableOut.loc[0, "ses-2_train-reading"] = tr['readingTime'].mean(skipna = True)
+        tableOut.loc[0, "ses-2_train-checking"] = tr['checkingTime'].mean(skipna = True)
+        tableOut.loc[0, "ses-2_train-writing"] = tr['writingTime'].mean(skipna = True)
 
-        tableOut.loc[0, "ses-2_ref-reading"] = re['readingTime'].mean(skipna=True)
-        tableOut.loc[0, "ses-2_ref-checking"] = re['checkingTime'].mean(skipna=True)
+        tableOut.loc[0, "ses-2_ref-reading"] = re['readingTime'].mean(skipna = True)
+        tableOut.loc[0, "ses-2_ref-checking"] = re['checkingTime'].mean(skipna = True)
 
     elif sesName == 'ses-003':
         
@@ -192,14 +219,14 @@ def add_results_to_entry(tableIn, sesName, tr, te, re):
         # - 'ses-3_train-reading'
         # - 'ses-3_train-checking'
         # - 'ses-3_train-writing'
-        tableOut.loc[0, "ses-3_test-accuracy"] = sum(te['score']) / 60
-        tableOut.loc[0, "ses-3_test-reading"] = te['readingTime'].mean(skipna=True)
-        tableOut.loc[0, "ses-3_test-writing"] = te['writingTime'].mean(skipna=True)
+        tableOut.loc[0, "ses-3_test-accuracy"] = sum(te['score']) / len(te)
+        tableOut.loc[0, "ses-3_test-reading"] = te['readingTime'].mean(skipna = True)
+        tableOut.loc[0, "ses-3_test-writing"] = te['writingTime'].mean(skipna = True)
 
         tableOut.loc[0, "ses-3_train-accuracy"] = sum(tr['score']) / 20
-        tableOut.loc[0, "ses-3_train-reading"] = tr['readingTime'].mean(skipna=True)
-        tableOut.loc[0, "ses-3_train-checking"] = tr['checkingTime'].mean(skipna=True)
-        tableOut.loc[0, "ses-3_train-writing"] = tr['writingTime'].mean(skipna=True)
+        tableOut.loc[0, "ses-3_train-reading"] = tr['readingTime'].mean(skipna = True)
+        tableOut.loc[0, "ses-3_train-checking"] = tr['checkingTime'].mean(skipna = True)
+        tableOut.loc[0, "ses-3_train-writing"] = tr['writingTime'].mean(skipna = True)
 
     elif sesName == 'ses-004':
         
@@ -211,15 +238,73 @@ def add_results_to_entry(tableIn, sesName, tr, te, re):
         # - 'ses-4_train-reading'
         # - 'ses-4_train-checking'
         # - 'ses-4_train-writing'
-        tableOut.loc[0, "ses-4_test-accuracy"] = sum(te['score']) / 60
-        tableOut.loc[0, "ses-4_test-reading"] = te['readingTime'].mean(skipna=True)
-        tableOut.loc[0, "ses-4_test-writing"] = te['writingTime'].mean(skipna=True)
+        tableOut.loc[0, "ses-4_test-accuracy"] = sum(te['score']) / len(te)
+        tableOut.loc[0, "ses-4_test-reading"] = te['readingTime'].mean(skipna = True)
+        tableOut.loc[0, "ses-4_test-writing"] = te['writingTime'].mean(skipna = True)
 
         tableOut.loc[0, "ses-4_train-accuracy"] = sum(tr['score']) / 20
-        tableOut.loc[0, "ses-4_train-reading"] = tr['readingTime'].mean(skipna=True)
-        tableOut.loc[0, "ses-4_train-checking"] = tr['checkingTime'].mean(skipna=True)
-        tableOut.loc[0, "ses-4_train-writing"] = tr['writingTime'].mean(skipna=True)
+        tableOut.loc[0, "ses-4_train-reading"] = tr['readingTime'].mean(skipna = True)
+        tableOut.loc[0, "ses-4_train-checking"] = tr['checkingTime'].mean(skipna = True)
+        tableOut.loc[0, "ses-4_train-writing"] = tr['writingTime'].mean(skipna = True)
 
 
     return tableOut
+
+
+# Add timings to lists to control for outliers
+def add_outliers(train, test, outliersWR, outliersRD, sub, ses, script):
+    
+    writing = pd.DataFrame({'sub': [sub]*len(test),
+                            'ses': [ses]*len(test),
+                            'script': [script]*len(test),
+                            'nlWrd': test.nlWrd, 
+                            'writing': test.writingTime, 
+                            'breaks': test.breaks, 
+                            'check': test.check, 
+                            'score': test.score})
+    outliersWR = pd.concat([outliersWR, writing], ignore_index = True)
+    
+    if not ses == '001':
+    
+        reading = pd.DataFrame({'sub': [sub]*len(train),
+                                'ses': [ses]*len(train),
+                                'nlWrd': train.nlWrd,
+                                'readingTime': train.readingTime})
+        outliersRD = pd.concat([outliersRD, reading], ignore_index = True)
+    
+    
+    return outliersWR, outliersRD
+
+
+# Exclude outliers form each subject
+def exclude_outliers(train, test):
+    
+    # Training reading time, max 60 seconds. Then considered outlier
+    train = train[(train['readingTime'] <= 60) | train['readingTime'].isna()]
+    
+    # Test writing time
+    # - exclude cases where no key was pressed if the time is shorter than 1s or longer than 30s
+    selection = test[(test['check'] == 0) & ((test['writingTime'] < 1) | (test['writingTime'] > 30)) | 
+                     (test['breaks'] > 30) | (test['writingTime'] > 60)]
+    
+    test = test.drop(selection.index)
+    
+    return train, test
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
