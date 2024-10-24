@@ -15,31 +15,37 @@ def preproc_extract_log(filename, session):
 
         # Extract necessary chunks of files
         trainingEvents, testEvents, _ = trim_events(imported, session)
+        phaseEvents = trim_phases(imported, session)
         
         # Compute timings and assign them to the final variable
         trimmed['training'] = extract_letters_timings(trainingEvents)
         trimmed['test'] = extract_test_timings(testEvents)
+        completion = extract_phases_timings(phaseEvents)
 
     elif session == '002':
 
         # Extract necessary chunks of files
         trainingEvents, testEvents, refreshEvents = trim_events(imported, session)
+        phaseEvents = trim_phases(imported, session)
 
         # Compute timings and assign them to the final variable
         trimmed['refresh'] = extract_letters_timings(refreshEvents)
         trimmed['training'] = extract_training_timings(trainingEvents)
         trimmed['test'] = extract_test_timings(testEvents)
+        completion = extract_phases_timings(phaseEvents)
 
     elif session in ['003', '004']:
 
         # Extract necessary chunks of files
         trainingEvents, testEvents, _ = trim_events(imported, session)
+        phaseEvents = trim_phases(imported, session)
 
         # Compute timings and assign them to the final variable
         trimmed['training'] = extract_training_timings(trainingEvents)
         trimmed['test'] = extract_test_timings(testEvents)
+        completion = extract_phases_timings(phaseEvents)
     
-    return trimmed
+    return trimmed, completion
 
 
 ### Subfunctions
@@ -87,6 +93,53 @@ def trim_events(tableIn, session):
     tes = trimmedEvents.loc[testStartIdx:]
 
     return tra, tes, ref
+
+
+def trim_phases(tableIn, session):
+
+    # Events of interest
+    events = ["refresh_text: autoDraw = true",
+              "train_text: autoDraw = true", 
+              "trainInstr_text: autoDraw = true",
+              "endTrain_text: autoDraw = true",
+              "testInstr_text: autoDraw = null",
+              "end_text: autoDraw = true"]
+
+    # Avoid import issues with NaNs, cast them as string
+    tableIn['Description'] = tableIn['Description'].apply(lambda x: str(x) if isinstance(x, float) else x)
+
+    # Trim events
+    trimmedEvents = tableIn[tableIn['Description'].str.startswith(tuple(events))][["Timing", "Description"]]
+
+    return trimmedEvents
+
+
+def extract_phases_timings(tableIn):
+    
+    # Revert table to ease subtractions
+    tableRev = tableIn['Timing'][::-1].reset_index(drop = True).astype(float)
+
+    # Subtract successive elements: current - previous
+    tableRev_diffs = tableRev.diff()
+    tableDiffs = tableRev_diffs.dropna().reset_index(drop = True)
+
+    # Add everything to a dictionary
+    phases = {'Phase': [], 'Timing': []}
+    
+    phases['Phase'].append('test')
+    phases['Timing'].append(abs(tableDiffs[0]))
+    
+    phases['Phase'].append('break')
+    phases['Timing'].append(abs(tableDiffs[1]))
+    
+    phases['Phase'].append('training')
+    phases['Timing'].append(abs(tableDiffs[2]))
+    
+    if len(tableDiffs) > 3: 
+        phases['Phase'].append('refresh')
+        phases['Timing'].append(abs(tableDiffs[3]))
+
+    return phases
 
 
 def extract_letters_timings(tableIn):

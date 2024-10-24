@@ -54,10 +54,10 @@ def preproc_extract(opt):
             trimmedCsv = preproc_extract_csv(currentCsv, sub['sesID'])
 
             # Import log file and clean it to get the events
-            trimmedLog = preproc_extract_log(currentLog, sub['sesID'])
+            trimmedLog, completionTime = preproc_extract_log(currentLog, sub['sesID'])
 
             # Save files
-            preproc_merge_and_save(opt, trimmedCsv, trimmedLog, sub)
+            preproc_merge_and_save(opt, trimmedCsv, trimmedLog, completionTime, sub)
 
     # Notify the user
     print(f"\n\n EXTRACTED ALL THE SUBJECTS \nData can be found in: {opt['dir']['extracted']}")

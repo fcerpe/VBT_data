@@ -21,7 +21,6 @@ from preproc_extract import preproc_extract
 from make_accuracy_timing import *
 from make_stimuli_statistics import *
 
-
 # Get options
 opt = preproc_option()
 
@@ -51,4 +50,6 @@ make_accuracy_timing(opt)
 make_stimuli_statistics(opt)
 
 
+## Extract statistics of completion time for each phase
+make_phases_statistics(opt)
 

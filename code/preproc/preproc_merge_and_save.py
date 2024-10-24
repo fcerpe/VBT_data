@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-def preproc_merge_and_save(opt, trimmedCsv, trimmedLog, subInfo):
+def preproc_merge_and_save(opt, trimmedCsv, trimmedLog, completionTime, subInfo):
     # SAVE FILES
     # - save each file as a .csv
     # - add current sub's data to the subResults structure
@@ -27,6 +27,11 @@ def preproc_merge_and_save(opt, trimmedCsv, trimmedLog, subInfo):
                           index = False)
     testTable.to_csv(os.path.join(outputDir, f"{subName}_{sesName}_task-{opt['taskName']}_{scriptName}_beh-test.csv"), 
                       index = False)
+    
+    completion = pd.DataFrame(completionTime)
+    completion.to_csv(os.path.join(outputDir, f"{subName}_{sesName}_task-{opt['taskName']}_{scriptName}_phases-time.csv"), 
+                      index = False)
+    
 
     # Save refresh table, if present
     if subInfo['sesID'] == '002':

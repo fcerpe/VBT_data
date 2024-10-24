@@ -26,7 +26,7 @@ opt = viz_option()
 # - accuracy across training sessions 
 # - reading time during training sessions
 # - writing times during training and test sessions
-#viz_accuracy_timing(opt)
+viz_accuracy_timing(opt)
 
 
 ## Analyses on stimuli scores: accuracy and timings related to language statistics

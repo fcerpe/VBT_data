@@ -51,7 +51,7 @@ def viz_stimuli_statistics(opt):
     # TBD
     
     # - test: score, distance, writing time for each session and script [r] length, frequency, old20
-    teInfo = {'xlab': 'Days of testing', 'ylab': 'Correlation', 'legend position': 'lower right'}
+    teInfo = {'xlab': 'Sessions', 'ylab': 'Correlation', 'legend position': 'lower right'}
     
     # Find files to load
     pattern = 'VBT_data-test_variable-corr-*_analysis-descriptive.csv'
@@ -80,9 +80,9 @@ def viz_stimuli_statistics(opt):
         title = f"Correlation between {col1} and {col2} for {stim} words"
         variables = f"corr-{col1}-{col2}"
         teInfo = {'variables': variables,
-                  'xlab': 'Days of testing', 
+                  'xlab': 'Sessions', 
                   'ylab': 'Correlation', 
-                  'title': title}
+                  'title': ''}
 
         # Plot 
         viz_anova_correlations(opt, g, teInfo)
@@ -151,7 +151,7 @@ def viz_plot_correlations(opt, subset, params):
     bar1 = plt.bar([pos - width/2 for pos in x_pos], 
                    br['correlation'], color='#FF9E4A', width = width, label = 'Braille')
     bar2 = plt.bar([pos + width/2 for pos in x_pos], 
-                   cb['correlation'], color='#69B5A2', width = width, label = 'Connected Braille')
+                   cb['correlation'], color='#69B5A2', width = width, label = 'Line Braille')
 
     # Adjust
     # - x axis
@@ -237,6 +237,7 @@ def viz_anova_correlations(opt, subset, params):
                        markers = 'o', 
                        capsize = 0, 
                        palette = custom_palette,
+                       markersize = 12, linewidth = 4,
                        errorbar = 'sd',
                        legend = False,
                        zorder = 2)
@@ -267,10 +268,11 @@ def viz_anova_correlations(opt, subset, params):
 
 
     # Customize plot
-    plt.xticks(ha='right')
+    plt.xticks(ha='right', fontname = 'Avenir', fontsize = 12)
+    plt.yticks(fontname = 'Avenir', fontsize = 12)
     plt.axhline(0, color = 'black', linestyle = '-')
-    plt.xlabel(params['xlab'])
-    plt.ylabel(params['ylab'])
+    plt.xlabel(params['xlab'], fontname = 'Avenir', fontsize = 16)
+    plt.ylabel(params['ylab'], fontname = 'Avenir', fontsize = 16)
     plt.title(params['title'])
     
     # Save plot

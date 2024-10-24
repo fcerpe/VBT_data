@@ -47,7 +47,5 @@ stats_accuracy_timing(opt)
 stats_stimuli_properties(opt)
 
 
-## Statistical tests on stimuli properties
-#
-# TBD
-#
+## Sums and averages about the completion time of each session
+stats_completion(opt)

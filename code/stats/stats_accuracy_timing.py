@@ -28,6 +28,9 @@ import os
 import pandas as pd
 import pingouin as pg
 from dfply import group_by, summarize
+import scipy.stats as stats
+from statsmodels.stats.multitest import *
+
 
 def stats_accuracy_timing(opt):
     
@@ -42,6 +45,7 @@ def stats_accuracy_timing(opt):
     teAccuracy = reshape_table(summary, ['ses-1_test-accuracy','ses-2_test-accuracy','ses-3_test-accuracy','ses-4_test-accuracy'])
     # Perform ANOVAs on accuracy
     teAccuracyDesc, teAccuracyAnova = get_stats(teAccuracy)
+    tePosthoc, tePvals = get_stats_posthoc(teAccuracy)
     save_stats(opt, teAccuracyDesc, 'accuracy', 'VBT_data-test_variable-accuracy_analysis-descriptive')
     save_stats(opt, teAccuracyAnova, 'accuracy', 'VBT_data-test_variable-accuracy_analysis-rmanova')
 
@@ -122,6 +126,32 @@ def get_stats(tableIn):
     
     # Return values
     return desc, anova
+
+
+# Perform posthoc tests
+def get_stats_posthoc(tableIn):
+    
+    # Perform t-tests on the script diffrences across sessions
+    # (four tests, on per session)
+    ttests = []
+    pvals = []
+    for i in range(1,5):
+        
+        # Get the accuracy for given scripts on given sessions
+        stat, pval = stats.ttest_ind(tableIn[(tableIn['script'] == 'br') & (tableIn['day'] == i)]['target'],
+                                     tableIn[(tableIn['script'] == 'cb') & (tableIn['day'] == i)]['target'])
+        
+        # Add test information to the correct arrays
+        ttests.append(stat)
+        pvals.append(pval)
+    
+    
+    # Correct for multiple comparisons
+    bonf_pvals = multipletests(pvals, alpha = 0.05, method = 'bonferroni')
+    fdr_pvals = fdrcorrection(pvals, alpha = 0.05)
+
+    
+    return ttests, bonf_pvals
 
 
 # Save results to csv

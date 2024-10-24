@@ -61,7 +61,7 @@ def make_accuracy_timing(opt):
             print(f'- adding data from {sesName}')
 
             # Find elements in the folder
-            sesFiles = glob.glob(os.path.join(opt['dir']['extracted'], subName, sesName, '*'))
+            sesFiles = glob.glob(os.path.join(opt['dir']['extracted'], subName, sesName, '*_beh-*'))
             
             scriptID = sesFiles[0].split('-')[7][:2]
         

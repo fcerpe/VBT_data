@@ -29,11 +29,11 @@ def viz_accuracy_timing(opt):
     # - test writing time
     # - training assessment accuracy
     # - training reading time
-    teAccuInfo = {'xlab': 'Days of testing', 'ylab': 'Accuracy', 'title': 'Accuracy during testing', 
+    teAccuInfo = {'xlab': 'Sessions', 'ylab': 'Accuracy (a.u.)', 'title': '', 
                   'output name': 'VBT_data-test_variable-accuracy_plot-rmANOVA.png'}
     viz_plot_rmanova(opt, teAccuracy, teAccuInfo)
 
-    teWriteInfo = {'xlab': 'Days of testing', 'ylab': 'Writing time', 'title': 'Writing time during testing', 
+    teWriteInfo = {'xlab': 'Sessions', 'ylab': 'Writing time (s)', 'title': '', 
                   'output name': 'VBT_data-test_variable-writing-time_plot-rmANOVA.png'}
     viz_plot_rmanova(opt, teWritingTime, teWriteInfo)
     
@@ -69,16 +69,19 @@ def viz_plot_rmanova(opt, res, information):
     # BR: green
     # CB: orange
     # Errorbars: standard deviation
-    plt.errorbar(br['day'] - offset, br['mean'], yerr = br['std'], label = 'br', fmt = '-o', color = '#FF9E4A')
-    plt.errorbar(cb['day'] + offset, cb['mean'], yerr = cb['std'], label = 'cb', fmt = '-o', color = '#69B5A2')
+    plt.errorbar(br['day'] - offset, br['mean'], yerr = br['std'], label = 'br', 
+                 fmt = '-o', color = '#FF9E4A', markersize = 12, linewidth = 4)
+    plt.errorbar(cb['day'] + offset, cb['mean'], yerr = cb['std'], label = 'cb', 
+                 fmt = '-o', color = '#69B5A2', markersize = 12, linewidth = 4)
     
     # Add axes labels and title
-    plt.xlabel(information['xlab'])
-    plt.ylabel(information['ylab'])
+    plt.xlabel(information['xlab'], fontname = "Avenir", fontsize = 14)
+    plt.ylabel(information['ylab'], fontname = "Avenir", fontsize = 14)
     plt.title(information['title'])
 
     # Customize x-axis ticks, accoid half-days
-    plt.xticks(res['day'].unique())
+    plt.xticks(res['day'].unique(), fontname = "Avenir", fontsize = 12)
+    plt.yticks(fontname = "Avenir", fontsize = 12)
     
     # Save plot
     filename = os.path.join(opt['dir']['figures'], information['output name'])
@@ -97,7 +100,7 @@ def viz_plot_circle_legend(opt):
     # Custom legend handles
     legend_handles = [plt.Line2D([], [], marker='o', color='w', markersize = 40, markerfacecolor='#FF9E4A'),
                       plt.Line2D([], [], marker='o', color='w', markersize = 40, markerfacecolor='#69B5A2')]
-    legend_labels = ['Braille', 'Connected Braille']
+    legend_labels = ['Braille', 'Line Braille']
     
     
     # Move the legend to the bottom-right corner
