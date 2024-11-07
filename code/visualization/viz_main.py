@@ -40,5 +40,3 @@ viz_accuracy_timing(opt)
 # - letter frrequency 
 viz_stimuli_statistics(opt)
 
-
-# viz_scatter(opt)

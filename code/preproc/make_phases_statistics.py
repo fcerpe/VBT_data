@@ -93,10 +93,10 @@ def make_phases_statistics(opt):
 # Initialize custom dataframe / table
 def init_entry(opt, subID):
     tableOut = pd.DataFrame(columns=['subject', 'script',
-                                     'ses-1_train', 'ses-1_break','ses-1_test', 
-                                     'ses-2_refresh', 'ses-2_train', 'ses-2_break','ses-2_test', 
-                                     'ses-3_train', 'ses-3_break','ses-3_test', 
-                                     'ses-4_train', 'ses-4_break','ses-4_test'])
+                                     'ses-1_total', 'ses-1_training', 'ses-1_break','ses-1_test', 
+                                     'ses-2_total', 'ses-2_refresh', 'ses-2_instructions', 'ses-2_training', 'ses-2_break','ses-2_test', 
+                                     'ses-3_total', 'ses-3_training', 'ses-3_break','ses-3_test', 
+                                     'ses-4_total', 'ses-4_training', 'ses-4_break','ses-4_test'])
 
     # Add subject
     tableOut.loc[0, "subject"] = subID
@@ -114,28 +114,33 @@ def add_results_to_entry(tableIn, sesName, timings):
 
     if sesName == 'ses-001':
         
-        tableOut.loc[0, "ses-1_test"] = timings.Timing[0]
-        tableOut.loc[0, "ses-1_break"] = timings.Timing[1]
-        tableOut.loc[0, "ses-1_train"] = timings.Timing[2]
+        tableOut.loc[0, "ses-1_total"] = timings.Timing[0]
+        tableOut.loc[0, "ses-1_test"] = timings.Timing[1]
+        tableOut.loc[0, "ses-1_break"] = timings.Timing[2]
+        tableOut.loc[0, "ses-1_training"] = timings.Timing[3]
 
     elif sesName == 'ses-002':
         
-        tableOut.loc[0, "ses-2_test"] = timings.Timing[0]
-        tableOut.loc[0, "ses-2_break"] = timings.Timing[1]
-        tableOut.loc[0, "ses-2_train"] = timings.Timing[2]
-        tableOut.loc[0, "ses-2_refresh"] = timings.Timing[3]
+        tableOut.loc[0, "ses-2_total"] = timings.Timing[0]
+        tableOut.loc[0, "ses-2_test"] = timings.Timing[1]
+        tableOut.loc[0, "ses-2_break"] = timings.Timing[2]
+        tableOut.loc[0, "ses-2_training"] = timings.Timing[3]
+        tableOut.loc[0, "ses-2_instructions"] = timings.Timing[4]
+        tableOut.loc[0, "ses-2_refresh"] = timings.Timing[5]
 
     elif sesName == 'ses-003':
         
-        tableOut.loc[0, "ses-3_test"] = timings.Timing[0]
-        tableOut.loc[0, "ses-3_break"] = timings.Timing[1]
-        tableOut.loc[0, "ses-3_train"] = timings.Timing[2]
+        tableOut.loc[0, "ses-3_total"] = timings.Timing[0]
+        tableOut.loc[0, "ses-3_test"] = timings.Timing[1]
+        tableOut.loc[0, "ses-3_break"] = timings.Timing[2]
+        tableOut.loc[0, "ses-3_training"] = timings.Timing[3]
 
     elif sesName == 'ses-004':
         
-        tableOut.loc[0, "ses-4_test"] = timings.Timing[0]
-        tableOut.loc[0, "ses-4_break"] = timings.Timing[1]
-        tableOut.loc[0, "ses-4_train"] = timings.Timing[2]
+        tableOut.loc[0, "ses-4_total"] = timings.Timing[0]
+        tableOut.loc[0, "ses-4_test"] = timings.Timing[1]
+        tableOut.loc[0, "ses-4_break"] = timings.Timing[2]
+        tableOut.loc[0, "ses-4_training"] = timings.Timing[3]
 
 
     return tableOut

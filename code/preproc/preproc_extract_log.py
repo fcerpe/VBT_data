@@ -16,34 +16,37 @@ def preproc_extract_log(filename, session):
         # Extract necessary chunks of files
         trainingEvents, testEvents, _ = trim_events(imported, session)
         phaseEvents = trim_phases(imported, session)
+        startEndEvents = trim_totalTime(imported)
         
         # Compute timings and assign them to the final variable
         trimmed['training'] = extract_letters_timings(trainingEvents)
         trimmed['test'] = extract_test_timings(testEvents)
-        completion = extract_phases_timings(phaseEvents)
+        completion = extract_phases_timings(phaseEvents, startEndEvents)
 
     elif session == '002':
 
         # Extract necessary chunks of files
         trainingEvents, testEvents, refreshEvents = trim_events(imported, session)
         phaseEvents = trim_phases(imported, session)
+        startEndEvents = trim_totalTime(imported)
 
         # Compute timings and assign them to the final variable
         trimmed['refresh'] = extract_letters_timings(refreshEvents)
         trimmed['training'] = extract_training_timings(trainingEvents)
         trimmed['test'] = extract_test_timings(testEvents)
-        completion = extract_phases_timings(phaseEvents)
+        completion = extract_phases_timings(phaseEvents, startEndEvents)
 
     elif session in ['003', '004']:
 
         # Extract necessary chunks of files
         trainingEvents, testEvents, _ = trim_events(imported, session)
         phaseEvents = trim_phases(imported, session)
+        startEndEvents = trim_totalTime(imported)
 
         # Compute timings and assign them to the final variable
         trimmed['training'] = extract_training_timings(trainingEvents)
         trimmed['test'] = extract_test_timings(testEvents)
-        completion = extract_phases_timings(phaseEvents)
+        completion = extract_phases_timings(phaseEvents, startEndEvents)
     
     return trimmed, completion
 
@@ -98,9 +101,10 @@ def trim_events(tableIn, session):
 def trim_phases(tableIn, session):
 
     # Events of interest
-    events = ["refresh_text: autoDraw = true",
-              "train_text: autoDraw = true", 
+    events = ["refresh_text: autoDraw = null",
+              "train_text: autoDraw = null", 
               "trainInstr_text: autoDraw = true",
+              "trainInstr_text: autoDraw = null",
               "endTrain_text: autoDraw = true",
               "testInstr_text: autoDraw = null",
               "end_text: autoDraw = true"]
@@ -114,10 +118,25 @@ def trim_phases(tableIn, session):
     return trimmedEvents
 
 
-def extract_phases_timings(tableIn):
+def trim_totalTime(tableIn): 
+    
+    # Events of interest
+    events = ["welcome_text: autoDraw = true",
+              "end_text: autoDraw = true"]
+
+    # Avoid import issues with NaNs, cast them as string
+    tableIn['Description'] = tableIn['Description'].apply(lambda x: str(x) if isinstance(x, float) else x)
+
+    # Trim events
+    startEnd = tableIn[tableIn['Description'].str.startswith(tuple(events))][["Timing", "Description"]].reset_index(drop = True)
+    
+    return startEnd
+
+
+def extract_phases_timings(tableDetail, tableTotal):
     
     # Revert table to ease subtractions
-    tableRev = tableIn['Timing'][::-1].reset_index(drop = True).astype(float)
+    tableRev = tableDetail['Timing'][::-1].reset_index(drop = True).astype(float)
 
     # Subtract successive elements: current - previous
     tableRev_diffs = tableRev.diff()
@@ -125,6 +144,9 @@ def extract_phases_timings(tableIn):
 
     # Add everything to a dictionary
     phases = {'Phase': [], 'Timing': []}
+    
+    phases['Phase'].append('total')
+    phases['Timing'].append(abs(float(tableTotal.Timing[0]) - float(tableTotal.Timing[1])))
     
     phases['Phase'].append('test')
     phases['Timing'].append(abs(tableDiffs[0]))
@@ -135,9 +157,13 @@ def extract_phases_timings(tableIn):
     phases['Phase'].append('training')
     phases['Timing'].append(abs(tableDiffs[2]))
     
-    if len(tableDiffs) > 3: 
-        phases['Phase'].append('refresh')
+    # If we're dealing with session 2, we can expect 5 events. 
+    # Only in that case it's useful to add extra timings
+    if len(tableDiffs) > 4: 
+        phases['Phase'].append('instructions')
         phases['Timing'].append(abs(tableDiffs[3]))
+        phases['Phase'].append('refresh')
+        phases['Timing'].append(abs(tableDiffs[4]))
 
     return phases
 

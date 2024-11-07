@@ -20,6 +20,7 @@ from preproc_option import preproc_option
 from preproc_extract import preproc_extract
 from make_accuracy_timing import *
 from make_stimuli_statistics import *
+from make_phases_statistics import *
 
 # Get options
 opt = preproc_option()

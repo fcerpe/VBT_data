@@ -9,6 +9,7 @@ Created on Tue Mar  5 09:24:02 2024
 from stats_option import stats_option
 from stats_accuracy_timing import *
 from stats_stimuli_properties import * 
+from stats_completion import *
 
 ### VISUAL BRAILLE TRAINING - MAKE SUMMARY TABLES
 # 

@@ -31,10 +31,11 @@ To operationalize, this function computes the following statistics:
 import os
 import pandas as pd
 import glob as glob
-from scipy.stats import pearsonr
+from scipy.stats import pearsonr, ttest_1samp
 import pingouin as pg
 from dfply import group_by, summarize
 import matplotlib.pyplot as plt
+from statsmodels.stats.multitest import *
 
 
 
@@ -189,6 +190,7 @@ def stats_stimuli_properties(opt):
     dictCorr = {}
     dictStatsDesc = {}
     dictANOVA = {}
+    corr_ttests = []
     
     # For each group:
     # - extract relative information
@@ -203,6 +205,8 @@ def stats_stimuli_properties(opt):
         filecorr = f"{col1}-{col2}"
         dictCorr[corrName] = group.reset_index(drop = True)
         
+        
+        ## Create sanity check for JAPS
         # Pivot the table and save it twice to have a visual check on Jasp
         pivoted = dictCorr[corrName].pivot_table(index=['subject', 'script', 'column1', 'column2', 'stimuli'], 
                           columns='session', 
@@ -215,11 +219,16 @@ def stats_stimuli_properties(opt):
         pivoted.reset_index(inplace = True)
         
         
-        # ANOVA the correlations
+        ## Compute rmANOVAs on the correlations
         # use 'get_stats' from stats_accuracy_timing.py
         dictStatsDesc[corrName], dictANOVA[corrName] = get_stats(opt, dictCorr[corrName], filename)
 
-        # Save results
+
+        ## Compute t-tests against chance to see if the correlations are significant overall
+        corr_ttests = get_correlations_ttest(opt, dictCorr[corrName], corr_ttests, filecorr)
+        
+        
+        ## Save results
         dictCorr[corrName].to_csv(os.path.join(opt['dir']['results'], 
                                                 'VBT_data-test_variable-' + filecorr + '_analysis-correlation.csv'), index = False)
         pivoted.to_csv(os.path.join(opt['dir']['results'], 
@@ -229,7 +238,25 @@ def stats_stimuli_properties(opt):
         dictANOVA[corrName].to_csv(os.path.join(opt['dir']['results'], 
                                                 'VBT_data-test_variable-' + filename + '_analysis-rmANOVA.csv'), index = False)
     
-   
+    
+    ## Correct and save ttests
+    # Apply Bonferroni correction to the t-tests
+    _, bonf_pvals, _, _ = multipletests(corr_ttests['pvalUncorr'], alpha = 0.05, method = 'bonferroni')
+    
+    # Create a DataFrame with the results
+    ttest_results = pd.DataFrame({'correlation': corr_ttests['corr'],
+                                  'r': corr_ttests['r'],
+                                  't': corr_ttests['t'],
+                                  'df': corr_ttests['df'],
+                                  'pvalUncorr': corr_ttests['pvalUncorr'],
+                                  'pvalBonf': bonf_pvals})
+    
+    # Save results 
+    ttest_results.to_csv(os.path.join(opt['dir']['results'], 'VBT_data-test_variable-correlations_analysis-ttests.csv'), index = False)
+
+    
+    
+    
 ### Subfunctions
 
 # From test behvioural results, extract averages and subject tables
@@ -596,3 +623,47 @@ def get_stats(opt, tableIn, name):
     
     # Return values
     return desc, anova
+
+
+# From a correlation table, average the correlations across participants and 
+# compute a t-test against chance, to see if the values we find are significant 
+def get_correlations_ttest(opt, tableIn, corrOut, whichCorr):
+    
+    # Do the ttest only if we are looking at writing time or accuracy (score)
+    # Ignore distance as it's not informative in the final manuscript
+    if whichCorr[0] != 'd': 
+    
+        # Remove rows with correlation == NaN
+        tableIn = tableIn.dropna(subset=['correlation'])
+        
+        # Average across sessions
+        tableIn = tableIn.groupby('subject')['correlation'].mean().reset_index()
+        
+        c = tableIn['correlation'].mean()
+    
+        # Compute ttest 
+        t, pval = ttest_1samp(tableIn['correlation'], popmean = 0)
+        df = len(tableIn['correlation']) - 1
+        
+        # organize data for storage
+        corrData = pd.DataFrame({'corr': [whichCorr],
+                                 'r': [c],
+                                 't': [t],
+                                 'df': [df],
+                                 'pvalUncorr': [pval]})
+        
+        # Add results to table
+        if len(corrOut) == 0:
+            corrOut = corrData
+        else:
+            corrOut = pd.concat([corrOut, corrData], ignore_index = True)
+            
+
+    return corrOut
+
+
+
+
+
+
+

@@ -45,10 +45,11 @@ def stats_accuracy_timing(opt):
     teAccuracy = reshape_table(summary, ['ses-1_test-accuracy','ses-2_test-accuracy','ses-3_test-accuracy','ses-4_test-accuracy'])
     # Perform ANOVAs on accuracy
     teAccuracyDesc, teAccuracyAnova = get_stats(teAccuracy)
-    tePosthoc, tePvals = get_stats_posthoc(teAccuracy)
+    tePosthoc = get_stats_posthoc(teAccuracy, opt)
+    teAccuracy.to_csv(os.path.join(opt['dir']['stats'], 'VBT_data-test_variable-accuracy_table.csv'))
     save_stats(opt, teAccuracyDesc, 'accuracy', 'VBT_data-test_variable-accuracy_analysis-descriptive')
     save_stats(opt, teAccuracyAnova, 'accuracy', 'VBT_data-test_variable-accuracy_analysis-rmanova')
-
+    
     
     ## TRAINING
     trAccuracy = reshape_table(summary, ['ses-2_train-accuracy','ses-3_train-accuracy','ses-4_train-accuracy'])
@@ -129,7 +130,7 @@ def get_stats(tableIn):
 
 
 # Perform posthoc tests
-def get_stats_posthoc(tableIn):
+def get_stats_posthoc(tableIn, opt):
     
     # Perform t-tests on the script diffrences across sessions
     # (four tests, on per session)
@@ -150,8 +151,50 @@ def get_stats_posthoc(tableIn):
     bonf_pvals = multipletests(pvals, alpha = 0.05, method = 'bonferroni')
     fdr_pvals = fdrcorrection(pvals, alpha = 0.05)
 
+
+    # Make stats over the group differences
+    sessions = []
+    ttests = []
+    dofs = []
+    pvals = []
+    for i in range(1,5):
+        
+        session_col = f'session-{i}'
+        
+        # Select data for br and cb scripts for the current session column
+        br_data = tableIn[(tableIn['script'] == 'br') & (tableIn['day'] == i)]['target']
+        cb_data = tableIn[(tableIn['script'] == 'cb') & (tableIn['day'] == i)]['target']
+        
+        # Perform t-test between br and cb scripts for the given session
+        stat, pval = stats.ttest_ind(br_data, cb_data)
+        
+        # Calculate degrees of freedom
+        dof = len(br_data) + len(cb_data) - 2
+            
+        # Store the results
+        sessions.append(session_col)
+        ttests.append(stat)
+        pvals.append(pval)
+        dofs.append(dof)
+
     
-    return ttests, bonf_pvals
+    # Apply Bonferroni correction to the p-values
+    _, bonf_pvals, _, _ = multipletests(pvals, alpha = 0.05, method = 'bonferroni')
+    
+    # Create a DataFrame with the results
+    ttest_results = pd.DataFrame({
+        'session': sessions,
+        't_statistic': ttests,
+        'deg_freedom': dofs,
+        'p_value': pvals,
+        'bonferroni_p_value': bonf_pvals
+    })
+    
+    # Save the results
+    ttest_results.to_csv(os.path.join(opt['dir']['results'], 'VBT_data-test_variable-accuracy_analysis-posthoc.csv'), index = False)
+
+    
+    return ttest_results
 
 
 # Save results to csv
