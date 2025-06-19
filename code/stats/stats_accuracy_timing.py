@@ -43,10 +43,13 @@ def stats_accuracy_timing(opt):
     ## TEST
     # Re-shape table 
     teAccuracy = reshape_table(summary, ['ses-1_test-accuracy','ses-2_test-accuracy','ses-3_test-accuracy','ses-4_test-accuracy'])
+    
     # Perform ANOVAs on accuracy
     teAccuracyDesc, teAccuracyAnova = get_stats(teAccuracy)
-    tePosthoc = get_stats_posthoc(teAccuracy, opt)
+    tePosthoc = get_stats_posthoc(teAccuracy)
+    
     teAccuracy.to_csv(os.path.join(opt['dir']['stats'], 'VBT_data-test_variable-accuracy_table.csv'))
+    tePosthoc.to_csv(os.path.join(opt['dir']['results'], 'VBT_data-test_variable-accuracy_analysis-posthoc.csv'), index = False)
     save_stats(opt, teAccuracyDesc, 'accuracy', 'VBT_data-test_variable-accuracy_analysis-descriptive')
     save_stats(opt, teAccuracyAnova, 'accuracy', 'VBT_data-test_variable-accuracy_analysis-rmanova')
     
@@ -54,6 +57,7 @@ def stats_accuracy_timing(opt):
     ## TRAINING
     trAccuracy = reshape_table(summary, ['ses-2_train-accuracy','ses-3_train-accuracy','ses-4_train-accuracy'])
     trAccuracyDesc, trAccuracyAnova = get_stats(trAccuracy)
+    
     save_stats(opt, trAccuracyDesc, 'accuracy', 'VBT_data-training_variable-accuracy_analysis-descriptive')
     save_stats(opt, trAccuracyAnova, 'accuracy', 'VBT_data-training_variable-accuracy_analysis-rmanova')
 
@@ -68,19 +72,30 @@ def stats_accuracy_timing(opt):
     teReadDesc = teRead.groupby(['script', 'day']).agg(n = ('target', 'count'),
                                                        mean = ('target', 'mean'),
                                                        std = ('target', 'std')).reset_index()
+    
     save_stats(opt, teReadDesc, 'timing', 'VBT_data-test_variable-reading-time_analysis-descriptive')
 
     
     ## TEST WRITING TIME
     teWrite = reshape_table(summary, ['ses-1_test-writing','ses-2_test-writing','ses-3_test-writing','ses-4_test-writing'])
+    
     teWriteDesc, teWriteAnova = get_stats(teWrite)
+    teWritePosthoc = get_stats_posthoc(teWrite)
+    
+    teWrite.to_csv(os.path.join(opt['dir']['stats'], 'VBT_data-test_variable-writing-time_table.csv'))
+    teWritePosthoc.to_csv(os.path.join(opt['dir']['results'], 'VBT_data-test_variable-writing-time_analysis-posthoc.csv'), index = False)
     save_stats(opt, teWriteDesc, 'timing', 'VBT_data-test_variable-writing-time_analysis-descriptive')
     save_stats(opt, teWriteAnova, 'timing', 'VBT_data-test_variable-writing-time_analysis-rmanova')
 
     
     ## TRAINING READING TIME
     trRead = reshape_table(summary, ['ses-2_train-reading','ses-3_train-reading','ses-4_train-reading'])
+    
     trReadDesc, trReadAnova = get_stats(trRead)
+    trReadPosthoc = get_stats_posthoc(trRead)
+    
+    trRead.to_csv(os.path.join(opt['dir']['stats'], 'VBT_data-training_variable-reading-time_table.csv'))
+    trReadPosthoc.to_csv(os.path.join(opt['dir']['results'], 'VBT_data-training_variable-reading-time_analysis-posthoc.csv'), index = False)
     save_stats(opt, trReadDesc, 'timing', 'VBT_data-training_variable-reading-time_analysis-descriptive')
     save_stats(opt, trReadAnova, 'timing', 'VBT_data-training_variable-reading-time_analysis-rmanova')
 
@@ -130,34 +145,23 @@ def get_stats(tableIn):
 
 
 # Perform posthoc tests
-def get_stats_posthoc(tableIn, opt):
+def get_stats_posthoc(tableIn):
+    
+    # Get the number of sessions (unique days)
+    numSessions = len(tableIn["day"].unique().tolist())
     
     # Perform t-tests on the script diffrences across sessions
-    # (four tests, on per session)
-    ttests = []
-    pvals = []
-    for i in range(1,5):
-        
-        # Get the accuracy for given scripts on given sessions
-        stat, pval = stats.ttest_ind(tableIn[(tableIn['script'] == 'br') & (tableIn['day'] == i)]['target'],
-                                     tableIn[(tableIn['script'] == 'cb') & (tableIn['day'] == i)]['target'])
-        
-        # Add test information to the correct arrays
-        ttests.append(stat)
-        pvals.append(pval)
-    
-    
-    # Correct for multiple comparisons
-    bonf_pvals = multipletests(pvals, alpha = 0.05, method = 'bonferroni')
-    fdr_pvals = fdrcorrection(pvals, alpha = 0.05)
-
-
-    # Make stats over the group differences
+    # (one t-test per session)
     sessions = []
     ttests = []
     dofs = []
     pvals = []
-    for i in range(1,5):
+
+    for i in range(1,numSessions+1):
+        
+        # Small hack: if we are working on only three sessions, add 1 to the session number
+        if numSessions == 3:
+            i = i+1
         
         session_col = f'session-{i}'
         
@@ -189,10 +193,6 @@ def get_stats_posthoc(tableIn, opt):
         'p_value': pvals,
         'bonferroni_p_value': bonf_pvals
     })
-    
-    # Save the results
-    ttest_results.to_csv(os.path.join(opt['dir']['results'], 'VBT_data-test_variable-accuracy_analysis-posthoc.csv'), index = False)
-
     
     return ttest_results
 
